@@ -32,6 +32,9 @@ BONUS:
 
 ### Wireframes
 
+[View wireframes][views]
+
+[views]: docs/views.md
 
 ### React Components
 
@@ -42,28 +45,61 @@ BONUS:
 ### Database Schema
 
 
-  | Table |
-  |------|-------|-------|-------|-------|-------|
-  |Users | id*    |*__username__*   |password| *__email__* |   
-  |Forms | id$    |*__designer__*(\*) |title | instructions (A.N.) | mutable |
-  |Form Fields| id^ | *__form_id__*($) |type | label | instructions (A.N.)|
-  |Form Selection | id | *__field_id__*(^) | option_text |
-  |Form Assignments | id | *__respondee__*(\*) | *__form_id__*($) | status |
-  |Form Responses | id& | *__respondee__*(\*) | *__form_id__*($)|
-  |Form Field Responses| id | *__response_id__*(&) | response_value |
+##### Users Table
+
+  | Column Name | Type | Relation | Other |
+  | --- | --- | --- | --- | --- |
+  | Id  | Int | - | - |
+  | Username | String | - | Unique, Not Null, Indexed |
+  | Email | String | - | Unique, Not Null, Indexed |
+  | Password | String | - | Not Null |    
+
+##### Forms Table
+
+| Column Name | Type |  Relation | Other |
+| :------------- | :------------- | --- | --- |
+| Id  | Int | - | - |
+| Designer_Id | Int | Users:Id | Not Null, Indexed |
+| Title | String | - | Not Null |
+| Instructions | Text | - | - |
+
+##### Form Fields Table
+
+| Column Name | Type |  Relation | Other |
+| :------------- | :------------- | --- | --- |
+| Id | Int | - | - |
+| Type | String | - | Not Null |
+| Form_Id | Int | Forms:Id | Not Null, Indexed |
+| Label | String | - | Not Null |
+| Instructions | Text | - | - |
 
 
-  #### Key
+##### Form Field Option
 
-  (A.N.): Allow Null
 
-  *__Bolded__* :  Indexed Field
+| Column Name | Type |  Relation | Other |
+| :------------- | :------------- | --- | --- |
+| Id | Int | - | - |
+| Form_Field_Id | Int | Form_Field:Id | Not Null, Indexed |
+| Option_text | String | - | Not Null |
 
-  | primary_key | -> | foreign_key |
 
-  | --- | --- | --- |
+##### Form Responses
 
-  | \*         | ->  |        (\*) |
+| Column Name | Type |  Relation | Other |
+| :------------- | :------------- | --- | --- |
+| Id | Int | - | - |
+| Form_Id | Int | Form:Id | Indexed, Not Null |
+
+
+##### Form Field Response
+
+| Column Name | Type |  Relation | Other |
+| :------------- | :------------- | --- | --- |
+| Id | Int | - | - |
+| Form_Field_Id | Int | Form_Field:Id | Indexed, Not Null |
+| Response_Id | Int Form_Response:Id | Indexed, Not Null |
+| Response_Value | Text | - | - |  
 
 
 ### Implementation Time line
