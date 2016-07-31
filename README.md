@@ -59,9 +59,9 @@ BONUS:
 
   *__Bolded__* :  Indexed Field
 
-  |primary_key| -> | foreign_key|
+  | primary_key | -> | foreign_key |
   | --- | --- | --- |
-  |\*         |->  |        (\*)|
+  | \*         | ->  |        (\*) |
 
 
 ### Implementation Time line
