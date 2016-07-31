@@ -47,12 +47,12 @@ BONUS:
 
 ##### Users Table
 
-  | Column Name | Type | Relation | Other |
-  | --- | --- | --- | --- | --- |
-  | Id  | Int | - | - |
-  | Username | String | - | Unique, Not Null, Indexed |
-  | Email | String | - | Unique, Not Null, Indexed |
-  | Password | String | - | Not Null |    
+| Column Name | Type | Relation | Other |
+| --- | --- | --- | --- | --- |
+| Id  | Int | - | - |
+| Username | String | - | Unique, Not Null, Indexed |
+| Email | String | - | Unique, Not Null, Indexed |
+| Password | String | - | Not Null |    
 
 ##### Forms Table
 
@@ -98,7 +98,7 @@ BONUS:
 | :------------- | :------------- | --- | --- |
 | Id | Int | - | - |
 | Form_Field_Id | Int | Form_Field:Id | Indexed, Not Null |
-| Response_Id | Int Form_Response:Id | Indexed, Not Null |
+| Response_Id | Int | Form_Response:Id | Indexed, Not Null |
 | Response_Value | Text | - | - |  
 
 
