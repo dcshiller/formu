@@ -93,6 +93,6 @@ Phase 5: Response view (1 Day, W2 Th 6PM)
   * Create sample forms and responses for guest account
 
 Phase 6: CSS (1 Day, F 5:30PM )
-  * systematize and tweak style
+  * systematize and tweak style.
   * ensure that all components run smoothly
   * remove *all* glitches and bugs
