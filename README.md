@@ -35,7 +35,7 @@ BONUS:
 
 [View components][components]
 
-[View Flux Structure][flux]
+[View flux structure][flux]
 
 [View API endpoints][apiendpoints]
 
@@ -81,6 +81,7 @@ Phase 3: Form Index and Assignments (2 Days, W2 T 6pm)
   * Include delete and seal-toggle flux cycles
   * Allow forms to be viewed on respond page
   * Create form assignment panel
+  * Create guest user, make sample forms
 
 Phase 4: Form completion (1 Day, W2 W 6pm)
   * Allow access to individual forms by formid
@@ -88,9 +89,8 @@ Phase 4: Form completion (1 Day, W2 W 6pm)
   * Establish connections beween form respond page and backend.
 
 Phase 5: Response view (1 Day, W2 Th 6PM)
-  *
   * Responses page setup
-  *
+  * Create sample forms and responses for guest account
 
 Phase 6: CSS (1 Day, F 5:30PM )
   * systematize and tweak style
