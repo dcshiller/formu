@@ -6,14 +6,25 @@
 
 ![AuthMockUp]
 
-# Design page
+# Index page
 
-![Design-Page]
-
-
-# Index
 ![Index]
 
-[Design-Page]: ./wireframes/DesignPageMockup.png
+# Design page
+
+![Design]
+
+# Respond page
+
+![Respond]
+
+# Responses page
+
+![Responses]
+
+[Design]: ./wireframes/DesignPageMockup.png
 [AuthMockUp]: ./wireframes/AuthMockUp.png
 [NavBar]: ./wireframes/NavbarMockup.png
+[Index]: ./wireframes/IndexMockup.png
+[Respond]: ./wireframes/RespondMockup.png
+[Responses]: ./wireframes/ResponseMockup.png
