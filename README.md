@@ -71,25 +71,26 @@ Phase 2: Design Features (2 days, W2 M 9am)
 Objective: Basic form design features completed.
   * create Form, Form-Field, Form-Field-Option models
   * CRUD API for Forms, Form Fields, Form Field Options
-  * Implement interface for form creation.
+  * Implement interface for form creation
+  * Create flux actions linking backend with form design views.
   * Create sample forms
 
 Phase 3: Form Index and Assignments (2 Days, W2 T 6pm)
   * Setup Form / FormInFocus Stores
-  * Allow Forms to be indexed by user
-  * Delete and seal-toggle flux cycles
-  * Setup Individual Form Store
-  * Allow forms to be viewed
-  * Allow forms to be assigned by email
+  * Create form index views, with necessary linking to stores and backend
+  * Include delete and seal-toggle flux cycles
+  * Allow forms to be viewed on respond page
+  * Create form assignment panel
 
 Phase 4: Form completion (1 Day, W2 W 6pm)
   * Allow access to individual forms by formid
   * Fields can be filled out by user
-  * Respondee submission saves form in database.
+  * Establish connections beween form respond page and backend.
 
 Phase 5: Response view (1 Day, W2 Th 6PM)
+  *
   * Responses page setup
-  * Form submission makes response available to designer's responses page
+  *
 
 Phase 6: CSS (1 Day, F 5:30PM )
   * systematize and tweak style

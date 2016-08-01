@@ -9,6 +9,7 @@
 # Index page
 
 ![Index]
+![Share]
 
 # Design page
 
@@ -26,5 +27,6 @@
 [AuthMockUp]: ./wireframes/AuthMockUp.png
 [NavBar]: ./wireframes/NavbarMockup.png
 [Index]: ./wireframes/IndexMockup.png
+[Share]: ./wireframes/IndexMockupShare.png
 [Respond]: ./wireframes/RespondMockup.png
 [Responses]: ./wireframes/ResponseMockup.png

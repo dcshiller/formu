@@ -109,7 +109,7 @@
 ### Form Respond API Actions
 
 * `submitResponse`
-  0. invoked from submit button on Response.
+  0. invoked from submit button on response page.
   0. `POST /api/forms/:id/responses/`
 
 ### Store Listeners
