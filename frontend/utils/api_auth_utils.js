@@ -4,7 +4,7 @@ module.exports = {
     $.ajax({
       url: "api/sessions",
       method: "POST",
-      data: user,
+      data: {user: user},
       success(userData){successCallBack(userData)},
       error(errorMessage){failureCallBack(userData)}
     });
@@ -13,16 +13,17 @@ module.exports = {
     $.ajax({
       url: "api/sessions",
       method: "DELETE",
-      data: user,
+      data: {user: user},
       success(userData){successCallBack(userData)},
       error(errorMessage){failureCallBack(userData)}
     });
   },
   createUser(user,successCallBack, failureCallBack){
+    debugger
     $.ajax({
       url: "api/users",
       method: "POST",
-      data: user,
+      data: {user: user},
       success(userData){successCallBack(userData)},
       error(errorMessage){failureCallBack(errorMessage)}
     });

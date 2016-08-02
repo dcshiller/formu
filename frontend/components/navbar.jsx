@@ -6,7 +6,7 @@ const Navbar = React.createClass({
     return(
       <div>
         <navbar>
-          <span id="logo">ForMu</span>
+          <img id="logo" src={window.logoURL}/>
           <Link to="login" id="login">LOGIN</Link>
         </navbar>
       </div>

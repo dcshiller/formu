@@ -18,6 +18,10 @@ navbar {
   width: 100%;
 }
 
+navbar img {
+  width: 80px;
+}
+
 #login {
   postiion: relative;
   float: right;
@@ -87,4 +91,39 @@ form.login button {
   height: 30px;
   background: lightgrey;
   border-radius: 10px;
+}
+
+form.signup {
+  width: 382px;
+  height: 414px;
+  background: #f1f1f1;
+  border: 1px solid #dad5d5;
+  border-radius: 6px;
+  padding: 40px;
+  padding-top: 60px;
+  margin: auto;
+}
+
+form.signup input {
+  width: 100%;
+  height: 40px;
+  background: lightyellow;
+  margin-bottom: 40px;
+}
+
+form.signup input#username {
+  background: white;
+}
+form.signup button {
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  border: 0px;
+  height: 60px;
+  background: lightgreen;
+}
+
+span.fieldNote {
+  float: right;
+  display: none;
 }

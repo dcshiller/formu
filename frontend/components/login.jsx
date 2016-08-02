@@ -22,9 +22,9 @@ const Login = React.createClass({
             <span> Hey fellow, please log in. </span>
             <hr/>
             <label htmlFor="username"> Username </label>
-            <input type="text" id="username" value={this.state.username}/>
+            <input type="text" id="username" onChange={this.inputHandler} value={this.state.username}/>
             <label htmlFor="password"> Password </label>
-            <input type="password" id="password" value={this.state.password}/>
+            <input type="password" id="password" onChange={this.inputHandler} value={this.state.password}/>
             <button onClick={this.login}>Login</button>
           </form>
 

@@ -1,4 +1,5 @@
 const AppDispatcher = require('../dispatcher/dispatcher.js');
+const ApiAuthUtils = require('../utils/api_auth_utils.js')
 const CONSTS = require('../constants/constants.js');
 
 const AuthActions = {
@@ -6,6 +7,7 @@ const AuthActions = {
   login(user){
     ApiAuthUtils.login(user, this.loginUser, this.logoutUser)
   },
+
   signup(user){
     ApiAuthUtils.createUser(user, this.loginUser, this.errorMessage)
   },
@@ -29,7 +31,6 @@ const AuthActions = {
       error: message
     })
   },
-
 };
 
 module.exports = AuthActions;
