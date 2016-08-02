@@ -45,7 +45,7 @@ BONUS:
 [views]: docs/views.md
 [components]: docs/components.md
 [flux]: docs/flux.md
-[apiendpoints]: docs/apiendpoints.md
+[apiendpoints]: docs/api_endpoints.md
 [tables]: docs/tables.md
 
 
@@ -88,11 +88,6 @@ Phase 4: Form completion (1 Day, W2 W 6pm)
   * Fields can be filled out by user
   * Establish connections beween form respond page and backend.
 
-Phase 5: Response view (1 Day, W2 Th 6PM)
+Phase 6: Response view (2 Days, W2 F 6PM)
   * Responses page setup
   * Create sample forms and responses for guest account
-
-Phase 6: CSS (1 Day, F 5:30PM )
-  * systematize and tweak style.
-  * ensure that all components run smoothly
-  * remove *all* glitches and bugs

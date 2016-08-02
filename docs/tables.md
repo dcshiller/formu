@@ -1,4 +1,4 @@
-
+ynr
 ##### Users
 
 | Column Name | Type | Relation | Other |
@@ -26,7 +26,7 @@
 | Form_Id | Int | Forms:Id | Not Null, Indexed |
 | Label | String | - | Not Null |
 | Instructions | Text | - | - |
-| Form_Position | Int | - | - |
+| Form_Position | Int | - | Not Null |
 
 ##### Form Field Options
 

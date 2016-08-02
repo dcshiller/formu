@@ -6,6 +6,9 @@
 
 # Ignore bundler config.
 /.bundle
+/node_modules
+InitScript
+
 
 # Ignore all logfiles and tempfiles.
 /log/*
