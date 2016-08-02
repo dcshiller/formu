@@ -27659,7 +27659,11 @@
 	  signup: function signup() {
 	    AuthActions.signup(this.state);
 	  },
+	  hideFieldNotes: function hideFieldNotes() {
+	    $('span').hide();
+	  },
 	  selectField: function selectField(e) {
+	    // this.hideFieldNotes();
 	    var fieldName = e.target.id;
 	    var fieldNote = "#" + fieldName + "fieldNote";
 	    $(fieldNote).show();
@@ -27685,19 +27689,45 @@
 	            ' Your valid email '
 	          )
 	        ),
-	        React.createElement('input', { type: 'text', id: 'email', onSelect: this.selectField, onChange: this.inputHandler, value: this.state.email }),
+	        React.createElement('input', { type: 'text', id: 'email',
+	          onSelect: this.selectField,
+	          onBlur: this.hideFieldNotes,
+	          onChange: this.inputHandler,
+	          value: this.state.email }),
 	        React.createElement(
-	          'label',
-	          { htmlFor: 'password' },
-	          ' Password '
+	          'div',
+	          { className: 'fieldLabel' },
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'password' },
+	            ' Password '
+	          ),
+	          React.createElement(
+	            'span',
+	            { className: 'fieldNote', id: 'passwordfieldNote' },
+	            ' Minimum 6 characters '
+	          )
 	        ),
-	        React.createElement('input', { type: 'password', id: 'password', onChange: this.inputHandler, value: this.state.password }),
+	        React.createElement('input', { type: 'password', id: 'password',
+	          onSelect: this.selectField,
+	          onBlur: this.hideFieldNotes,
+	          onChange: this.inputHandler,
+	          value: this.state.password }),
 	        React.createElement(
-	          'label',
-	          { htmlFor: 'username' },
-	          ' Username '
+	          'div',
+	          { className: 'fieldLabel' },
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'username' },
+	            ' Username '
+	          )
 	        ),
-	        React.createElement('input', { type: 'text', id: 'username', onChange: this.inputHandler, value: this.state.username }),
+	        React.createElement('input', { type: 'text',
+	          id: 'username',
+
+	          onChange: this.inputHandler,
+	          placeholder: 'Your custom forμ URL',
+	          value: this.state.username }),
 	        React.createElement(
 	          'button',
 	          { onClick: this.signup },
