@@ -1,7 +1,7 @@
 const React = require('react')
 const Link = require('react-router').Link
-const AuthActions = require('../actions/auth_actions.js')
-const SessionStore = require('../stores/session_store.js')
+const AuthActions = require('../../actions/auth_actions.js')
+const SessionStore = require('../../stores/session_store.js')
 
 const Navbar = React.createClass({
   getInitialState () {
