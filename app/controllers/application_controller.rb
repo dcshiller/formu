@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   def logout()
     currentUser.set_session_token
     session[:session_token] = undefined
+    !session[:session_token]
   end
-  
+
 end

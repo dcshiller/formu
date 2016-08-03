@@ -5,13 +5,17 @@ class Api::SessionsController < ApplicationController
     if @user and @user.is_password?(params[:user][:password])
       render "api/users/show"
     elsif @user
-      render json: {password: "incorrect"}
+      render json: {password: "incorrect"}, status: 401
     else
-      render json: {user: "not found"} 
+      render json: {username: "not found"}, status: 401
     end
   end
 
   def destroy
-    logout
+    if logout
+      render json: "success"
+    else
+      render json: "failure", status: 500
+    end
   end
 end

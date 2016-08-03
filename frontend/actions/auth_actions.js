@@ -14,6 +14,9 @@ const AuthActions = {
       user: user
     })
   },
+  logout(){
+    ApiAuthUtils.logout()
+  },
 
   logoutUser(){
     AppDispatcher.dispatch({

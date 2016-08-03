@@ -18,7 +18,6 @@ const App = React.createClass({
          <div className="skyskape">
          clouds go here
          </div>
-         Hello, {this.state.user}
         {this.props.children}
       </div>
     )

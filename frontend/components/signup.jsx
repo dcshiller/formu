@@ -15,7 +15,7 @@ const Signup = React.createClass({
     newVals[e.target.id] = e.target.value;
     this.setState( newVals );
   },
-  newError(){
+  newErrors(){
     this.setState({errors: ErrorStore.retrieveErrors()})
   },
   removeFieldErrors(field){
@@ -24,7 +24,7 @@ const Signup = React.createClass({
     this.setState( {errors: newErrors});
   },
   componentDidMount(){
-    ErrorStore.addListener(this.newError)
+    ErrorStore.addListener(this.newErrors)
   },
   signup () {
     AuthActions.signup(this.state)
@@ -76,7 +76,6 @@ const Signup = React.createClass({
 
           <input type="text"
                  id="username"
-
                  onChange={this.inputHandler}
                  placeholder="Your custom Forμ URL"
                  value={this.state.username}/>

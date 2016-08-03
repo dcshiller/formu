@@ -6,16 +6,16 @@ module.exports = {
       method: "POST",
       data: {user: user},
       success(userData){successCallBack(userData)},
-      error(errorMessage){failureCallBack(errorMessage)}
+      error(errorMessage){failureCallBack(errorMessage.responseText)}
     });
   },
-  logout(user,successCallBack, failureCallBack){
+  logout(successCallBack, failureCallBack){
     $.ajax({
       url: "api/session",
       method: "DELETE",
-      data: {user: user},
+      // data: {user: user},
       success(userData){successCallBack(userData)},
-      error(errorMessage){failureCallBack(errorMessage)}
+      error(errorMessage){failureCallBack(errorMessage.responseText)}
     });
   },
   createUser(user,successCallBack, failureCallBack){
