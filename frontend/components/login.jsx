@@ -8,7 +8,8 @@ const ErrorStore = require('../stores/error_store.js')
 const Login = React.createClass({
   getInitialState () { return {username: "", password: "", errors: {}}},
   onChange(){
-    if (SessionStore.currentUser()){hashHistory.push("/")}
+    let user = SessionStore.currentUser()
+    if (user){hashHistory.push(user)}
   },
   componentDidMount() {
     $('body').css("background-image", "repeating-linear-gradient(  30deg, #3D3D3D 2px, #3D3D3D 2px, #1C1B1B 3px)");
