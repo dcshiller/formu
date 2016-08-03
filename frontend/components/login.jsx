@@ -10,7 +10,11 @@ const Login = React.createClass({
     hashHistory.push("/")
   },
   componentDidMount() {
+    $('body').css("background", "repeating-linear-gradient( 70deg, grey, grey 1px, black 1px, black 4px)");
     SessionStore.addListener(this.onChange);
+  },
+  componentWillUnmount() {
+    $('body').css("background", "white");
   },
   inputHandler (e) {
     e.preventDefault();
