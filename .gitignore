@@ -12,6 +12,7 @@ bundle.js
 bundle.js.map
 bundle
 InitScript
+.byebug_history
 
 
 # Ignore all logfiles and tempfiles.

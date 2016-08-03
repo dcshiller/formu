@@ -13,12 +13,27 @@ div.userMain navbar {
   padding: 5px;
   background: #FC0505;
   border-radius: 20px 20px 0px 0px;
+  color: white;
 }
 
 div.userMain navbar img {
+  float: left;
   width:75px;
   padding: 10px 15px 20px 50px;
 }
+/*
+div.userMain ul {
+  float: right;
+  list-style: none;
+  display: inline-block;
+  font-size: 20px;
+}
+
+div.userMain navbar li {
+  padding: 5px;
+  margin-right: 100px;
+  color: yellow;
+}*/
 
 div.userBox {
   width: calc(100% -2px);
@@ -26,10 +41,20 @@ div.userBox {
   min-height: 800px;
   border: 2px solid lightgrey;
   border-top: 0px;
+  padding: 30px 40px;
   border-radius: 0px 0px 10px 10px;
 }
 
 div.userBox h2 {
   margin-top: 0px;
-  padding: 30px 40px;
+}
+
+div.userBox #newForm {
+  width: 130px;
+  height: 40px;
+  color: white;
+  border: 1px solid tan;
+  border-radius: 4px;
+  background: lightgreen;
+
 }

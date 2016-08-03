@@ -37,6 +37,11 @@ const Login = React.createClass({
   login () {
     AuthActions.login(this.state)
   },
+  loginAsGuest () {
+    $("#username").val("Guest")
+    $("#password").val("Password")
+    setTimeout(AuthActions.login.bind(AuthActions , {username:"Guest", password:"Password"}), 600);
+  },
   cancel () {
     hashHistory.push("/");
   },
@@ -84,6 +89,7 @@ const Login = React.createClass({
             <button onClick={this.login}>Login</button>
             <button onClick={this.cancel}>Cancel</button>
           </form>
+          <button onClick={this.loginAsGuest}> Login as Guest</button>
         </div>
       </div>
     )

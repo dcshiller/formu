@@ -4,6 +4,7 @@ import { reactRouter , IndexRoute, Router , Route , hashHistory } from 'react-ro
 import { App, Login, Signup, Splashbar } from './components/application/application_hub.js'
 const SessionStore = require('./stores/session_store.js')
 import { User , Design } from './components/user/user_hub.js'
+
 var routes = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
