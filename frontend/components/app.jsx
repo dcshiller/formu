@@ -3,9 +3,10 @@ const Navbar = require('./navbar.jsx')
 const SessionStore = require('../stores/session_store.js')
 
 const App = React.createClass({
-  getInitialState(){return {user: null};},
+  getInitialState(){
+    return {user: SessionStore.currentUser() };},
   onChange(){
-    this.setState({user: SessionStore.currentUser})
+    this.setState({user: SessionStore.currentUser() })
   },
   componentDidMount(){
     SessionStore.addListener(this.onChange);

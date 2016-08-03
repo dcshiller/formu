@@ -1,11 +1,13 @@
 class Api::SessionsController < ApplicationController
 
   def create
-    @user = User.findByUsername(params[:user][:username])
-    if @user.isPassword?(params[:user][:password])
-      render json: @user
+    @user = User.find_by_username(params[:user][:username])
+    if @user and @user.is_password?(params[:user][:password])
+      render "api/users/show"
+    elsif @user
+      render json: {password: "incorrect"}
     else
-      render json: @user.errors
+      render json: {user: "not found"} 
     end
   end
 

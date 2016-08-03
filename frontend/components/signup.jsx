@@ -4,12 +4,12 @@ const ErrorStore = require('../stores/error_store.js')
 
 const Signup = React.createClass({
   getInitialState () {
-    $('body').css()
-  return {username: "", password: "", email: "",
-  errors: {}
-  }},
+    return {  username: "",
+              password: "",
+              email: "",
+              errors: {} }
+  },
   inputHandler (e) {
-    // e.preventDefault();
     let newVals = {};
     this.removeFieldErrors(e.target.id);
     newVals[e.target.id] = e.target.value;
@@ -30,10 +30,9 @@ const Signup = React.createClass({
     AuthActions.signup(this.state)
   },
   hideFieldNotes(){
-    $('span.fieldNote').hide();
+   $('span.fieldNote').hide();
   },
   selectField(e){
-    // this.hideFieldNotes();
     let fieldName = e.target.id
     let fieldNote = "#" + fieldName + "fieldNote"
     $(fieldNote).show();

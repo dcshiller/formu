@@ -1,9 +1,17 @@
 const React = require('react');
 const Link = require('react-router').Link
 const AuthActions = require('../actions/auth_actions.js');
+const SessionStore = require('../stores/session_store.js')
+const hashHistory = require('react-router').hashHistory
 
 const Login = React.createClass({
   getInitialState () { return {username: "", password: ""}},
+  onChange(){
+    hashHistory.push("/")
+  },
+  componentDidMount() {
+    SessionStore.addListener(this.onChange);
+  },
   inputHandler (e) {
     e.preventDefault();
     let newVals = {};
@@ -19,9 +27,9 @@ const Login = React.createClass({
         <div className="authformInner">
           <form className="login">
             <h2> Forμ Welcomes You! </h2>
-            <span> Hey fellow, please log in. </span>
+            <span> Hey fellow form-builder, please log in. </span>
             <hr/>
-            <label htmlFor="username"> Username </label>
+            <label htmlFor="username"> Username</label>
             <input type="text" id="username" onChange={this.inputHandler} value={this.state.username}/>
             <label htmlFor="password"> Password </label>
             <input type="password" id="password" onChange={this.inputHandler} value={this.state.password}/>
