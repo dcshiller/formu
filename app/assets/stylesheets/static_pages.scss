@@ -32,15 +32,6 @@ navbar img {
 }
 
 
-div.skyskape {
-  position: absolute;
-  z-index: -1;
-  top: 0px;
-  margin-left: -10px;
-  width: 110%;
-  height: 400px;
-  background: #e86f69;
-}
 
 #login {
   postiion: relative;
@@ -52,9 +43,16 @@ div.skyskape {
   margin-right: 30px;
 }
 
+#login:hover {
+  color: yellow;
+}
+
 #logout {
   position: relative;
   float: right;
+  padding: 10px;
+  margin-top:-10px;
+  outline: none;
   background: none;
   border: none;
   font: inherit;

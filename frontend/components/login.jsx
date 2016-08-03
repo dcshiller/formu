@@ -36,6 +36,9 @@ const Login = React.createClass({
   login () {
     AuthActions.login(this.state)
   },
+  cancel () {
+    hashHistory.push("/");
+  },
   fieldErrors(fieldName){
     let thisFieldName = fieldName["fieldName"]
     if (this.state.errors[thisFieldName]){
@@ -78,6 +81,7 @@ const Login = React.createClass({
             {this.formField("username", "text")}
             {this.formField("password", "password")}
             <button onClick={this.login}>Login</button>
+            <button onClick={this.cancel}>Cancel</button>
           </form>
         </div>
       </div>

@@ -13,9 +13,9 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     if logout
-      render json: "success"
+      render json: {session_logout: "success"}
     else
-      render json: "failure", status: 500
+      render json: {session_logout: "failure"}, status: 500
     end
   end
 end

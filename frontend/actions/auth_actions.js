@@ -15,7 +15,7 @@ const AuthActions = {
     })
   },
   logout(){
-    ApiAuthUtils.logout()
+    ApiAuthUtils.logout(this.logoutUser, this.errorMessage)
   },
 
   logoutUser(){

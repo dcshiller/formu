@@ -1,6 +1,7 @@
 const React = require('react')
 const Navbar = require('./navbar.jsx')
 const SessionStore = require('../stores/session_store.js')
+const Splashbar = require('./splashbar.jsx')
 
 const App = React.createClass({
   getInitialState(){
@@ -15,9 +16,6 @@ const App = React.createClass({
     return(
       <div >
          <Navbar />
-         <div className="skyskape">
-         clouds go here
-         </div>
         {this.props.children}
       </div>
     )

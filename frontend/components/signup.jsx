@@ -45,6 +45,18 @@ const Signup = React.createClass({
   render(){
     return (
         <div className="signup">
+
+        <h1>Create usable forms today.</h1>
+
+        <sidebar>
+          <h2>Features</h2>
+
+          <ul>
+            <li>You can log in.</li>
+            <li>Stay tuned for more features.</li>
+          </ul>
+        </sidebar>
+
         <form className="signup">
           <div className="fieldLabel">
             <label htmlFor="email"> Email </label>
@@ -54,6 +66,7 @@ const Signup = React.createClass({
                   onSelect={this.selectField}
                   onBlur={this.hideFieldNotes}
                   onChange={this.inputHandler}
+                  placeholder="Your email"
                   value={this.state.email}/>
          {this.fieldErrors("email")}
 
@@ -66,6 +79,7 @@ const Signup = React.createClass({
                 onSelect={this.selectField}
                 onBlur={this.hideFieldNotes}
                 onChange={this.inputHandler}
+                placeholder="Minimum 6 characters"
                 value={this.state.password}/>
           {this.fieldErrors("password")}
 
