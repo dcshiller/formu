@@ -1,0 +1,38 @@
+
+div.skyscape {
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  margin-left: -10px;
+  width: 110%;
+  height: 400px;
+  background: #e86f69;
+}
+
+div.skyscape h1 {
+  font-size: 40px;
+  color: white;
+  margin-top: 130px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+div.skyscape .signup {
+  width: 200px;
+  margin: auto;
+  font-size: 30px;
+  display: block;
+  color: white;
+  text-align:center;
+  text-decoration: none;
+  border: 1px solid white;
+  background: #00cc00;
+  height: 35px;
+  padding: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div.skyscape .signup:hover {
+  background: #00e600;
+}

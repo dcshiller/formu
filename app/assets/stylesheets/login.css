@@ -1,0 +1,81 @@
+
+.authformInner {
+  position: relative;
+  display: block;
+  top: 25px;
+  left: 25px;
+  // margin-left:-420px;
+  // margin-top: -200px;
+  border-radius: 28px;
+  padding-left:25px;
+  padding-top:10px;
+  // margin: auto;
+  border: 1px solid #ebdb74;
+  background: white;
+  height: 360px;
+  width: 740px;
+}
+
+.authformOuter {
+  position: fixed;
+  display: block;
+  top: 50%;
+  left: 50%;
+  margin-left:-410px;
+  margin-top: -205px;
+  border-radius: 50px;
+  background: #fde75d;
+  height: 430px;
+  width: 820px;
+}
+
+form.login {
+  margin-top:-10px;
+  padding: 5px;
+  width: 365px;
+}
+form.login h2 {
+  padding:-10px;
+  margin-bottom:15px;
+}
+
+form.login hr {
+  border:none;
+  border-top: 1px dotted grey;
+  margin-bottom: 20px;
+}
+
+form.login .fieldBox {
+  height: 30px;
+  width:95%;
+  margin-bottom: 20px;
+  padding-top:5px;
+  height: 55px;
+}
+
+form.login .fieldBox.yesErrors {
+  background: pink;
+}
+
+form.login .fieldBox.yesErrors label {
+  color: red;
+}
+
+form.login input {
+  // display: block;
+  // margin-bottom:;
+  /*background: white;*/
+  width: 99%;
+}
+
+form.login span.errorNote {
+  font-size: 15px;
+  color: red;
+}
+
+form.login button {
+  width: 80px;
+  height: 30px;
+  background: lightgrey;
+  border-radius: 10px;
+}

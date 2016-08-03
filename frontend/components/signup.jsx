@@ -46,13 +46,14 @@ const Signup = React.createClass({
     return (
         <div className="signup">
 
-        <h1>Create usable forms today.</h1>
+        <h1>Create usable forms today*.</h1>
 
         <sidebar>
           <h2>Features</h2>
 
           <ul>
             <li>You can log in.</li>
+            <li></li><li></li><li></li><li></li><li></li><li></li><li></li>
             <li>Stay tuned for more features.</li>
           </ul>
         </sidebar>
@@ -96,8 +97,10 @@ const Signup = React.createClass({
           {this.fieldErrors("username")}
           <button onClick={this.signup}>SIGN UP FREE</button>
         </form>
+        <p>*Or by 8/12</p>
       </div>
     )
+
   }
 });
 
