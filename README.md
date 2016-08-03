@@ -2,7 +2,9 @@
 
   *A form building website.*
 
-  [Link coming soon]
+[Link][link]
+
+[link]: https://formu.herokuapp.com/
 
 ### Minimum Viable Product
 
