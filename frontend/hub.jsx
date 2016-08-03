@@ -9,9 +9,9 @@ const routes = (
   <Router history={hashHistory} >
     <IndexRoute component={App}/>
       <Route path="/" component={App}>
-      <Route path="login" component={Login}/>
       <Route path="signup" component={Signup}/>
     </Route>
+    <Route path="login" component={Login}/>
   </Router>
 );
 

@@ -3,18 +3,25 @@ const AuthActions = require('../actions/auth_actions.js');
 const ErrorStore = require('../stores/error_store.js')
 
 const Signup = React.createClass({
-  getInitialState () { return {username: "", password: "", email: "",
-  errors: {email: "too short"}
+  getInitialState () {
+    $('body').css()
+  return {username: "", password: "", email: "",
+  errors: {}
   }},
   inputHandler (e) {
     // e.preventDefault();
     let newVals = {};
+    this.removeFieldErrors(e.target.id);
     newVals[e.target.id] = e.target.value;
     this.setState( newVals );
   },
   newError(){
-    debugger
     this.setState({errors: ErrorStore.retrieveErrors()})
+  },
+  removeFieldErrors(field){
+    let newErrors = this.state.errors;
+    newErrors[field] = null;
+    this.setState( {errors: newErrors});
   },
   componentDidMount(){
     ErrorStore.addListener(this.newError)

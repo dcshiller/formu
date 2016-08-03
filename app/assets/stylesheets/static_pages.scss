@@ -19,9 +19,16 @@ navbar {
   width: 100%;
 }
 
-navbar img {
-  width: 80px;
+navbar header {
+    width: 70%;
+    margin: auto;
 }
+
+navbar img {
+  margin-top: -5px;
+  width: 100px;
+}
+
 
 div.skyskape {
   position: absolute;
@@ -37,6 +44,8 @@ div.skyskape {
   postiion: relative;
   float: right;
   display:block;
+  text-decoration: none;
+  font-size: 20px;
   color: white;
   margin-right: 30px;
 }
@@ -105,7 +114,8 @@ form.login button {
 }
 
 form.signup {
-  width: 382px;
+  width: 60%;//382px;
+  max-width: 700px;
   height: 414px;
   background: #f1f1f1;
   border: 1px solid #dad5d5;
