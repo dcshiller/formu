@@ -1,5 +1,35 @@
+
+div.paneContainer {
+  position: relative;
+  width: 100%;
+}
+
 div.fieldDiv {
+  position: absolute;
+  display: block;
+  float: left;
   width: 30%;
   height: 600px;
   background: #FFCD45;
+  padding: 30px 0px 0px 0px;
+  border-bottom-left-radius: 10px;
+}
+
+div.fieldTabPane {
+  width: calc(100% - 4px);
+  height: 100%;
+  background: #FFFCB3;
+  border-left: 2px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
+  border-bottom-left-radius: 10px;
+}
+
+div .formViewDiv {
+  display: block;
+  float: right;
+  width: calc(70%);
+  height: 630px;
+  border-bottom: 2px solid lightgrey;
+  border-right: 2px solid lightgrey;
+  border-bottom-right-radius: 10px;
 }

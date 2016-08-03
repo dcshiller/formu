@@ -15,7 +15,6 @@ const User = React.createClass({
     return {currentUser: currentUser};
   },
   render(){
-    debugger
     return(
       <div className="userMain">
         <UserNavBar />
