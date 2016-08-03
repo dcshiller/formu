@@ -14,7 +14,7 @@ var routes = (
     </Route>
     <Route path="login" component={Login}/>
     <Route path={':username'} component={User}>
-      <Route path="design" component={Design}/>
+      <Route path={'/:username/design'} component={Design}/>
     </Route>
   </Router>
 );
