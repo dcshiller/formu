@@ -28,7 +28,7 @@ const AuthActions = {
   errorMessage(message){
     AppDispatcher.dispatch({
       actionType: CONSTS.ERROR,
-      error: message
+      errors: message
     })
   },
 };

@@ -4,6 +4,7 @@
 
 body {
   position: relative;
+  padding:0px;
 }
 
 navbar {
@@ -13,13 +14,23 @@ navbar {
   display: block;
   margin: 0px;
   padding: 20px;
-  background: #f16464;
+  background: #e66760;
   height: 22px;
   width: 100%;
 }
 
 navbar img {
   width: 80px;
+}
+
+div.skyskape {
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  margin-left: -10px;
+  width: 110%;
+  height: 400px;
+  background: #e86f69;
 }
 
 #login {
@@ -123,7 +134,35 @@ form.signup button {
   background: lightgreen;
 }
 
+div.fieldLabel {
+  position: relative;
+  // background: ;
+}
+
 span.fieldNote {
   float: right;
   display: none;
+}
+
+span.errorNote:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid lightgrey;
+    border-right:10px solid transparent;
+    left:8px;
+    top:-7px;
+}
+
+span.errorNote {
+  position: relative;
+  padding:10px;
+  top: -25px;
+  left: 40px;
+  border-radius: 15px;
+  background: lightgrey;
 }

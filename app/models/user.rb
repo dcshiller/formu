@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   before_validation :set_session_token
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :username, :password_digest, :session_token, presence: true
   validates :password, length: {in: 6..16}
 

@@ -14,6 +14,9 @@ const App = React.createClass({
     return(
       <div >
          <Navbar />
+         <div className="skyskape">
+         clouds go here
+         </div>
          Hello, {this.state.user}
         {this.props.children}
       </div>

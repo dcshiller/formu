@@ -7,6 +7,7 @@
 # Ignore bundler config.
 /.bundle
 /node_modules
+/app/assets/javascripts/bundle.js
 bundle.js
 bundle.js.map
 bundle

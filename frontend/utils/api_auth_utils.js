@@ -19,13 +19,12 @@ module.exports = {
     });
   },
   createUser(user,successCallBack, failureCallBack){
-    debugger
     $.ajax({
       url: "api/users",
       method: "POST",
       data: {user: user},
       success(userData){successCallBack(userData)},
-      error(errorMessage){failureCallBack(errorMessage)}
+      error(errorMessage){failureCallBack(errorMessage.responseText)}
     });
   }
 };
