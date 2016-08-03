@@ -2,12 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html, body{
+height: 100%;
+width: 100%}
+
 body {
   position: relative;
   padding:0px;
 }
 
-navbar {
+div.applicationMain navbar {
   position: relative;
   top: -10px;
   left: -10px;
