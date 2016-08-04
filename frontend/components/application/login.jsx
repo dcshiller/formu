@@ -57,13 +57,12 @@ const Login = React.createClass({
     if(this.state.errors[thisFieldName]){return "fieldBox yesErrors"}
     return "fieldBox noErrors";
   },
-
-  formField(fieldName, fieldType, handler){
+  formField(fieldName, fieldType){
     return (
       <div className={this.errorsPresent({fieldName})}>
         <Field fieldVals={ { fieldName: fieldName,
                       fieldType: fieldType,
-                      handler: handler,
+                      handler: this.inputHandler,
                       fieldValue: this.state[fieldName]}} />
         {this.fieldErrors({fieldName})}
       </div>
@@ -86,8 +85,8 @@ const Login = React.createClass({
 
              log in and we'll build some forms. </span>
             <hr/>
-            {this.formField("username", "text", this.inputHandler )}
-            {this.formField("password", "password", this.inputHandler )}
+            {this.formField("username", "text")}
+            {this.formField("password", "password")}
             <button onClick={this.login}>Login</button>
             <button onClick={this.cancel}>Cancel</button>
           </form>

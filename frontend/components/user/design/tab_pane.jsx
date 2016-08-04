@@ -3,27 +3,30 @@ const FieldSelectorTab = require('./field_selector_tab')
 const FieldPropertiesTab = require('./field_properties_tab')
 const FormPropertiesTab = require('./form_properties_tab')
 
-const TabPanes =  [
-                    <FieldSelectorTab/>,
-                    <FieldPropertiesTab/>,
-                    <FormPropertiesTab/>
-                  ]
-
 const TabPane = React.createClass({
   getInitialState(){
-    return {paneSelected: 0}
+    return {paneSelected: 0,
+            TabPanes: [
+              <FieldSelectorTab form={this.props.form}
+                                changeHandler={this.props.changeHandler}
+                                drop={this.props.drop}
+                                drag={this.props.drag}/>,
+              <FieldPropertiesTab form={this.props.form} changeHandler={this.props.changeHandler}/>,
+              <FormPropertiesTab form={this.props.form} changeHandler={this.props.changeHandler}/>
+            ]
+            }
   },
   selectPane(tabNumber){
     this.setState({paneSelected: tabNumber})
   },
   returnSelectedTab(){
-    return TabPanes[this.state.paneSelected]
+    return this.state.TabPanes[this.state.paneSelected]
   },
   newTab(labelText, paneNumber){
     return (
               <li onClick={this.selectPane.bind(this,paneNumber)}
                   className={this.state.paneSelected === paneNumber ? "inFocus" : "notInFocus" }
-                  changeForm={this.props.changeForm}>
+                  >
                   {labelText}
               </li>
           )

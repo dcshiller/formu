@@ -9,11 +9,9 @@ div.tabPane {
   display: block;
   float: left;
   width: 30%;
-  /*height: 600px;*/
   height: 600px;
   background: #FFCD45;
   border-left: 2px solid lightgrey;
-  /*padding: 30px 0px 0px 0px;*/
   border-bottom-left-radius: 10px;
 }
 
@@ -36,15 +34,15 @@ div.tabPane li.inFocus {
   border-top-right-radius: 10px;
 }
 
-
 div .formViewPane {
-  display: block;
-  float: right;
-  width: calc(70%);
-  height: 600px;
-  border-bottom: 2px solid lightgrey;
-  border-right: 2px solid lightgrey;
-  border-bottom-right-radius: 10px;
+    display: block;
+    float: right;
+    padding: 30px;
+    width: calc(70% - 60px);
+    height: 540px;
+    border-bottom: 2px solid lightgrey;
+    border-right: 2px solid lightgrey;
+    border-bottom-right-radius: 10px;
 }
 
 div .formViewPane {
@@ -60,4 +58,18 @@ div.formViewPane hr {
   margin-right: 20px;
   border-top-style: dotted;
   border-color: lightgrey;
+}
+
+
+div .tabForm div {
+  padding: 20px;
+}
+
+div .tabForm div input {
+  /*float: right;*/
+  margin-top: 15px;
+  padding: 4px;
+  width: calc(100% - 25px);
+  border-radius: 4px;
+  height: 15px;
 }
