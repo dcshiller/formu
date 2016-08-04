@@ -1,7 +1,7 @@
 const React = require('react')
 const AuthActions = require('../../actions/auth_actions.js');
 const ErrorStore = require('../../stores/error_store.js')
-const FormBuilder = require('../../utils/form_builder_utils')
+const Field = require('../field')
 
 const Signup = React.createClass({
   getInitialState () {

@@ -1,9 +1,10 @@
 const React = require('react');
-const Link = require('react-router').Link
-const hashHistory = require('react-router').hashHistory
+const Link = require('react-router').Link;
+const hashHistory = require('react-router').hashHistory;
 const AuthActions = require('../../actions/auth_actions.js');
-const SessionStore = require('../../stores/session_store.js')
-const ErrorStore = require('../../stores/error_store.js')
+const SessionStore = require('../../stores/session_store.js');
+const ErrorStore = require('../../stores/error_store.js');
+const Field = require('../field');
 
 const Login = React.createClass({
   getInitialState () { return {username: "", password: "", errors: {}}},
@@ -56,14 +57,14 @@ const Login = React.createClass({
     if(this.state.errors[thisFieldName]){return "fieldBox yesErrors"}
     return "fieldBox noErrors";
   },
-  formField(fieldName, fieldType){
+
+  formField(fieldName, fieldType, handler){
     return (
       <div className={this.errorsPresent({fieldName})}>
-        <label htmlFor={fieldName}>{fieldName}</label>
-        <input type={fieldType}
-                id={fieldName}
-                onChange={this.inputHandler}
-                value={this.state[{fieldName}]}/>
+        <Field fieldVals={ { fieldName: fieldName,
+                      fieldType: fieldType,
+                      handler: handler,
+                      fieldValue: this.state[fieldName]}} />
         {this.fieldErrors({fieldName})}
       </div>
   );
@@ -85,9 +86,8 @@ const Login = React.createClass({
 
              log in and we'll build some forms. </span>
             <hr/>
-
-            {this.formField("username", "text")}
-            {this.formField("password", "password")}
+            {this.formField("username", "text", this.inputHandler )}
+            {this.formField("password", "password", this.inputHandler )}
             <button onClick={this.login}>Login</button>
             <button onClick={this.cancel}>Cancel</button>
           </form>
