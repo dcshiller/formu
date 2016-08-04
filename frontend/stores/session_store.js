@@ -4,7 +4,7 @@ const CONSTS = require('../constants/constants.js')
 
 const SessionStore = new Store(AppDispatcher);
 
-var _currentUser = {username: "GUEEST"}; //null};
+var _currentUser = {username: "GUEST"}; //null};
 
 SessionStore._login = function (user) {
   _currentUser = user;

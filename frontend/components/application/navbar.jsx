@@ -15,7 +15,13 @@ const Navbar = React.createClass({
   },
   loginOrLogout () {
     if (SessionStore.currentUser()){return <button onClick={this.logout} id="logout">LOGOUT {this.state.currentUser}</button>;}
-    return <Link to="login" id="login" onMouseEnter={this.textTo.bind(this,"GWRRR...")} onMouseLeave={this.textTo.bind(this,"LOGIN")}>LOGIN</Link>
+    return ( <Link to="login"
+                  id="login"
+                  onMouseEnter={this.textTo.bind(this,"GWRRR...")}
+                  onMouseLeave={this.textTo.bind(this,"LOGIN")}>
+                  LOGIN
+             </Link> 
+            )
   },
   userChange () {
     this.setState({currentUser: SessionStore.currentUser()});

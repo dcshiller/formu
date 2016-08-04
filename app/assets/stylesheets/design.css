@@ -9,15 +9,37 @@ div.fieldDiv {
   display: block;
   float: left;
   width: 30%;
+  /*height: 600px;*/
   height: 600px;
   background: #FFCD45;
-  padding: 30px 0px 0px 0px;
+  border-left: 2px solid lightgrey;
+  /*padding: 30px 0px 0px 0px;*/
   border-bottom-left-radius: 10px;
 }
 
+div.fieldDiv ul {
+  margin-bottom: 30px;
+  padding-left: 20px;
+}
+
+div.fieldDiv li {
+  display: block;
+  padding: 3px 10px 3px 10px;
+  margin-top: 8px;
+  margin-right: 10px;
+  float:left;
+}
+
+div.fieldDiv li.inFocus {
+  background: #FFFCB3;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
 div.fieldTabPane {
+  margin-left: -2px;
   width: calc(100% - 4px);
-  height: 100%;
+  height: calc(100% - 30px);
   background: #FFFCB3;
   border-left: 2px solid lightgrey;
   border-bottom: 2px solid lightgrey;
@@ -28,7 +50,7 @@ div .formViewDiv {
   display: block;
   float: right;
   width: calc(70%);
-  height: 630px;
+  height: 600px;
   border-bottom: 2px solid lightgrey;
   border-right: 2px solid lightgrey;
   border-bottom-right-radius: 10px;
