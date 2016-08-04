@@ -13,7 +13,10 @@ const FormViewPane = React.createClass({
             <Field fieldVals={ {
                 fieldName: "NewField",
                 fieldType: (fieldObj.type || "text"),
+                compId: (fieldObj.compId),
+                className: fieldObj.className,
                 handler: null,
+                readOnly: true,
                 fieldValue: (fieldObj.val || "" )
             } }/>
           )

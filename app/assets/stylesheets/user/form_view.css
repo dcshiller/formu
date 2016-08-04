@@ -30,6 +30,11 @@ div .formViewPane input {
   width: 50%;
 }
 
+div .formViewPane input.number {
+  display: block;
+  width: 50px;
+}
+
 div .formViewPane .inputWrapper {
   padding: 20px;
 }

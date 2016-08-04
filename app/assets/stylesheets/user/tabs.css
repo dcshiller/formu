@@ -2,14 +2,73 @@
 div.designTab {
   margin-left: -2px;
   width: calc(100% - 4px);
-  height: calc(100% - 32px);
-  background: #FFFCB3;
+  height: calc(100% - 62px);
+  background:  #ffffe6;
+  /*#FFFCB3;*/
+  padding-top: 30px;
   border-left: 2px solid lightgrey;
   border-bottom: 2px solid lightgrey;
   border-bottom-left-radius: 10px;
 }
 
+
+div.tabPane {
+  position: absolute;
+  display: block;
+  float: left;
+  width: 35%;
+  /*min-width: 400px;*/
+  /*min-height: px;*/
+  height: calc(100% - 2px);
+
+  background: #FFCD45;
+  border-left: 2px solid lightgrey;
+  border-bottom-left-radius: 10px;
+}
+
+div.tabPane ul {
+  /*margin-bottom: 30px;*/
+  padding-left: 20px;
+}
+
+div.tabPane li {
+  display: block;
+  padding: 3px 10px 3px 10px;
+  margin-top: 8px;
+  margin-right: 10px;
+  float:left;
+}
+
+div.tabPane li.inFocus {
+  background: #ffffe6;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+div .tabForm div {
+  padding: 20px;
+}
+
+div .tabForm div input {
+  /*float: right;*/
+  margin-top: 15px;
+  padding: 4px;
+  width: calc(100% - 25px);
+  border-radius: 4px;
+}
+
+
 div.formPropertiesTab form {
   margin-left: 40px;
+}
 
+div.designTab li.fieldChoice {
+  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 51%, #d7dee3 100%);
+  border: 1px solid #d7dee3;
+  border-radius: 10px;
+  width: 100px;
+  margin-left: 40px;
+  margin-top: 20px;
+  text-align: center;
+  float: left;
 }

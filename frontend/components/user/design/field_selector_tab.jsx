@@ -7,17 +7,25 @@ const FieldSelectorTab = React.createClass({
   removeTarget (e){
     setTimeout(function(){window.dragged = null;}, 500);
   },
+  addField (type) {
+    return (
+      <li className="fieldChoice"
+          id= {type}
+          draggable="true"
+          onDragStart={this.addTarget}
+          onDragEnd={this.removeTarget}
+      >{type}</li>
+    )
+  },
   render () {
     return(
       <div className="designTab">
         <ul>
-          <li className="fieldChoice"
-              id="text"
-              draggable="true"
-              onDragStart={this.addTarget}
-              onDragEnd={this.removeTarget}
-          >text</li>
-          <li className="fieldChoice">number</li>
+          {this.addField("text")}
+          {this.addField("number")}
+          {this.addField("multiple choice")}
+          {this.addField("checkbox")}
+          {this.addField("dropdown")}
         </ul>
       </div>
     )

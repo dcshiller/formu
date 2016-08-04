@@ -6,52 +6,6 @@ div.paneContainer {
   min-height: 600px;
 }
 
-div.tabPane {
-  position: absolute;
-  display: block;
-  float: left;
-  width: 35%;
-  /*min-width: 400px;*/
-  /*min-height: px;*/
-  height: calc(100% - 2px);
-
-  background: #FFCD45;
-  border-left: 2px solid lightgrey;
-  border-bottom-left-radius: 10px;
-}
-
-div.tabPane ul {
-  /*margin-bottom: 30px;*/
-  padding-left: 20px;
-}
-
-div.tabPane li {
-  display: block;
-  padding: 3px 10px 3px 10px;
-  margin-top: 8px;
-  margin-right: 10px;
-  float:left;
-}
-
-div.tabPane li.inFocus {
-  background: #FFFCB3;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-
-div .tabForm div {
-  padding: 20px;
-}
-
-div .tabForm div input {
-  /*float: right;*/
-  margin-top: 15px;
-  padding: 4px;
-  width: calc(100% - 25px);
-  border-radius: 4px;
-}
-
 div.paneContainer input {
   /*float: right;*/
   margin-top: 15px;

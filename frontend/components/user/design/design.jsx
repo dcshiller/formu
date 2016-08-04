@@ -17,14 +17,10 @@ const Design = React.createClass({
     }
   },
   addField(type, pos){
-    switch (type) {
-      case "text" :
-        let newId = Math.random() * 100000;
-        let newField = {id: newId, type: "text"};
-        let updatedFields = this.state.form.fields.push(newField);
-        this.setState({fields: updatedFields});
-      break;
-    }
+    let newId = Math.random() * 100000;
+    let newField = {compId: newId, type: type, className: type};
+    let updatedFields = this.state.form.fields.push(newField);
+    this.setState({fields: updatedFields});
   },
   changeHandler(categoryToChange, changes, cB){
     const categoryDup = this.state.form[categoryToChange];
