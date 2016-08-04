@@ -8,7 +8,7 @@ const Splashbar = React.createClass({
     return (
       <div className="skyscape">
         <h1> Create and share your forms. </h1>
-        <Link to="signup" className="">SIGN UP</Link>
+        <a onClick={function(){hashHistory.push("signup") } } className="signup">SIGN UP</a>
       </div>
     )
   }

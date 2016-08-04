@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   before_validation :set_session_token
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :username, :password_digest, :session_token, presence: true
+  validates :username, :email, uniqueness: true
   validates :password, length: {in: 6..16}
 
   def set_session_token

@@ -27,7 +27,6 @@ const Design = React.createClass({
           )
   },
   render(){
-
     return (
       <div className="paneContainer">
         <div className="fieldDiv">
