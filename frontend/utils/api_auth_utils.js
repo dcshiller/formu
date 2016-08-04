@@ -4,6 +4,7 @@ module.exports = {
     $.ajax({
       url: "api/session",
       method: "POST",
+      dataType: "json",
       data: {user: user},
       success(userData){successCallBack(userData)},
       error(errorMessage){failureCallBack(errorMessage.responseText)}
@@ -13,6 +14,7 @@ module.exports = {
     $.ajax({
       url: "api/session",
       method: "DELETE",
+      dataType: "json",
       // data: {user: user},
       success(userData){successCallBack(userData)},
       error(errorMessage){failureCallBack(errorMessage.responseText)}
@@ -23,6 +25,7 @@ module.exports = {
       url: "api/users",
       method: "POST",
       data: {user: user},
+      dataType: "json",
       success(userData){successCallBack(userData)},
       error(errorMessage){failureCallBack(errorMessage.responseText)}
     });
