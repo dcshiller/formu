@@ -1,8 +1,7 @@
 
 div.skyscape {
   position: absolute;
-  z-index: -1;
-  top: 0px;
+  top: 52px;
   margin-left: -10px;
   width: 110%;
   height: 400px;
