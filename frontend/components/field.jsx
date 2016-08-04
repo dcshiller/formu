@@ -7,7 +7,7 @@ const Field = React.createClass({
         const handler = this.props.fieldVals["handler"];
         const fieldValue = this.props.fieldVals["fieldValue"];
         return (
-          <div>
+          <div className = "inputWrapper">
             <label htmlFor={fieldName}>{fieldName}</label>
             <input type={fieldType}
              id={fieldName}

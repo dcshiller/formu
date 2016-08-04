@@ -16,18 +16,13 @@ const Design = React.createClass({
             }
     }
   },
-  // addTo(target, newVal){
-  //   const targetDup = target;
-  //   Object.keys(newVal).forEach(key => targetDup[key] = newVal[key]);
-  //   return targetDup
-  // },
   addField(type, pos){
     switch (type) {
       case "text" :
-      let newId = Math.random() * 100000;
-      let newField = {id: newId, type: "text"};
-      let updatedFields = this.state.form.fields.push(newField);
-      this.setState({fields: updatedFields});
+        let newId = Math.random() * 100000;
+        let newField = {id: newId, type: "text"};
+        let updatedFields = this.state.form.fields.push(newField);
+        this.setState({fields: updatedFields});
       break;
     }
   },
@@ -47,7 +42,7 @@ const Design = React.createClass({
   },
   render () {
     return (
-      <div className="paneContainer">
+      <div className="paneContainer container" >
           <TabPane  form={this.state.form}
                     changeHandler={this.changeHandler}
                     drag={this.drag}

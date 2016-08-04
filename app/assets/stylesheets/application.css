@@ -19,3 +19,9 @@ ul {
   margin: 0px;
   list-style: none;
 }
+
+.container::after {
+  content:"";
+  display:block;
+  clear:both;
+}

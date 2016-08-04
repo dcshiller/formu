@@ -34,7 +34,7 @@ const TabPane = React.createClass({
   render(){
     return (
       <div className="tabPane">
-        <ul>
+        <ul className="container">
           {this.newTab("Add a field", 0)}
           {this.newTab("Field properties", 1)}
           {this.newTab("Form properties", 2)}

@@ -2,7 +2,7 @@
 div.designTab {
   margin-left: -2px;
   width: calc(100% - 4px);
-  height: calc(100% - 30px);
+  height: calc(100% - 32px);
   background: #FFFCB3;
   border-left: 2px solid lightgrey;
   border-bottom: 2px solid lightgrey;

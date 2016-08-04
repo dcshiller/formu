@@ -1,27 +1,22 @@
 const React = require('react')
 const Field = require('../../field')
 
-
 const FormViewPane = React.createClass({
   dragOver(e){
     e.preventDefault();
   },
   dropField(e){
-    switch (window.dragged.id) {
-      case "textFieldSelector" :
-      this.props.addField("text")
-      break;
-    }
+    this.props.addField(window.dragged.id)
   },
   drawField(fieldObj){
-    switch (fieldObj.type) {
-      case "text" :
-       return    ( <Field fieldVals={ { fieldName: "NewField",
-                    fieldType: "text",
-                    handler: null,
-                    fieldValue: ""}} /> )
-    break;
-    }
+   return (
+            <Field fieldVals={ {
+                fieldName: "NewField",
+                fieldType: (fieldObj.type || "text"),
+                handler: null,
+                fieldValue: (fieldObj.val || "" )
+            } }/>
+          )
   },
   drawFields () {
     let self = this;

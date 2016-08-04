@@ -7,15 +7,12 @@ const FieldSelectorTab = React.createClass({
   removeTarget (e){
     setTimeout(function(){window.dragged = null;}, 500);
   },
-  makeMeRed(){
-    $('body').css('background', 'red');
-  },
   render () {
     return(
       <div className="designTab">
         <ul>
           <li className="fieldChoice"
-              id="textFieldSelector"
+              id="text"
               draggable="true"
               onDragStart={this.addTarget}
               onDragEnd={this.removeTarget}

@@ -1,22 +1,27 @@
 
 div.paneContainer {
-  position: relative;
-  width: 100%;
+  position: absolute;
+  width: 80%;
+  max-width: inherit;
+  min-height: 600px;
 }
 
 div.tabPane {
   position: absolute;
   display: block;
   float: left;
-  width: 30%;
-  height: 600px;
+  width: 35%;
+  /*min-width: 400px;*/
+  /*min-height: px;*/
+  height: calc(100% - 2px);
+
   background: #FFCD45;
   border-left: 2px solid lightgrey;
   border-bottom-left-radius: 10px;
 }
 
 div.tabPane ul {
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
   padding-left: 20px;
 }
 
@@ -34,32 +39,6 @@ div.tabPane li.inFocus {
   border-top-right-radius: 10px;
 }
 
-div .formViewPane {
-    display: block;
-    float: right;
-    padding: 30px;
-    width: calc(70% - 60px);
-    height: 540px;
-    border-bottom: 2px solid lightgrey;
-    border-right: 2px solid lightgrey;
-    border-bottom-right-radius: 10px;
-}
-
-div .formViewPane {
-  margin-left: 30px;
-}
-
-div .formViewPane h1.formTitle {
-  padding: 10px 10px 10px 0px;
-}
-
-div.formViewPane hr {
-  width: 98%;
-  margin-right: 20px;
-  border-top-style: dotted;
-  border-color: lightgrey;
-}
-
 
 div .tabForm div {
   padding: 20px;
@@ -71,5 +50,12 @@ div .tabForm div input {
   padding: 4px;
   width: calc(100% - 25px);
   border-radius: 4px;
+}
+
+div.paneContainer input {
+  /*float: right;*/
+  margin-top: 15px;
+  padding: 4px;
+  width: calc(100% - 25px);
   height: 15px;
 }

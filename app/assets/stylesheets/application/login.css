@@ -79,3 +79,45 @@ form.login button {
   background: lightgrey;
   border-radius: 10px;
 }
+
+#largeSignUp {
+  float: right;
+  width: 250px;
+  margin: 40px;
+  height: 250px;
+  border: 3px solid #fde75d;
+  border-radius: 15px;
+  background: #FFFCB3;
+  text-decoration: none;
+  text-align: center;
+}
+
+#largeSignUp:hover {
+  background: #F0F2E1;
+  border-color: #DEEB8D;
+}
+
+#largeSignUp:hover hr {
+  border-color: #DEEB8D;
+}
+
+#largeSignUp h1 {
+  font-size: 20px;
+  color: green;
+  margin-top:35px;
+}
+
+#largeSignUp h1:first-child {
+  color: red;
+}
+
+#largeSignUp h2 {
+  font-size: 15px;
+  color: black;
+  margin-bottom:30px;
+}
+
+#largeSignUp hr {
+  width: 80%;
+  border-top: 3px solid #fde75d;
+}
