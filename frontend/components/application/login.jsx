@@ -81,7 +81,9 @@ const Login = React.createClass({
          </Link>
           <form className="login">
             <h2> Forμ Welcomes You! </h2>
-            <span> Hey fellow form-builder, please log in. </span>
+            <span> Hey fellow form-builder,
+
+             log in and we'll build some forms. </span>
             <hr/>
 
             {this.formField("username", "text")}

@@ -1,0 +1,15 @@
+
+div.designTab {
+  margin-left: -2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 30px);
+  background: #FFFCB3;
+  border-left: 2px solid lightgrey;
+  border-bottom: 2px solid lightgrey;
+  border-bottom-left-radius: 10px;
+}
+
+div.formPropertiesTab form {
+  margin-left: 40px;
+
+}

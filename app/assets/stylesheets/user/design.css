@@ -4,7 +4,7 @@ div.paneContainer {
   width: 100%;
 }
 
-div.fieldDiv {
+div.tabPane {
   position: absolute;
   display: block;
   float: left;
@@ -17,12 +17,12 @@ div.fieldDiv {
   border-bottom-left-radius: 10px;
 }
 
-div.fieldDiv ul {
+div.tabPane ul {
   margin-bottom: 30px;
   padding-left: 20px;
 }
 
-div.fieldDiv li {
+div.tabPane li {
   display: block;
   padding: 3px 10px 3px 10px;
   margin-top: 8px;
@@ -30,23 +30,14 @@ div.fieldDiv li {
   float:left;
 }
 
-div.fieldDiv li.inFocus {
+div.tabPane li.inFocus {
   background: #FFFCB3;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-div.fieldTabPane {
-  margin-left: -2px;
-  width: calc(100% - 4px);
-  height: calc(100% - 30px);
-  background: #FFFCB3;
-  border-left: 2px solid lightgrey;
-  border-bottom: 2px solid lightgrey;
-  border-bottom-left-radius: 10px;
-}
 
-div .formViewDiv {
+div .formViewPane {
   display: block;
   float: right;
   width: calc(70%);
@@ -54,4 +45,19 @@ div .formViewDiv {
   border-bottom: 2px solid lightgrey;
   border-right: 2px solid lightgrey;
   border-bottom-right-radius: 10px;
+}
+
+div .formViewPane {
+  margin-left: 30px;
+}
+
+div .formViewPane h1.formTitle {
+  padding: 10px 10px 10px 0px;
+}
+
+div.formViewPane hr {
+  width: 98%;
+  margin-right: 20px;
+  border-top-style: dotted;
+  border-color: lightgrey;
 }
