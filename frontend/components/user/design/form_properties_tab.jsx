@@ -1,5 +1,6 @@
 const React = require('react');
 const Field = require('../../field');
+const DesignActions = require('../../../actions/design_actions')
 
 const FormPropertiesTab = React.createClass({
   // getInitialState(){
@@ -8,8 +9,10 @@ const FormPropertiesTab = React.createClass({
   inputHandler (e) {
     // e.preventDefault();
     let newVals = {};
-    newVals[e.target.id] = e.target.value;
-    this.props.changeHandler("properties", newVals, this.forceUpdate );
+    // newVals[e.target.id] = e.target.value;
+    DesignActions.changeFormProperty(e.target.id, e.target.value)
+    this.forceUpdate();
+    // this.props.changeHandler("properties", newVals, this.forceUpdate );
   },
   fieldBuilder(fieldName, fieldType, handler){
     return (

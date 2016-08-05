@@ -1,38 +1,30 @@
-const React = require('react')
-const TabPane = require('./tab_pane')
-const FormViewPane = require('./form_view_pane')
+const React = require('react');
+const TabPane = require('./tab_pane');
+const FormViewPane = require('./form_view_pane');
+const FormStore = require('../../../stores/form_store');
+const DesignActions = require('../../../actions/design_actions');
 
 var dragged_object = {};
 
 const Design = React.createClass({
-  getInitialState(){
-    return {
-            form: {
-                    properties: {
-                      Title: "Untitled Form",
-                      Description: "This is a form. May it soon be awesome."
-                    },
-                    fields: [{type: "text"}]
-            }
+  getInitialState () {
+    return { form: FormStore.getFormInFocus()
     }
   },
-  addField(type, pos){
-    let newId = Math.random() * 100000;
-    let newField = {compId: newId, type: type, className: type};
-    let updatedFields = this.state.form.fields.slice(0,pos);
-    updatedFields.push(newField);
-    this.state.form.fields = updatedFields.concat(this.state.form.fields.slice(pos));
-    debugger
-    this.setState({});
+  componentDidMount () {
+    FormStore.addListener(this.onFormChange);
   },
-  changeHandler(categoryToChange, changes, cB){
-    const categoryDup = this.state.form[categoryToChange];
-    Object.keys(changes).forEach(key => categoryDup[key] = changes[key]);
-    const formDup = this.state.form;
-    formDup[categoryToChange] = categoryDup;
-    this.setState({form: formDup});
-    cB && cB();
+  onFormChange () {
+    this.setState({ form: FormStore.getFormInFocus()})
   },
+  // changeHandler(categoryToChange, changes, cB){ // for textfields
+  //   const categoryDup = this.state.form[categoryToChange];
+  //   Object.keys(changes).forEach(key => categoryDup[key] = changes[key]);
+  //   const formDup = this.state.form;
+  //   formDup[categoryToChange] = categoryDup;
+  //   this.setState({form: formDup});
+  //   cB && cB();
+  // },
   drag (object_to_drag) {
     dragged_object = object_to_drag;
   },

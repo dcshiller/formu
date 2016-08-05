@@ -1,5 +1,6 @@
 const React = require('react')
 const Field = require('../../field')
+const DesignActions = require ('../../../actions/design_actions')
 
 const FormViewPane = React.createClass({
   dragOver(e){
@@ -15,7 +16,7 @@ const FormViewPane = React.createClass({
   dropField(e){
     this.dragLeave(e)
     let position = e.target.id.split("_")[1]
-    this.props.addField(window.dragged.id, position)
+    DesignActions.addField(window.dragged.id, position)
   },
   drawField(fieldObj){
    return (
