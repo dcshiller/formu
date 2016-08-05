@@ -4,9 +4,18 @@ const Field = require('../../field')
 const FormViewPane = React.createClass({
   dragOver(e){
     e.preventDefault();
+    if (e.target.className.indexOf("underDragged") === -1 &&
+        e.target.className.indexOf("dropTarget") !== -1){e.target.className += " underDragged"}
+  },
+  dragLeave(e){
+    e.preventDefault();
+    if (e.target.className.indexOf("underDragged") != -1)
+    {e.target.className = "dropTarget"}
   },
   dropField(e){
-    this.props.addField(window.dragged.id)
+    this.dragLeave(e)
+    let position = e.target.id.split("_")[1]
+    this.props.addField(window.dragged.id, position)
   },
   drawField(fieldObj){
    return (
@@ -21,15 +30,34 @@ const FormViewPane = React.createClass({
             } }/>
           )
   },
+  drawDropTarget(number){
+    return (
+      <div className = "dropTarget"
+            id={"drop_" + number}
+            onDragOver={this.dragOver}
+            onDragLeave={this.dragLeave}
+            onDrop={this.dropField}/>
+    )
+  },
   drawFields () {
     let self = this;
-    return this.props.form.fields.map(function(field){
-      return self.drawField(field)
+    let arrayOfFields = this.props.form.fields.map(function(field){
+      return  (
+                self.drawField(field)
+              )
     })
+    let fieldsWithDropTargets = [];
+    let i = 0;
+    arrayOfFields.forEach(function(field){
+      fieldsWithDropTargets.push(self.drawDropTarget(i++));
+      fieldsWithDropTargets.push(field);
+    });
+    fieldsWithDropTargets.push(self.drawDropTarget(i));
+    return fieldsWithDropTargets;
   },
   render(){
     return(
-      <div className="formViewPane" onDragOver={this.dragOver} onDrop={this.dropField}>
+      <div className="formViewPane">
           <h1 className="formTitle"> {this.props.form.properties["Title"]} </h1>
           <p>{this.props.form.properties["Description"]} </p>
           <hr/>

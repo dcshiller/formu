@@ -43,3 +43,23 @@ div .formViewPane .inputWrapper:hover {
   background: rgb(240,242,225);
   transition: background .2s;
 }
+
+div .formViewPane .dropTarget {
+  z-index: 20;
+  position: relative;
+  height: 40px;
+  width: 100%;
+  margin: -20px -50px -20px 0px;
+  transition: margin 1s;
+}
+
+/*div .formViewPane .dropTarget:last-of-type {
+  min-height: 200px;
+}*/
+
+div .formViewPane .dropTarget.underDragged {
+  margin: 0px 0px 0px 0px;
+  border: 1px dashed lightgrey;
+  background: rgb(240,242,225);
+  transition: margin, border 10s;
+}

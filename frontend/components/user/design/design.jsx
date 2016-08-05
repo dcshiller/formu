@@ -19,8 +19,11 @@ const Design = React.createClass({
   addField(type, pos){
     let newId = Math.random() * 100000;
     let newField = {compId: newId, type: type, className: type};
-    let updatedFields = this.state.form.fields.push(newField);
-    this.setState({fields: updatedFields});
+    let updatedFields = this.state.form.fields.slice(0,pos);
+    updatedFields.push(newField);
+    this.state.form.fields = updatedFields.concat(this.state.form.fields.slice(pos));
+    debugger
+    this.setState({});
   },
   changeHandler(categoryToChange, changes, cB){
     const categoryDup = this.state.form[categoryToChange];
