@@ -14,7 +14,7 @@ const Design = React.createClass({
     FormStore.addListener(this.onChange);
   },
   onChange () {
-    this.setState({ form: FormStore.getFormInFocus(), field: FormStore.getFormInFocus()})
+    this.setState({ form: FormStore.getFormInFocus(), field: FormStore.getFieldInFocus()})
   },
   // changeHandler(categoryToChange, changes, cB){ // for textfields
   //   const categoryDup = this.state.form[categoryToChange];
@@ -39,6 +39,7 @@ const Design = React.createClass({
                     drag={this.drag}
                     drop={this.drop}/>
           <FormViewPane form={this.state.form}
+                        field={this.state.field}
                         addField={this.addField}/>
       </div>
     )

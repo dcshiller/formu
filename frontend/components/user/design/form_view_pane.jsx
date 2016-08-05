@@ -40,10 +40,11 @@ const FormViewPane = React.createClass({
   drawField(fieldObj){
    return (
             <Field fieldVals={ {
-                fieldName: "NewField",
+                fieldName: fieldObj.Label || "New Field",
                 fieldType: (fieldObj.type || "text"),
                 fieldId: (fieldObj.fieldId),
                 className: fieldObj.className,
+                selected:  this.props.field && fieldObj.fieldId === this.props.field.fieldId,
                 handler: null,
                 readOnly: true,
                 draggable: true,

@@ -8,10 +8,13 @@ const _Form = {
             Title: "Untitled Form",
             Description: "This is a form. May it soon be awesome."
           },
-          fields: [{type: "text", fieldId: "aaaaaa"}]
+          fields: [{type: "text",
+                    fieldId: "aaaaaa",
+                    Label: "My Label",
+                    Instructions: "My Instructions"}]
 };
 
-var _FieldInFocus = "aaaaaa";
+var _FieldInFocus = null;
 
 FormStore.getFormInFocus = function () {
   return _Form;
@@ -23,7 +26,11 @@ FormStore.getFieldInFocus = function () {
 
 FormStore.addField = function (type, pos) {
   let newId = Math.floor(Math.random()*1000000000).toString(36);
-  let newField = {fieldId: newId, type: type, className: type};
+  let newField = {fieldId: newId,
+                  type: type,
+                  className: type,
+                  Label: "New Label",
+                  Instructions: "Place your instructions here."};
   this.insertFieldAt(newField, pos);
   };
 
@@ -65,6 +72,11 @@ FormStore.deleteByFieldId = function (fieldId) {
   this.deleteByFieldPosition(this.findPositionByFieldId(fieldId))
 };
 
+FormStore.changeFieldProperty = function (property_name, new_value) {
+  this.getFieldInFocus()[property_name] = new_value;
+  this.__emitChange();
+};
+
 FormStore.changeFormProperty = function (property_name, new_value) {
   _Form.properties[property_name] = new_value;
   this.__emitChange();
@@ -78,13 +90,20 @@ FormStore.__onDispatch = function (payload) {
     case CONSTS.REPOSITION_FIELD :
       this.repositionField(payload.fieldId, payload.pos);
       break;
+    case CONSTS.FOCUS_ON_FIELD :
+      _FieldInFocus = payload.fieldId;
+      this.__emitChange();
+      break;
+    case CONSTS.BLUR_FIELD :
+      _FieldInFocus = null;
+      this.__emitChange();
+      break;
+    case CONSTS.CHANGE_FIELD_PROPERTY :
+      this.changeFieldProperty(payload.property_name, payload.new_value);
+      break;
     case CONSTS.CHANGE_FORM_PROPERTY :
       this.changeFormProperty(payload.property_name, payload.new_value);
       break;
-    case CONSTS.FOCUS_ON_FIELD :
-       _FieldInFocus = payload.fieldId;
-       this.__emitChange();
-       break;
   }
 };
 

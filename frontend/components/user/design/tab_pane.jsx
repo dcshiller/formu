@@ -1,26 +1,34 @@
 const React = require('react');
-const FieldSelectorTab = require('./field_selector_tab')
-const FieldPropertiesTab = require('./field_properties_tab')
-const FormPropertiesTab = require('./form_properties_tab')
+const FieldSelectorTab = require('./field_selector_tab');
+const FieldPropertiesTab = require('./field_properties_tab');
+const FormPropertiesTab = require('./form_properties_tab');
+const Field = require('../../field');
+const DesignActions = require('../../../actions/design_actions');
+
+var TabPanes;
 
 const TabPane = React.createClass({
   getInitialState(){
-    return {paneSelected: 0,
-            TabPanes: [
-              <FieldSelectorTab form={this.props.form}
-                                changeHandler={this.props.changeHandler}
-                                drop={this.props.drop}
-                                drag={this.props.drag}/>,
-              <FieldPropertiesTab field={this.props.field} form={this.props.form} changeHandler={this.props.changeHandler}/>,
-              <FormPropertiesTab form={this.props.form} changeHandler={this.props.changeHandler}/>
-            ]
-            }
+    return {paneSelected: 0}
   },
-  selectPane(tabNumber){
+  fieldBuilder(fieldName, fieldType, handler, fieldValue){
+    return (
+      <Field fieldVals={ { fieldName: fieldName,
+                  fieldType: fieldType,
+                  handler: handler,
+                  fieldValue: fieldValue}} />
+    )
+  },
+  selectPane (tabNumber) {
+    DesignActions.blurField();
     this.setState({paneSelected: tabNumber})
   },
-  returnSelectedTab(){
-    return this.state.TabPanes[this.state.paneSelected]
+  componentWillReceiveProps () {
+    if (this.props.field)
+      {this.setState({paneSelected: 1})}
+  },
+  returnSelectedTab () {
+    return TabPanes[this.state.paneSelected]
   },
   newTab(labelText, paneNumber){
     return (
@@ -32,6 +40,19 @@ const TabPane = React.createClass({
           )
   },
   render(){
+    TabPanes = [
+      <FieldSelectorTab form={this.props.form}
+                        changeHandler={this.props.changeHandler}
+                        drop={this.props.drop}
+                        drag={this.props.drag}/>,
+      <FieldPropertiesTab field={this.props.field}
+                          form={this.props.form}
+                          fieldBuilder={this.fieldBuilder}
+                          changeHandler={this.props.changeHandler}/>,
+      <FormPropertiesTab form={this.props.form}
+                          fieldBuilder={this.fieldBuilder}
+                          changeHandler={this.props.changeHandler}/>
+    ];
     return (
       <div className="tabPane">
         <ul className="container">

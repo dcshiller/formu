@@ -13,10 +13,9 @@ const Field = React.createClass({
         const onDragStart = this.props.fieldVals["onDragStart"];
         const onDragEnd = this.props.fieldVals["onDragEnd"];
         const onContainerClick = this.props.fieldVals["onContainerClick"];
-
-
+        const containerClass = this.props.fieldVals["selected"] ? "inputWrapper selected" : "inputWrapper";
         return (
-          <div className = "inputWrapper"
+          <div className ={containerClass}
                 draggable={draggable}
                 onDragStart={onDragStart}
                 onDragEnd={onDragEnd}

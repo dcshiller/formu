@@ -39,10 +39,6 @@ div.tabPane li {
   float:left;
 }
 
-div.tabPane li.tooSmall {
-
-}
-
 div.tabPane li.inFocus {
   background: #ffffe6;
   border-top-left-radius: 10px;

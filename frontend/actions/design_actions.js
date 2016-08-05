@@ -17,6 +17,13 @@ module.exports = {
       });
 
   },
+  changeFieldProperty(property_name, new_value){
+    AppDispatcher.dispatch({
+        actionType: CONSTS.CHANGE_FIELD_PROPERTY,
+        property_name: property_name,
+        new_value: new_value
+    });
+  },
   changeFormProperty(property_name, new_value){
     AppDispatcher.dispatch({
         actionType: CONSTS.CHANGE_FORM_PROPERTY,
@@ -29,6 +36,11 @@ module.exports = {
       actionType: CONSTS.FOCUS_ON_FIELD,
       fieldId: fieldId
     });
+  },
+  blurField(){
+    AppDispatcher.dispatch({
+          actionType: CONSTS.BLUR_FIELD,
+        });
   }
 
 
