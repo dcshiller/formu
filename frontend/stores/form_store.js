@@ -14,7 +14,7 @@ const _Form = {
                     Instructions: "My Instructions"}]
 };
 
-var _FieldInFocus = null;
+var _FieldInFocus = "aaaaaa";
 
 FormStore.getFormInFocus = function () {
   return _Form;
