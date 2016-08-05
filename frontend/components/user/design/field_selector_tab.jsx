@@ -1,4 +1,6 @@
 const React = require('react');
+const DesignActions = require('../../../actions/design_actions')
+
 
 const FieldSelectorTab = React.createClass({
   addTarget (e){
@@ -7,11 +9,15 @@ const FieldSelectorTab = React.createClass({
   removeTarget (e){
     setTimeout(function(){window.dragged = null;}, 500);
   },
+  createField (e) {
+    DesignActions.addField(e.target.id, 100000)
+  },
   addField (type) {
     return (
       <li className="fieldChoice"
           id= {type}
           draggable="true"
+          onDoubleClick={this.createField}
           onDragStart={this.addTarget}
           onDragEnd={this.removeTarget}
       >{type}</li>
