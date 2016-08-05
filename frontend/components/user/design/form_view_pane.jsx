@@ -56,6 +56,19 @@ const FormViewPane = React.createClass({
     fieldsWithDropTargets.push(self.drawDropTarget(i));
     return fieldsWithDropTargets;
   },
+  setManualWindowSize(){
+    let navbarSize = Math.min(Math.max(window.innerWidth*.8, 800), 1200);
+    let tabPaneSize = Math.max(400, navbarSize*.35);
+    let viewPaneSize = navbarSize - tabPaneSize - 60;
+    $(".formViewPane").css("width", viewPaneSize);
+  },
+  componentDidMount () {
+    this.setManualWindowSize();
+    window.addEventListener("resize", this.setManualWindowSize, true);
+  },
+  componentWillUnmount () {
+    window.removeEventListener("resize", this.setManualWindowSize);
+  },
   render(){
     return(
       <div className="formViewPane">

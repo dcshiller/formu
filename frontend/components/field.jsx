@@ -9,6 +9,7 @@ const Field = React.createClass({
         const fieldValue = this.props.fieldVals["fieldValue"];
         const className = this.props.fieldVals["className"];
         const readOnly = this.props.fieldVals["readOnly"];
+        debugger
         return (
           <div className = "inputWrapper">
             <label htmlFor={fieldName}>{fieldName}</label>

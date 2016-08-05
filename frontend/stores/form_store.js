@@ -16,7 +16,7 @@ FormStore.getFormInFocus = function () {
 };
 
 FormStore.addField = function (type, pos) {
-  let newId = Math.random() * 100000;
+  let newId = Math.floor(Math.random()*1000000000).toString(36);
   let newField = {compId: newId, type: type, className: type};
   let updatedFields = _Form.fields.slice(0,pos);
   updatedFields.push(newField);
@@ -38,7 +38,6 @@ FormStore.__onDispatch = function (payload) {
       this.changeFormProperty(payload.property_name, payload.new_value);
       break;
   }
-
 };
 
 module.exports = FormStore;

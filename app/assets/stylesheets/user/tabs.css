@@ -17,7 +17,7 @@ div.tabPane {
   display: block;
   float: left;
   width: 35%;
-  /*min-width: 400px;*/
+  min-width: 400px;
   /*min-height: px;*/
   height: calc(100% - 2px);
 
@@ -37,6 +37,10 @@ div.tabPane li {
   margin-top: 8px;
   margin-right: 10px;
   float:left;
+}
+
+div.tabPane li.tooSmall {
+
 }
 
 div.tabPane li.inFocus {

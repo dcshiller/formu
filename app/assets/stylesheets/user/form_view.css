@@ -3,11 +3,16 @@ div .formViewPane {
     float: right;
     padding: 30px;
     width: calc(65% - 60px);
+    /*min-width: 600px;*/
     height: 100%;
     min-height: 600px;
     border-bottom: 2px solid lightgrey;
     border-right: 2px solid lightgrey;
     border-bottom-right-radius: 10px;
+}
+
+div .formViewPane .tooSmall {
+  width: 400px;
 }
 
 div .formViewPane {

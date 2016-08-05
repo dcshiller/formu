@@ -3,6 +3,7 @@ div.paneContainer {
   position: absolute;
   width: 80%;
   max-width: inherit;
+  min-width: 800px;
   min-height: 600px;
 }
 
