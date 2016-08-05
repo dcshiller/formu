@@ -5,7 +5,7 @@ const FieldPropertiesTab = React.createClass({
     return(
       <div className="designTab">
         <ul>
-          FieldPropertiesGoHere
+        {this.props.field.fieldId}
         </ul>
       </div>
     )

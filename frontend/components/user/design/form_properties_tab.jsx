@@ -22,8 +22,8 @@ const FormPropertiesTab = React.createClass({
     return(
       <div className="designTab">
         <form className="tabForm">
-          { this.fieldBuilder("Title", "text", this.inputHandler) }
-          { this.fieldBuilder("Description", "text", this.inputHandler) }
+          { this.props.fieldBuilder("Title", "text", this.inputHandler) }
+          { this.props.fieldBuilder("Description", "text", this.inputHandler) }
         </form>
       </div>
     )

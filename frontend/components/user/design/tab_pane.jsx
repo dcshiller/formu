@@ -11,7 +11,7 @@ const TabPane = React.createClass({
                                 changeHandler={this.props.changeHandler}
                                 drop={this.props.drop}
                                 drag={this.props.drag}/>,
-              <FieldPropertiesTab form={this.props.form} changeHandler={this.props.changeHandler}/>,
+              <FieldPropertiesTab field={this.props.field} form={this.props.form} changeHandler={this.props.changeHandler}/>,
               <FormPropertiesTab form={this.props.form} changeHandler={this.props.changeHandler}/>
             ]
             }

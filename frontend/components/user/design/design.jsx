@@ -8,14 +8,13 @@ var dragged_object = {};
 
 const Design = React.createClass({
   getInitialState () {
-    return { form: FormStore.getFormInFocus()
-    }
+    return { form: FormStore.getFormInFocus(), field: FormStore.getFieldInFocus()    }
   },
   componentDidMount () {
-    FormStore.addListener(this.onFormChange);
+    FormStore.addListener(this.onChange);
   },
-  onFormChange () {
-    this.setState({ form: FormStore.getFormInFocus()})
+  onChange () {
+    this.setState({ form: FormStore.getFormInFocus(), field: FormStore.getFormInFocus()})
   },
   // changeHandler(categoryToChange, changes, cB){ // for textfields
   //   const categoryDup = this.state.form[categoryToChange];
@@ -35,6 +34,7 @@ const Design = React.createClass({
     return (
       <div className="paneContainer container" >
           <TabPane  form={this.state.form}
+                    field={this.state.field}
                     changeHandler={this.changeHandler}
                     drag={this.drag}
                     drop={this.drop}/>

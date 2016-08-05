@@ -11,7 +11,7 @@ const _Form = {
           fields: [{type: "text", fieldId: "aaaaaa"}]
 };
 
-var _FieldInFocus = null;
+var _FieldInFocus = "aaaaaa";
 
 FormStore.getFormInFocus = function () {
   return _Form;
@@ -83,6 +83,7 @@ FormStore.__onDispatch = function (payload) {
       break;
     case CONSTS.FOCUS_ON_FIELD :
        _FieldInFocus = payload.fieldId;
+       this.__emitChange();
        break;
   }
 };
