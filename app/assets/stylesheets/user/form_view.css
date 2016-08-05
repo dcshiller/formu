@@ -49,6 +49,11 @@ div .formViewPane .inputWrapper:hover {
   transition: background .2s;
 }
 
+div .formViewPane input {
+    cursor: none;
+    color: transparent;
+}
+
 div .formViewPane .dropTarget {
   z-index: 20;
   position: relative;

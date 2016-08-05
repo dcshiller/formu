@@ -19,7 +19,6 @@ const FormPropertiesTab = React.createClass({
     )
   },
   render(){
-    debugger
     return(
       <div className="designTab">
         <form className="tabForm">

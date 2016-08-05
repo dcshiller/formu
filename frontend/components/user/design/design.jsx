@@ -32,7 +32,6 @@ const Design = React.createClass({
     // if (dragged_object)
   },
   render () {
-    debugger
     return (
       <div className="paneContainer container" >
           <TabPane  form={this.state.form}

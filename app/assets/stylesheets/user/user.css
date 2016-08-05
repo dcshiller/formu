@@ -69,7 +69,7 @@ div.tooSmall {
   top: -10px;
   left: -10px;
   z-index: 1;
-  background: black;
+  background: rgba(0, 0, 0, 0.9);
   padding: 20px;
   color: lightyellow;
 }

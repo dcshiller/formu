@@ -3,6 +3,19 @@ const Field = require('../../field')
 const DesignActions = require ('../../../actions/design_actions')
 
 const FormViewPane = React.createClass({
+  componentDidMount () {
+    this.setManualWindowSize();
+    window.addEventListener("resize", this.setManualWindowSize, true);
+  },
+  componentWillUnmount () {
+    window.removeEventListener("resize", this.setManualWindowSize);
+  },
+  addTarget (e){
+    window.dragged = e.target;
+  },
+  removeTarget (e){
+    setTimeout(function(){window.dragged = null;}, 500);
+  },
   dragOver(e){
     e.preventDefault();
     if (e.target.className.indexOf("underDragged") === -1 &&
@@ -16,17 +29,27 @@ const FormViewPane = React.createClass({
   dropField(e){
     this.dragLeave(e)
     let position = e.target.id.split("_")[1]
-    DesignActions.addField(window.dragged.id, position)
+    if (window.dragged.className === "fieldChoice") {
+      DesignActions.addField(window.dragged.id, position)
+    }
+    else if (window.dragged.className === "inputWrapper") {
+      let fieldId = window.dragged.getElementsByTagName("input")[0].id;
+      DesignActions.repositionField(fieldId, position)
+    }
   },
   drawField(fieldObj){
    return (
             <Field fieldVals={ {
                 fieldName: "NewField",
                 fieldType: (fieldObj.type || "text"),
-                compId: (fieldObj.compId),
+                fieldId: (fieldObj.fieldId),
                 className: fieldObj.className,
                 handler: null,
                 readOnly: true,
+                draggable: true,
+                onDragStart: this.addTarget,
+                onDragEnd:this.removeTarget,
+                onContainerClick: this.selectField,
                 fieldValue: (fieldObj.val || "" )
             } }/>
           )
@@ -62,12 +85,18 @@ const FormViewPane = React.createClass({
     let viewPaneSize = navbarSize - tabPaneSize - 60;
     $(".formViewPane").css("width", viewPaneSize);
   },
-  componentDidMount () {
-    this.setManualWindowSize();
-    window.addEventListener("resize", this.setManualWindowSize, true);
-  },
-  componentWillUnmount () {
-    window.removeEventListener("resize", this.setManualWindowSize);
+  selectField (e) {
+    let fieldId;
+    switch (e.target.tagName)
+    {
+        case "INPUT" :
+          fieldId = e.target.id
+          break;
+        case "DIV" :
+          fieldId = e.target.getElementsByTagName("input")[0].id;
+          break
+    }
+    DesignActions.focusOnField(fieldId);
   },
   render(){
     return(

@@ -9,12 +9,27 @@ module.exports = {
         pos: pos
     });
   },
+  repositionField(fieldId, pos){
+    AppDispatcher.dispatch({
+          actionType: CONSTS.REPOSITION_FIELD,
+          fieldId: fieldId,
+          pos: pos
+      });
+
+  },
   changeFormProperty(property_name, new_value){
     AppDispatcher.dispatch({
         actionType: CONSTS.CHANGE_FORM_PROPERTY,
         property_name: property_name,
         new_value: new_value
     });
+  },
+  focusOnField(fieldId){
+    AppDispatcher.dispatch({
+      actionType: CONSTS.FOCUS_ON_FIELD,
+      fieldId: fieldId
+    });
   }
+
 
 };

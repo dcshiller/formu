@@ -4,10 +4,9 @@ const hashHistory = require('react-router').hashHistory
 
 
 const Splashbar = React.createClass({
-  debugthis(e){
-    e.preventDefault();
-    debugger
-  },
+  // debugthis(e){
+  //   e.preventDefault();
+  // },
   render(){
     return (
       <div className="skyscape">
