@@ -11,7 +11,7 @@ const TabPane = React.createClass({
   getInitialState(){
     return {paneSelected: 0}
   },
-  fieldBuilder(fieldName, fieldType, handler, fieldValue){
+  fieldBuilder(handler, fieldName, fieldType, fieldValue){
     return (
       <Field fieldVals={ { fieldName: fieldName,
                   fieldType: fieldType,

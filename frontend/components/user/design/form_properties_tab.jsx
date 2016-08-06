@@ -9,11 +9,16 @@ const FormPropertiesTab = React.createClass({
     this.forceUpdate();
   },
   render () {
+    let fieldBuilder = this.props.fieldBuilder.bindArg(this, this.inputHandler)
     return(
       <div className="designTab">
         <form className="tabForm">
-          { this.props.fieldBuilder("Title", "text", this.inputHandler, this.props.form.properties["Title"]) }
-          { this.props.fieldBuilder("Description", "text", this.inputHandler, this.props.form.properties["Description"]) }
+          { fieldBuilder("Title",
+                          "text",
+                          this.props.form.properties["Title"]) }
+          { fieldBuilder( "Description",
+                          "text",
+                          this.props.form.properties["Description"]) }
         </form>
       </div>
     )
