@@ -95,7 +95,7 @@ FormStore.__onDispatch = function (payload) {
       this.__emitChange();
       break;
     case CONSTS.BLUR_FIELD :
-      _FieldInFocus = null;
+      _FieldInFocus = null;//undefined;
       this.__emitChange();
       break;
     case CONSTS.CHANGE_FIELD_PROPERTY :

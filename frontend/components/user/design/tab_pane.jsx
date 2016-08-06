@@ -22,7 +22,6 @@ const TabPane = React.createClass({
   selectPane (tabNumber) {
     DesignActions.blurField();
     this.setState({paneSelected: tabNumber});
-    this.forceUpdate();
   },
   componentWillReceiveProps () {
     if (this.props.field)
@@ -51,6 +50,7 @@ const TabPane = React.createClass({
     }
   },
   tabclickhandler(paneNumber, e){
+    e.preventDefault();
     this.selectPane(paneNumber);
   },
   newTab(labelText, paneNumber){
