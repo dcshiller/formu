@@ -15,7 +15,12 @@ module.exports = {
           fieldId: fieldId,
           pos: pos
       });
-
+  },
+  deleteField(fieldId){
+    AppDispatcher.dispatch({
+      actionType: CONSTS.DELETE_FIELD,
+      fieldId: fieldId,
+  });
   },
   changeFieldProperty(property_name, new_value){
     AppDispatcher.dispatch({

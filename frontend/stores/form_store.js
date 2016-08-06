@@ -41,7 +41,6 @@ FormStore.addField = function (type, pos) {
                   choices: choices,
                   Label: "New Label",
                   Instructions: "Place your instructions here."};
-                  debugger
   this.insertFieldAt(newField, pos);
   };
 
@@ -81,6 +80,7 @@ FormStore.deleteByFieldPosition = function (fieldPos) {
 FormStore.deleteByFieldId = function (fieldId) {
   let a = this.findPositionByFieldId(fieldId);
   this.deleteByFieldPosition(this.findPositionByFieldId(fieldId))
+  this.__emitChange();
 };
 
 FormStore.changeFieldProperty = function (property_name, new_value) {
@@ -110,6 +110,9 @@ FormStore.__onDispatch = function (payload) {
       break;
     case CONSTS.REPOSITION_FIELD :
       this.repositionField(payload.fieldId, payload.pos);
+      break;
+    case CONSTS.DELETE_FIELD :
+      this.deleteByFieldId(payload.fieldId);
       break;
     case CONSTS.FOCUS_ON_FIELD :
       _FieldInFocus = payload.fieldId;

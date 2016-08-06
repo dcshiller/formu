@@ -40,21 +40,27 @@ const FormViewPane = React.createClass({
   },
   drawField(fieldObj){
    return (
-            <Field fieldVals={ {
-                fieldName: fieldObj.Label || "New Field",
-                fieldType: (fieldObj.type || "text"),
-                fieldId: (fieldObj.fieldId),
-                className: fieldObj.className,
-                selected:  this.props.field && fieldObj.fieldId === this.props.field.fieldId,
-                handler: null,
-                readOnly: true,
-                draggable: true,
-                choices: fieldObj.choices,
-                onDragStart: this.addTarget,
-                onDragEnd:this.removeTarget,
-                onContainerClick: this.selectField,
-                fieldValue: (fieldObj.val || "" )
-            } }/>
+            <div className ="formViewEntry">
+              <img className = "deleteButton"
+                  onClick={DesignActions.deleteField.bind(null, fieldObj.fieldId)}
+                  src={window.trashURL}
+              />
+              <Field fieldVals={ {
+                  fieldName: fieldObj.Label || "New Field",
+                  fieldType: (fieldObj.type || "text"),
+                  fieldId: (fieldObj.fieldId),
+                  className: fieldObj.className,
+                  selected:  this.props.field && fieldObj.fieldId === this.props.field.fieldId,
+                  handler: null,
+                  readOnly: true,
+                  draggable: true,
+                  choices: fieldObj.choices,
+                  onDragStart: this.addTarget,
+                  onDragEnd:this.removeTarget,
+                  onContainerClick: this.selectField,
+                  fieldValue: (fieldObj.val || "" )
+                } }/>
+            </div>
           )
   },
   drawDropTarget(number){
@@ -91,15 +97,6 @@ const FormViewPane = React.createClass({
   selectField (e) {
     e.preventDefault();
     let fieldId = e.target.id.split("_")[0];
-    // switch (e.target.tagName)
-    // {
-    //     case "INPUT" :
-    //       fieldId = e.target.id
-    //       break;
-    //     case "DIV" :
-    //       fieldId = e.target.getElementsByTagName("input")[0].id;
-    //       break
-    // }
     DesignActions.focusOnField(fieldId);
   },
   render(){

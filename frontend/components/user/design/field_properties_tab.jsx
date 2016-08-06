@@ -10,7 +10,7 @@ const FieldPropertiesTab = React.createClass({
   },
   inputHandlerChoice (e) {
     e.preventDefault();
-    DesignActions.changeFieldChoice(e.target.id.split("_").pop(), e.target.value);
+    DesignActions.changeFieldChoice(e.target.id.replace(" ","_").split("_").pop(), e.target.value);
     this.forceUpdate();
   },
   render(){
@@ -34,7 +34,7 @@ const FieldPropertiesTab = React.createClass({
               <div className="choices">
               Choices
                 { choices.map(function(choice, index){
-                    return fB_forFieldChoices("Choice 1",
+                    return fB_forFieldChoices("Choice " + index,
                                                "text",
                                                choices[index],
                                               {hideLabel: true});
