@@ -18,7 +18,7 @@ const FormPropertiesTab = React.createClass({
                           "text",
                           this.props.form.properties["Title"]) }
           { fieldBuilder( "Description",
-                          "text",
+                          "paragraph",
                           this.props.form.properties["Description"]) }
         </form>
       </div>

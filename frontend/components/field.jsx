@@ -7,8 +7,11 @@ const Field = React.createClass({
             <input
               fieldName       =         { fieldVals["fieldName"] }
               id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
-              type            =         { fieldVals["fieldType"] }
-              className       =         { fieldVals["className"] }
+              type            =         { (fieldVals["fieldType"] === "paragraph" && "text") ||
+                                          fieldVals["fieldType"] }
+              className       =         { (fieldVals["fieldType"] === "paragraph" && 
+                                                    "paragraph " + fieldVals["className"]) ||
+                                          fieldVals["className"] }
               onChange        =         { fieldVals["handler"] }
               onSelect        =         { fieldVals["onContainerClick"] }
               value           =         { fieldVals["fieldValue"] }
@@ -43,6 +46,7 @@ const Field = React.createClass({
         switch (this.props.fieldVals.fieldType) {
           case "text" :
           case "number" :
+          case "paragraph" :
             return this.makeTextField();
           case "checkbox" :
           case "radio" :
@@ -69,8 +73,10 @@ const Field = React.createClass({
               >{fieldVals["fieldName"]}</label> }
 
         { fieldVals["instructions"] &&
-          <p> {fieldVals["instructions"]} </p>
-
+          <p className = "instructions"
+              id={fieldVals["fieldId"]+"_instructions"}>
+              {fieldVals["instructions"]}
+          </p>
         }
               { this.makeInputField() }
           </div>

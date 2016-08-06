@@ -20,6 +20,8 @@ const FieldPropertiesTab = React.createClass({
     return(
       <div className="designTab">
         <form className="tabForm">
+          { !this.props.field && <p> Select a field on right to get started. </p> }
+
           { this.props.field &&
             fB_forFieldProps( "Label",
                               "text",
@@ -27,7 +29,7 @@ const FieldPropertiesTab = React.createClass({
           { this.props.field &&
             fB_forFieldProps( "Instructions",
                               "text",
-                              this.props.field && this.props.field["Description"]) }
+                              this.props.field && this.props.field["Instructions"]) }
 
           {choices &&
             (
@@ -44,6 +46,12 @@ const FieldPropertiesTab = React.createClass({
           )
           }
        </form>
+        {this.props.field &&
+          <img className = "deleteButton"
+               onClick={DesignActions.deleteField.bind(null, this.props.field.fieldId)}
+               src={window.trashURL}
+           />
+         }
       </div>
     )
   }

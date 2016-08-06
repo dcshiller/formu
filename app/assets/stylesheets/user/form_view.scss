@@ -50,17 +50,25 @@ div .formViewPane .inputWrapper:hover {
 }
 
 div .formViewPane .inputWrapper.selected {
-  background: rgb(200,200,225);
+  background: rgba(200,200,225,.3);
+}
 
+div p.instructions {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: grey;
 }
 
 div .formViewPane input {
-    cursor: none;
     color: transparent;
 }
 
+div .formViewPane input.paragraph {
+  height: 50px;
+}
+
 div .formViewPane label.checkbox, label.radio {
-    margin-bottom: 20px;
+    // margin-bottom: 10px;
     padding: 5px;
     display: block;
 }
@@ -88,13 +96,17 @@ div.inputWrapper {
 }
 
 div .formViewPane .deleteButton {
-  position: relative;
+  position: absolute;
   display: none;
   z-index: 1;
-  top: 40px;
+  bottom: 20px;
   left: calc(100% - 50px);
   height: 20px;
   width: 20px;
+}
+
+div .formViewEntry {
+  position: relative;
 }
 
 div .formViewEntry:hover .deleteButton {
@@ -112,7 +124,7 @@ div .formViewPane .dropTarget {
   height: 40px;
   width: 100%;
   margin: -20px -50px -20px 0px;
-  transition: margin 1s;
+  // transition: margin 1s;
 }
 
 div .formViewPane .dropTarget:last-of-type {

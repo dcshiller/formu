@@ -1,29 +1,39 @@
 
+div.tabPane {
+  position: absolute;
+  display: block;
+  float: left;
+  width: calc(35% - 1px);
+  min-width: 400px;
+  /*min-height: px;*/
+  height: calc(100% - 1px);
+
+  background: #FFCD45;
+  /*margin-top: -1px;*/
+  margin-right: -1px;
+  border-top: 1px solid rgba(153, 0, 0, .3);
+  border-right: 1px solid rgba(153, 0, 0, .1);
+  border-left: 2px solid lightgrey;
+  border-bottom-left-radius: 10px;
+}
+
 div.designTab {
   margin-left: -2px;
-  width: calc(100% - 4px);
-  height: calc(100% - 62px);
+  width: calc(100% - 5px);
+  height: calc(100% - 64px);
   background:  #ffffe6;
   /*#FFFCB3;*/
   padding-top: 30px;
   border-left: 2px solid lightgrey;
   border-bottom: 2px solid lightgrey;
   border-bottom-left-radius: 10px;
+  border-top: 1px solid rgba(230, 172, 0, .8);
+  border-right: 1px solid rgba(230, 172, 0, .8);
 }
 
 
-div.tabPane {
-  position: absolute;
-  display: block;
-  float: left;
-  width: 35%;
-  min-width: 400px;
-  /*min-height: px;*/
-  height: calc(100% - 2px);
-
-  background: #FFCD45;
-  border-left: 2px solid lightgrey;
-  border-bottom-left-radius: 10px;
+div.formPropertiesTab form {
+  margin-left: 40px;
 }
 
 div.tabPane ul {
@@ -37,67 +47,25 @@ div.tabPane li {
   margin-top: 8px;
   margin-right: 10px;
   float:left;
+
+  background: rgba(255, 255, 230,.5) ;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+   border-left: 1px solid rgba(230, 172, 0, .5);
+   border-right: 1px solid rgba(230, 172, 0, .8);
+   border-top: 1px solid rgba(230, 172, 0, .65);
+  /*border-bottom: 1px solid rgba(200,200,225,.3);*/
+  margin-bottom: -2px;
 }
 
 div.tabPane li.inFocus {
+  margin-bottom: -1px;
   background: #ffffe6;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-}
 
-div .tabForm div {
-  padding: 20px;
-}
-
-div .tabForm div input {
-  /*float: right;*/
-  margin-top: 15px;
-  padding: 4px;
-  width: calc(100% - 25px);
-  border-radius: 4px;
-}
-
-div .tabForm div.choices .inputWrapper {
-  padding: 5px 20px 5px 20px;
-}
-
-div .tabForm div.choices input {
-  margin-top: 5px;
-}
-
-div #addChoiceButton {
-  margin: auto;
-  display: block;
-  border: none;
-  border-radius: 10px;
-  margin-top: 10px;
-  font-size: 30px;
-  padding:10px;
-}
-
-div #addChoiceButton:hover {
-  color: red;
-  margin-top: 7px;
-  font-size: 35px;
-}
-
-div.formPropertiesTab form {
-  margin-left: 40px;
-}
-
-div.designTab li.fieldChoice  {
-  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 51%, #d7dee3 100%);
-  border: 1px solid #d7dee3;
-  border-radius: 10px;
-  width: 100px;
-  margin-left: 40px;
-  margin-top: 20px;
-  text-align: center;
-  float: left;
-}
-
-div.designTab li.fieldChoice:hover {
-  border: 2px solid #d7dee3;
-  margin-left: 38px;
-  margin-top: 18px;
+  border-left: 1px solid #e6ac00;
+  border-right: 1px solid #e6ac00;
+  border-top: 1px solid #e6ac00;
+  border-bottom: none;
 }

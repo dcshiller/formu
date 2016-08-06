@@ -10,35 +10,35 @@ const FormViewPane = React.createClass({
   componentWillUnmount () {
     window.removeEventListener("resize", this.setManualWindowSize);
   },
-  addTarget (e){
+  addTarget (e) {
     window.dragged = e.target;
   },
   removeTarget (e){
     setTimeout(function(){window.dragged = null;}, 500);
   },
-  dragOver(e){
+  dragOver (e) {
     e.preventDefault();
     if (e.target.className.indexOf("underDragged") === -1 &&
         e.target.className.indexOf("dropTarget") !== -1){e.target.className += " underDragged"}
   },
-  dragLeave(e){
+  dragLeave (e) {
     e.preventDefault();
     if (e.target.className.indexOf("underDragged") != -1)
     {e.target.className = "dropTarget"}
   },
-  dropField(e){
+  dropField (e) {
     this.dragLeave(e)
     let position = e.target.id.split("_")[1]
-    debugger
     if (window.dragged.className === "fieldChoice") {
-      DesignActions.addField(window.dragged.id.replace(" ",""), position)
+      DesignActions.addField(window.dragged.id.replace(" ",""), position);
     }
     else if (window.dragged.className === "inputWrapper") {
       let fieldId = window.dragged.getElementsByTagName("input")[0].id;
-      DesignActions.repositionField(fieldId, position)
+      fieldId = fieldId.split("_")[0];
+      DesignActions.repositionField(fieldId, position);
     }
   },
-  drawField(fieldObj){
+  drawField (fieldObj) {
    return (
             <div className ="formViewEntry">
               <img className = "deleteButton"
@@ -47,6 +47,7 @@ const FormViewPane = React.createClass({
               />
               <Field fieldVals={ {
                   fieldName: fieldObj.Label || "New Field",
+                  instructions: fieldObj.Instructions,
                   fieldType: (fieldObj.type || "text"),
                   fieldId: (fieldObj.fieldId),
                   className: fieldObj.className,
@@ -63,7 +64,7 @@ const FormViewPane = React.createClass({
             </div>
           )
   },
-  drawDropTarget(number){
+  drawDropTarget (number) {
     return (
       <div className = "dropTarget"
             id={"drop_" + number}
@@ -88,10 +89,10 @@ const FormViewPane = React.createClass({
     fieldsWithDropTargets.push(self.drawDropTarget(i));
     return fieldsWithDropTargets;
   },
-  setManualWindowSize(){
+  setManualWindowSize () {
     let navbarSize = Math.min(Math.max(window.innerWidth*.8, 800), 1200);
     let tabPaneSize = Math.max(400, navbarSize*.35);
-    let viewPaneSize = navbarSize - tabPaneSize - 60;
+    let viewPaneSize = navbarSize - tabPaneSize - 56;
     $(".formViewPane").css("width", viewPaneSize);
   },
   selectField (e) {
@@ -99,7 +100,7 @@ const FormViewPane = React.createClass({
     let fieldId = e.target.id.split("_")[0];
     DesignActions.focusOnField(fieldId);
   },
-  render(){
+  render () {
     return(
       <div className="formViewPane">
           <h1 className="formTitle"> {this.props.form.properties["Title"]} </h1>
