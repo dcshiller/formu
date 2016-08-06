@@ -5,7 +5,7 @@ const DesignActions = require('../../../actions/design_actions')
 const FormPropertiesTab = React.createClass({
   inputHandler (e) {
     e.preventDefault();
-    DesignActions.changeFormProperty(e.target.id, e.target.value);
+    DesignActions.changeFormProperty(e.target.id.split("_").pop(), e.target.value);
     this.forceUpdate();
   },
   render () {

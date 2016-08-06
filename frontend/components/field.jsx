@@ -1,37 +1,72 @@
 const React = require('react')
 
 const Field = React.createClass({
-      render(){
-        const fieldName = this.props.fieldVals["fieldName"];
-        const id = this.props.fieldVals["fieldId"];
-        const fieldType = this.props.fieldVals["fieldType"];
-        const handler = this.props.fieldVals["handler"];
-        const fieldValue = this.props.fieldVals["fieldValue"];
-        const className = this.props.fieldVals["className"];
-        const readOnly = false//this.props.fieldVals["readOnly"];
-        const draggable = this.props.fieldVals["draggable"];
-        const onDragStart = this.props.fieldVals["onDragStart"];
-        const onDragEnd = this.props.fieldVals["onDragEnd"];
-        const onContainerClick = this.props.fieldVals["onContainerClick"];
-        const containerClass = this.props.fieldVals["selected"] ? "inputWrapper selected" : "inputWrapper";
+      makeTextField () {
+        let fieldVals = this.props.fieldVals;
         return (
-          <div className ={containerClass}
-                draggable={draggable}
-                onDragStart={onDragStart}
-                onDragEnd={onDragEnd}
-                onClick={onContainerClick}
-                >
-              <label htmlFor={id}
-              >{fieldName}</label>
-              <input type={fieldType}
-                     id={id || fieldName}
-                     className={className}
-                     onChange={handler}
-                     readOnly={readOnly}
-                     onSelect={onContainerClick}
-                     value={fieldValue}
-                    />
-           </div>
+            <input
+              fieldName       =         { fieldVals["fieldName"] }
+              id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
+              type            =         { fieldVals["fieldType"] }
+              className       =         { fieldVals["className"] }
+              onChange        =         { fieldVals["handler"] }
+              onSelect        =         { fieldVals["onContainerClick"] }
+              value           =         { fieldVals["fieldValue"] }
+            />
+          )
+      },
+      makeChoiceField () {
+        let fieldVals = this.props.fieldVals;
+        return (
+          fieldVals.choices.map(function(choice) {
+            return (
+              <label  htmlFor    =       { fieldVals["fieldId"] + "_" + choice }
+                      id         =       { fieldVals["fieldId"] + "_label_" + choice }
+                      className  =       { fieldVals["fieldType"] + "choice" }
+                     >
+                {choice}
+                <input
+                    type        =       { fieldVals["fieldType"] }
+                    id          =       { fieldVals["fieldId"] + "_choice_" + choice }
+                    className   =       { fieldVals["className"] }
+                    onChange    =       { fieldVals["handler"] }
+                    onSelect    =       { fieldVals["onContainerClick"] }
+                    value       =       { fieldVals["fieldValue"] || choice }
+                />
+              </label>
+            )
+            }
+          )
+        )
+      },
+      makeInputField () {
+        switch (this.props.fieldVals.fieldType) {
+          case "text" :
+          case "number" :
+            return this.makeTextField();
+          case "checkbox" :
+            return this.makeChoiceField();
+          break;
+        }
+      },
+      render () {
+        let fieldVals = this.props.fieldVals;
+
+        return (
+          <div className      =       { fieldVals["selected"] ? "inputWrapper selected" : "inputWrapper" }
+                draggable     =       { fieldVals["draggable"] }
+                onDragStart   =       { fieldVals["onDragStart"] }
+                onDragEnd     =       { fieldVals["onDragEnd"] }
+                onClick       =       { fieldVals["onContainerClick"] }
+                id            =       { fieldVals["fieldId"] + "_div" }>
+
+          <label
+                htmlFor       =       { fieldVals["fieldId"] }
+                className     =       { fieldVals["fieldType"] }
+                id            =       { fieldVals["fieldId"] + "_label"}
+              >{fieldVals["fieldName"]}</label>
+              { this.makeInputField() }
+          </div>
          )
       }
 })

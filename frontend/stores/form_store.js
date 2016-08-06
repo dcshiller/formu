@@ -11,10 +11,15 @@ const _Form = {
           fields: [{type: "text",
                     fieldId: "aaaaaa",
                     Label: "My Label",
-                    Instructions: "My Instructions"}]
+                    Instructions: "My Instructions"},
+                    {type: "checkbox",
+                      fieldId: "bbbb",
+                      Label: "My Label",
+                      Instructions: "ChooseOne",
+                      choices: ["c1", "c2"]}]
 };
 
-var _FieldInFocus = "aaaaaa";
+var _FieldInFocus = null;
 
 FormStore.getFormInFocus = function () {
   return _Form;
@@ -26,9 +31,12 @@ FormStore.getFieldInFocus = function () {
 
 FormStore.addField = function (type, pos) {
   let newId = Math.floor(Math.random()*1000000000).toString(36);
+  let choices;
+  if (type === "checkbox") {choices = ["choice 1", "choice 2"]}
   let newField = {fieldId: newId,
                   type: type,
                   className: type,
+                  choices: choices,
                   Label: "New Label",
                   Instructions: "Place your instructions here."};
   this.insertFieldAt(newField, pos);

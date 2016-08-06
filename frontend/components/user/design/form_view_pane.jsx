@@ -48,6 +48,7 @@ const FormViewPane = React.createClass({
                 handler: null,
                 readOnly: true,
                 draggable: true,
+                choices: fieldObj.choices,
                 onDragStart: this.addTarget,
                 onDragEnd:this.removeTarget,
                 onContainerClick: this.selectField,
@@ -71,8 +72,8 @@ const FormViewPane = React.createClass({
                 self.drawField(field)
               )
     })
-    let fieldsWithDropTargets = [];
     let i = 0;
+    let fieldsWithDropTargets = [];
     arrayOfFields.forEach(function(field){
       fieldsWithDropTargets.push(self.drawDropTarget(i++));
       fieldsWithDropTargets.push(field);
@@ -87,16 +88,17 @@ const FormViewPane = React.createClass({
     $(".formViewPane").css("width", viewPaneSize);
   },
   selectField (e) {
-    let fieldId;
-    switch (e.target.tagName)
-    {
-        case "INPUT" :
-          fieldId = e.target.id
-          break;
-        case "DIV" :
-          fieldId = e.target.getElementsByTagName("input")[0].id;
-          break
-    }
+    e.preventDefault();
+    let fieldId = e.target.id.split("_")[0];
+    // switch (e.target.tagName)
+    // {
+    //     case "INPUT" :
+    //       fieldId = e.target.id
+    //       break;
+    //     case "DIV" :
+    //       fieldId = e.target.getElementsByTagName("input")[0].id;
+    //       break
+    // }
     DesignActions.focusOnField(fieldId);
   },
   render(){

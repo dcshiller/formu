@@ -59,6 +59,24 @@ div .formViewPane input {
     color: transparent;
 }
 
+div .formViewPane label.checkbox {
+    margin-bottom: 20px;
+    padding: 5px;
+    display: block;
+}
+
+div .formViewPane label.checkboxchoice {
+    margin-bottom: 5px;
+    padding: 5px;
+    display: block;
+}
+
+div .formViewPane input[type="checkbox"] {
+  width: 80px;
+  margin-top: 0px;
+  float: left;
+}
+
 div .formViewPane .dropTarget {
   z-index: 20;
   position: relative;
