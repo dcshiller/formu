@@ -45,6 +45,7 @@ const Field = React.createClass({
           case "number" :
             return this.makeTextField();
           case "checkbox" :
+          case "radio" :
             return this.makeChoiceField();
           break;
         }
@@ -60,11 +61,17 @@ const Field = React.createClass({
                 onClick       =       { fieldVals["onContainerClick"] }
                 id            =       { fieldVals["fieldId"] + "_div" }>
 
+         { fieldVals["hideLabel"] ||
           <label
                 htmlFor       =       { fieldVals["fieldId"] }
                 className     =       { fieldVals["fieldType"] }
                 id            =       { fieldVals["fieldId"] + "_label"}
-              >{fieldVals["fieldName"]}</label>
+              >{fieldVals["fieldName"]}</label> }
+
+        { fieldVals["instructions"] &&
+          <p> {fieldVals["instructions"]} </p>
+
+        }
               { this.makeInputField() }
           </div>
          )

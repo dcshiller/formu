@@ -25,3 +25,11 @@ ul {
   display:block;
   clear:both;
 }
+
+button {
+  background: none;
+}
+
+button:focus {
+  outline: 0px;
+}

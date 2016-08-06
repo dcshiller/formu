@@ -8,15 +8,17 @@ const _Form = {
             Title: "Untitled Form",
             Description: "This is a form. May it soon be awesome."
           },
-          fields: [{type: "text",
+          fields: [
+                    {type: "text",
                     fieldId: "aaaaaa",
                     Label: "My Label",
                     Instructions: "My Instructions"},
+
                     {type: "checkbox",
-                      fieldId: "bbbb",
-                      Label: "My Label",
-                      Instructions: "ChooseOne",
-                      choices: ["c1", "c2"]}]
+                    fieldId: "bbbb",
+                    Label: "My Label",
+                    Instructions: "ChooseOne",
+                    choices: ["c1", "c2"]}]
 };
 
 var _FieldInFocus = null;
@@ -32,13 +34,14 @@ FormStore.getFieldInFocus = function () {
 FormStore.addField = function (type, pos) {
   let newId = Math.floor(Math.random()*1000000000).toString(36);
   let choices;
-  if (type === "checkbox") {choices = ["choice 1", "choice 2"]}
+  if (type === "checkbox" || type==="radio") {choices = ["choice 1", "choice 2"]}
   let newField = {fieldId: newId,
                   type: type,
                   className: type,
                   choices: choices,
                   Label: "New Label",
                   Instructions: "Place your instructions here."};
+                  debugger
   this.insertFieldAt(newField, pos);
   };
 
@@ -85,6 +88,16 @@ FormStore.changeFieldProperty = function (property_name, new_value) {
   this.__emitChange();
 };
 
+FormStore.changeFieldChoice = function (choice_number, new_value) {
+  this.getFieldInFocus().choices[choice_number] = new_value;
+  this.__emitChange();
+};
+
+FormStore.addFieldChoice = function (){
+  this.getFieldInFocus().choices.push("choice");
+  this.__emitChange();
+};
+
 FormStore.changeFormProperty = function (property_name, new_value) {
   _Form.properties[property_name] = new_value;
   this.__emitChange();
@@ -109,6 +122,11 @@ FormStore.__onDispatch = function (payload) {
     case CONSTS.CHANGE_FIELD_PROPERTY :
       this.changeFieldProperty(payload.property_name, payload.new_value);
       break;
+    case CONSTS.CHANGE_FIELD_CHOICE :
+      this.changeFieldChoice(payload.choice_number, payload.new_value);
+      break;
+    case CONSTS.ADD_FIELD_CHOICE :
+      this.addFieldChoice();
     case CONSTS.CHANGE_FORM_PROPERTY :
       this.changeFormProperty(payload.property_name, payload.new_value);
       break;

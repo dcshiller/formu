@@ -59,19 +59,26 @@ div .formViewPane input {
     color: transparent;
 }
 
-div .formViewPane label.checkbox {
+div .formViewPane label.checkbox, label.radio {
     margin-bottom: 20px;
     padding: 5px;
     display: block;
 }
 
-div .formViewPane label.checkboxchoice {
+div .formViewPane label.checkboxchoice, label.radiochoice{
     margin-bottom: 5px;
     padding: 5px;
     display: block;
 }
 
 div .formViewPane input[type="checkbox"] {
+  width: 80px;
+  margin-top: 0px;
+  float: left;
+}
+
+
+div .formViewPane input.radio {
   width: 80px;
   margin-top: 0px;
   float: left;
@@ -86,9 +93,9 @@ div .formViewPane .dropTarget {
   transition: margin 1s;
 }
 
-/*div .formViewPane .dropTarget:last-of-type {
+div .formViewPane .dropTarget:last-of-type {
   min-height: 200px;
-}*/
+}
 
 div .formViewPane .dropTarget.underDragged {
   margin: 0px 0px 0px 0px;

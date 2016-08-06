@@ -11,14 +11,16 @@ const TabPane = React.createClass({
   getInitialState(){
     return {paneSelected: 0}
   },
-  fieldBuilder(handler, fieldName, fieldType, fieldValue){
-    return (
+  fieldBuilder(handler, fieldName, fieldType, fieldValue, options){
+    let a = (
       <Field fieldVals={ { fieldName: fieldName,
+                  hideLabel:  options && options["hideLabel"],
                   fieldType: fieldType,
                   handler: handler,
                   fieldId: (this.props.field && this.props.field.fieldId) + "_editor",
                   fieldValue: fieldValue}} />
     )
+    return a;
   },
   selectPane (tabNumber) {
     DesignActions.blurField();
@@ -56,7 +58,7 @@ const TabPane = React.createClass({
   },
   newTab(labelText, paneNumber){
     return (
-              <li onClick={this.tabclickhandler.bind(this,paneNumber)}
+              <li onClick={ this.tabclickhandler.bind(null , paneNumber)}
                   className={this.state.paneSelected === paneNumber ? "inFocus" : "notInFocus" }
                   >
                   {labelText}

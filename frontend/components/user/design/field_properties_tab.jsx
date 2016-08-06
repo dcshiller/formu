@@ -3,24 +3,46 @@ const DesignActions = require('../../../actions/design_actions')
 const Field = require('../../field')
 
 const FieldPropertiesTab = React.createClass({
-  inputHandler (e) {
+  inputHandlerProp (e) {
     e.preventDefault();
     DesignActions.changeFieldProperty(e.target.id.split("_").pop(), e.target.value);
     this.forceUpdate();
   },
+  inputHandlerChoice (e) {
+    e.preventDefault();
+    DesignActions.changeFieldChoice(e.target.id.split("_").pop(), e.target.value);
+    this.forceUpdate();
+  },
   render(){
-    let fieldBuilder = this.props.fieldBuilder.bindArg(this, this.inputHandler)
+    let choices = (this.props.field && this.props.field.choices);
+    let fB_forFieldProps = this.props.fieldBuilder.bind(null, this.inputHandlerProp)
+    let fB_forFieldChoices = this.props.fieldBuilder.bind(null, this.inputHandlerChoice)
     return(
       <div className="designTab">
         <form className="tabForm">
           { this.props.field &&
-            fieldBuilder( "Label",
-                          "text",
-                          this.props.field && this.props.field["Label"] ) }
+            fB_forFieldProps( "Label",
+                              "text",
+                              this.props.field && this.props.field["Label"] ) }
           { this.props.field &&
-            fieldBuilder( "Instructions",
-                          "text",
-                          this.props.field && this.props.field["Description"]) }
+            fB_forFieldProps( "Instructions",
+                              "text",
+                              this.props.field && this.props.field["Description"]) }
+
+          {choices &&
+            (
+              <div className="choices">
+              Choices
+                { choices.map(function(choice, index){
+                    return fB_forFieldChoices("Choice 1",
+                                               "text",
+                                               choices[index],
+                                              {hideLabel: true});
+                })}
+                <button id="addChoiceButton" onClick = {DesignActions.addFieldChoice }> + </button>
+              </div>
+          )
+          }
        </form>
       </div>
     )

@@ -29,8 +29,9 @@ const FormViewPane = React.createClass({
   dropField(e){
     this.dragLeave(e)
     let position = e.target.id.split("_")[1]
+    debugger
     if (window.dragged.className === "fieldChoice") {
-      DesignActions.addField(window.dragged.id, position)
+      DesignActions.addField(window.dragged.id.replace(" ",""), position)
     }
     else if (window.dragged.className === "inputWrapper") {
       let fieldId = window.dragged.getElementsByTagName("input")[0].id;

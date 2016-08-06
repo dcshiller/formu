@@ -24,6 +24,18 @@ module.exports = {
         new_value: new_value
     });
   },
+  changeFieldChoice(choice_number, new_value){
+    AppDispatcher.dispatch({
+        actionType: CONSTS.CHANGE_FIELD_CHOICE,
+        choice_number: choice_number,
+        new_value: new_value
+    });
+  },
+  addFieldChoice(){
+    AppDispatcher.dispatch({
+        actionType: CONSTS.ADD_FIELD_CHOICE,
+    });
+  },
   changeFormProperty(property_name, new_value){
     AppDispatcher.dispatch({
         actionType: CONSTS.CHANGE_FORM_PROPERTY,

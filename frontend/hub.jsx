@@ -5,10 +5,6 @@ import { App, Login, Signup, Splashbar } from './components/application/applicat
 import { User , UserIndex , Design } from './components/user/user_hub.js'
 const SessionStore = require('./stores/session_store.js')
 
-Function.prototype.bindArg(func, arg){
-  return function(...moreArgs){func(arg, ...moreArgs);}
-}
-
 var routes = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>

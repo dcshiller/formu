@@ -39,7 +39,7 @@ const User = React.createClass({
   },
   render(){
     return(
-      <div className="userMain">
+      <div className="userMain container">
         {this.tooSmallWarning()}
         <UserNavBar />
         {this.props.children}

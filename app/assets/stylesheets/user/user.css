@@ -22,6 +22,7 @@ div.userMain navbar img {
   width:75px;
   padding: 10px 15px 20px 50px;
 }
+
 /*
 div.userMain ul {
   float: right;
@@ -60,7 +61,6 @@ div.userBox #newForm {
   text-decoration: none;
   background: lightgreen;
 }
-
 
 div.tooSmall {
   position: absolute;

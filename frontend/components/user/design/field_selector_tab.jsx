@@ -29,7 +29,7 @@ const FieldSelectorTab = React.createClass({
         <ul>
           {this.addField("text")}
           {this.addField("number")}
-          {this.addField("multiple choice")}
+          {this.addField("radio")}
           {this.addField("checkbox")}
           {this.addField("dropdown")}
         </ul>
