@@ -74,7 +74,6 @@ const Field = React.createClass({
       },
       render () {
         let fieldVals = this.props.fieldVals;
-
         return (
           <div className      =       { fieldVals["selected"] ? "inputWrapper selected" : "inputWrapper" }
                 draggable     =       { fieldVals["draggable"] }
@@ -83,20 +82,24 @@ const Field = React.createClass({
                 onClick       =       { fieldVals["onContainerClick"] }
                 id            =       { fieldVals["fieldId"] + "_div" }>
 
-         { fieldVals["hideLabel"] ||
+         { fieldVals["fieldType"] == "rule" || fieldVals["hideLabel"] ||
           <label
                 htmlFor       =       { fieldVals["fieldId"] }
                 className     =       { fieldVals["fieldType"] }
                 id            =       { fieldVals["fieldId"] + "_label"}
-              >{fieldVals["fieldName"]}</label> }
+              >{fieldVals["fieldName"]}</label>
+        }
 
-        { fieldVals["instructions"] &&
+        { fieldVals["fieldType"] == "rule" || (fieldVals["instructions"] &&
           <p className = "instructions"
               id={fieldVals["fieldId"]+"_instructions"}>
               {fieldVals["instructions"]}
-          </p>
+          </p>)
         }
-              { this.makeInputField() }
+
+          {fieldVals["fieldType"] === "rule" && <hr/>}
+
+          { fieldVals["fieldType"] !== "rule" && this.makeInputField() }
           </div>
          )
       }

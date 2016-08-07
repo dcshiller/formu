@@ -33,6 +33,7 @@ const FieldSelectorTab = React.createClass({
           {this.addField("radio")}
           {this.addField("checkbox")}
           {this.addField("dropdown")}
+          {this.addField("rule")}
         </ul>
       </div>
     )

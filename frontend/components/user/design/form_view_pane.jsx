@@ -45,22 +45,22 @@ const FormViewPane = React.createClass({
                   onClick={DesignActions.deleteField.bind(null, fieldObj.fieldId)}
                   src={window.trashURL}
               />
-              <Field fieldVals={ {
-                  fieldName: fieldObj.Label || "New Field",
-                  instructions: fieldObj.Instructions,
-                  fieldType: (fieldObj.type || "text"),
-                  fieldId: (fieldObj.fieldId),
-                  className: fieldObj.className,
-                  selected:  this.props.field && fieldObj.fieldId === this.props.field.fieldId,
-                  handler: null,
-                  readOnly: true,
-                  draggable: true,
-                  choices: fieldObj.choices,
-                  onDragStart: this.addTarget,
-                  onDragEnd:this.removeTarget,
-                  onContainerClick: this.selectField,
-                  fieldValue: (fieldObj.val || "" )
-                } }/>
+                <Field fieldVals={ {
+                    fieldName: fieldObj.Label || "New Field",
+                    instructions: fieldObj.Instructions,
+                    fieldType: (fieldObj.type || "text"),
+                    fieldId: (fieldObj.fieldId),
+                    className: fieldObj.className,
+                    selected:  this.props.field && fieldObj.fieldId === this.props.field.fieldId,
+                    handler: null,
+                    readOnly: true,
+                    draggable: true,
+                    choices: fieldObj.choices,
+                    onDragStart: this.addTarget,
+                    onDragEnd:this.removeTarget,
+                    onContainerClick: this.selectField,
+                    fieldValue: (fieldObj.val || "" )
+                  } }/>
             </div>
           )
   },

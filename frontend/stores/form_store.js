@@ -34,7 +34,7 @@ FormStore.getFieldInFocus = function () {
 FormStore.addField = function (type, pos) {
   let newId = Math.floor(Math.random()*1000000000).toString(36);
   let choices;
-  if (type === "checkbox" || type==="radio") {choices = ["choice 1", "choice 2"]}
+  if (type === "checkbox" || type ==="radio") {choices = ["choice 1", "choice 2"]}
   let newField = {fieldId: newId,
                   type: type,
                   className: type,
