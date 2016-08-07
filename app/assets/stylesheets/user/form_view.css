@@ -113,10 +113,13 @@ div .formViewEntry {
 div .formViewEntry:hover .deleteButton {
   display: block;
   opacity: .3;
+  background: rgba(240,242,225, 1);
+
 }
 
 div .formViewEntry .deleteButton:hover {
   opacity: 1;
+  background: white;
 }
 
 div .formViewPane .dropTarget {

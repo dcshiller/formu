@@ -53,7 +53,7 @@ FormStore.insertFieldAt = function (field, pos) {
 
 FormStore.repositionField = function (fieldId, pos) {
   let fieldToBeMoved = this.findElementByFieldId(fieldId);
-  let oldPos = this.findPositionByFieldId(fieldId)
+  let oldPos = this.findPositionByFieldId(fieldId);
   this.deleteByFieldId(fieldId);
   if (pos < oldPos) {pos}
   this.insertFieldAt(fieldToBeMoved, pos);

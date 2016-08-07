@@ -5,6 +5,10 @@ import { App, Login, Signup, Splashbar } from './components/application/applicat
 import { User , UserIndex , Design } from './components/user/user_hub.js'
 const SessionStore = require('./stores/session_store.js')
 
+window.getIfDefined = function(object, property){
+  return (object && object[property])
+};
+
 var routes = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>

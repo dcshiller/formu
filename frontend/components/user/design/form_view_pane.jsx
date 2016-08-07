@@ -28,12 +28,14 @@ const FormViewPane = React.createClass({
   },
   dropField (e) {
     this.dragLeave(e)
+    let draggedObj = window.dragged;
     let position = e.target.id.split("_")[1]
-    if (window.dragged.className === "fieldChoice") {
-      DesignActions.addField(window.dragged.id.replace(" ",""), position);
+    if (draggedObj.className === "fieldChoice") {
+      DesignActions.addField(draggedObj.id.replace(" ",""), position);
     }
-    else if (window.dragged.className === "inputWrapper") {
-      let fieldId = window.dragged.getElementsByTagName("input")[0].id;
+    else if (draggedObj.className === "inputWrapper") {
+      let fieldId = getIfDefined(draggedObj.getElementsByTagName("input")[0] , "id");
+      fieldId = (fieldId || getIfDefined(draggedObj.getElementsByTagName("hr")[0], "id"));
       fieldId = fieldId.split("_")[0];
       DesignActions.repositionField(fieldId, position);
     }
