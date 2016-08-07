@@ -16,14 +16,6 @@ const Design = React.createClass({
   onChange () {
     this.setState({ form: FormStore.getFormInFocus(), field: FormStore.getFieldInFocus()})
   },
-  // changeHandler(categoryToChange, changes, cB){ // for textfields
-  //   const categoryDup = this.state.form[categoryToChange];
-  //   Object.keys(changes).forEach(key => categoryDup[key] = changes[key]);
-  //   const formDup = this.state.form;
-  //   formDup[categoryToChange] = categoryDup;
-  //   this.setState({form: formDup});
-  //   cB && cB();
-  // },
   drag (object_to_drag) {
     dragged_object = object_to_drag;
   },

@@ -1,16 +1,30 @@
 const React = require('react');
 const DesignActions = require('../../../actions/design_actions')
 
+const dictionary = {
+  "text": "text",
+  "number": "number",
+  "paragraph": "paragraph",
+  "select one": "radio",
+  "checkbox": "checkbox",
+  "dropdown": "dropdown",
+  "divider": "rule",
+  "section title": "h"
+};
 
 const FieldSelectorTab = React.createClass({
-  addTarget (e){
-    window.dragged = e.target;
+  addTarget (e) {
+    window.dragged = this.typeTranslator(e.target.id)
+  },
+  typeTranslator (guiName) {
+    return dictionary[guiName];
   },
   removeTarget (e){
     setTimeout(function(){window.dragged = null;}, 500);
   },
   createField (e) {
-    DesignActions.addField(e.target.id, 100000)
+    let fieldType = this.typeTranslator(e.target.id);
+    DesignActions.addField(fieldType, 100000) // note, this places the field at the end.
   },
   addField (type) {
     return (
@@ -30,10 +44,11 @@ const FieldSelectorTab = React.createClass({
           {this.addField("text")}
           {this.addField("number")}
           {this.addField("paragraph")}
-          {this.addField("radio")}
+          {this.addField("select one")}
           {this.addField("checkbox")}
           {this.addField("dropdown")}
-          {this.addField("rule")}
+          {this.addField("divider")}
+          {this.addField("section title")}
         </ul>
       </div>
     )

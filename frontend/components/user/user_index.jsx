@@ -1,6 +1,9 @@
 const React = require('react');
 const Link = require('react-router').Link;
-const SessionStore = require('../../stores/session_store')
+const SessionStore = require('../../stores/session_store');
+const AuthActions = require('../../actions/auth_actions.js');
+const FormDataBaseActions = require('../../actions/form_database_actions.js');
+
 
 const UserIndex = React.createClass({
   getInitialState(){

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :forms, foreign_key: :designer_id, dependent: :destroy
 
   attr_reader :password
 

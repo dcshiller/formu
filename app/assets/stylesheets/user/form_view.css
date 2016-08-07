@@ -9,6 +9,7 @@ div .formViewPane {
     border-bottom: 2px solid lightgrey;
     border-right: 2px solid lightgrey;
     border-bottom-right-radius: 10px;
+    background: white;
 }
 
 div .formViewPane .tooSmall {
@@ -140,4 +141,22 @@ div .formViewPane .dropTarget.underDragged {
   border: 1px dashed lightgrey;
   background: rgb(240,242,225);
   transition: margin, border 10s;
+}
+
+
+div button.saveButton {
+  padding: 20px;
+  z-index: 10;
+  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 51%, #d7dee3 100%);
+  border: 1px solid #d7dee3;
+  border-radius: 10px;
+  margin-left: calc(50% - 30px);
+  width: 100px;
+  height: 60px;
+}
+
+div button.saveButton:hover {
+  /*width: 98px;*/
+  background: linear-gradient(to bottom,  #f6f8f9 10%, #f5f7f9 21%, #d7dee3 100%);
+  border: 2px solid #d7dee3;
 }

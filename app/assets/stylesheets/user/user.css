@@ -1,4 +1,8 @@
 
+body {
+  background: rgb(255, 255, 245);
+}
+
 div.userMain {
   padding-top: 20px;
   width: 80%;
@@ -9,7 +13,7 @@ div.userMain {
 
 div.userMain navbar {
   display: block;
-  width: calc(100% - 12px);
+  width: calc(100% - 11.7x);
   height: 35px;
   padding: 5px;
   background: #FC0505;

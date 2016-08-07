@@ -59,7 +59,62 @@ const Field = React.createClass({
           )
         )
       },
-      makeInputField () {
+
+      addLabelAndInstructions () {
+        let fieldVals = this.props.fieldVals;
+        return (
+          <div>
+            { fieldVals["hideLabel"] ||
+             <label
+                   htmlFor       =       { fieldVals["fieldId"] }
+                   className     =       { fieldVals["fieldType"] }
+                   id            =       { fieldVals["fieldId"] + "_label"}
+                 >{fieldVals["fieldName"]}</label>
+            }
+
+            { (fieldVals["instructions"] &&
+               <p className = "instructions"
+                   id={fieldVals["fieldId"]+"_instructions"}>
+                   {fieldVals["instructions"]}
+               </p>)
+            }
+          </div>
+        )
+      },
+
+      makeSectionTitle () {
+        return (
+          <h1 id = { this.props.fieldVals["fieldId"] + "_title"}
+              className = "sectionTitle"
+              > {this.props.fieldVals["fieldName"]}</h1>
+        )
+      },
+      makeRule () {
+         return <hr id = { this.props.fieldVals["fieldId"] + "_rule" } />
+      },
+
+      directToProperDirector () {
+        switch (this.props.fieldVals.fieldType) {
+          case "text" :
+          case "number" :
+          case "paragraph" :
+          case "checkbox" :
+          case "radio" :
+            return (
+              <div>
+                { this.addLabelAndInstructions() }
+                { this.directToProperInputMaker() }
+              </div>
+            );
+          case "rule" :
+
+          case "h" :
+            return this.directToProperStructuralElementMaker();
+          break;
+        }
+      },
+
+      directToProperInputMaker () {
         switch (this.props.fieldVals.fieldType) {
           case "text" :
           case "number" :
@@ -68,13 +123,21 @@ const Field = React.createClass({
             return this.makeParagraphField();
           case "checkbox" :
           case "radio" :
-            return this.makeChoiceField();
-          break;
+          return this.makeChoiceField();
         }
       },
+
+      directToProperStructuralElementMaker () {
+        switch (this.props.fieldVals.fieldType) {
+          case "h" :
+            return this.makeSectionTitle();
+          case "rule" :
+            return this.makeRule();
+        }
+      },
+
       render () {
         let fieldVals = this.props.fieldVals;
-        let isRule = fieldVals["fieldType"] === "rule";
         return (
           <div className      =       { fieldVals["selected"] ? "inputWrapper selected" : "inputWrapper" }
                 draggable     =       { fieldVals["draggable"] }
@@ -82,25 +145,7 @@ const Field = React.createClass({
                 onDragEnd     =       { fieldVals["onDragEnd"] }
                 onClick       =       { fieldVals["onContainerClick"] }
                 id            =       { fieldVals["fieldId"] + "_div" }>
-
-         { isRule || fieldVals["hideLabel"] ||
-          <label
-                htmlFor       =       { fieldVals["fieldId"] }
-                className     =       { fieldVals["fieldType"] }
-                id            =       { fieldVals["fieldId"] + "_label"}
-              >{fieldVals["fieldName"]}</label>
-        }
-
-        { isRule || (fieldVals["instructions"] &&
-          <p className = "instructions"
-              id={fieldVals["fieldId"]+"_instructions"}>
-              {fieldVals["instructions"]}
-          </p>)
-        }
-
-          { isRule && <hr id = { fieldVals["fieldId"] + "_rule" } />}
-
-          { !isRule && this.makeInputField() }
+          { this.directToProperDirector() }
           </div>
          )
       }

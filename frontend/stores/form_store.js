@@ -3,7 +3,7 @@ const AppDispatcher = require('../dispatcher/dispatcher.js');
 const FormStore = new Store(AppDispatcher);
 const CONSTS = require('../constants/constants');
 
-const _Form = {
+var _Form = {
           properties: {
             Title: "Untitled Form",
             Description: "This is a form. May it soon be awesome."
@@ -25,6 +25,10 @@ var _FieldInFocus = null;
 
 FormStore.getFormInFocus = function () {
   return _Form;
+};
+
+FormStore.setFormInFocus = function (form) {
+  _Form = form;
 };
 
 FormStore.getFieldInFocus = function () {
@@ -105,6 +109,9 @@ FormStore.changeFormProperty = function (property_name, new_value) {
 
 FormStore.__onDispatch = function (payload) {
   switch (payload.actionType){
+    case CONSTS.SET_FORM :
+      this.setFormInFocus(payload.form)
+      break;
     case CONSTS.ADD_FIELD :
       this.addField(payload.type, payload.pos);
       break;

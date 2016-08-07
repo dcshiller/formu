@@ -1,6 +1,7 @@
 const React = require('react')
 const Field = require('../../field')
 const DesignActions = require ('../../../actions/design_actions')
+const FormDatabaseActions = require ('../../../actions/form_database_actions')
 
 const FormViewPane = React.createClass({
   componentDidMount () {
@@ -30,12 +31,13 @@ const FormViewPane = React.createClass({
     this.dragLeave(e)
     let draggedObj = window.dragged;
     let position = e.target.id.split("_")[1]
-    if (draggedObj.className === "fieldChoice") {
-      DesignActions.addField(draggedObj.id.replace(" ",""), position);
+    if (!draggedObj.className) {
+      DesignActions.addField(draggedObj.replace(" ",""), position);
     }
-    else if (draggedObj.className === "inputWrapper") {
+    else if ("inputWrapper sectionTitle".includes(draggedObj.className)) {
       let fieldId = getIfDefined(draggedObj.getElementsByTagName("input")[0] , "id");
       fieldId = (fieldId || getIfDefined(draggedObj.getElementsByTagName("hr")[0], "id"));
+      fieldId = (fieldId || getIfDefined(draggedObj, "id"));
       fieldId = fieldId.split("_")[0];
       DesignActions.repositionField(fieldId, position);
     }
@@ -102,6 +104,9 @@ const FormViewPane = React.createClass({
     let fieldId = e.target.id.split("_")[0];
     DesignActions.focusOnField(fieldId);
   },
+  saveForm () {
+    FormDatabaseActions.saveForm(this.props.form);
+  },
   render () {
     return(
       <div className="formViewPane">
@@ -109,6 +114,7 @@ const FormViewPane = React.createClass({
           <p>{this.props.form.properties["Description"]} </p>
           <hr/>
           {this.drawFields()}
+          <button className="saveButton" onClick={this.saveForm}> Save Me </button>
       </div>
     )
   }
