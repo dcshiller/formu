@@ -7,9 +7,26 @@ const Field = React.createClass({
             <input
               fieldName       =         { fieldVals["fieldName"] }
               id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
-              type            =         { (fieldVals["fieldType"] === "paragraph" && "text") ||
+              type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
                                           fieldVals["fieldType"] }
-              className       =         { (fieldVals["fieldType"] === "paragraph" && 
+              className       =         { (fieldVals["fieldType"] === "paragraph" &&
+                                                    "paragraph " + fieldVals["className"]) ||
+                                          fieldVals["className"] }
+              onChange        =         { fieldVals["handler"] }
+              onSelect        =         { fieldVals["onContainerClick"] }
+              value           =         { fieldVals["fieldValue"] }
+            />
+          )
+      },
+      makeParagraphField () {
+        let fieldVals = this.props.fieldVals;
+        return (
+            <textarea
+              fieldName       =         { fieldVals["fieldName"] }
+              id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
+              type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
+                                          fieldVals["fieldType"] }
+              className       =         { (fieldVals["fieldType"] === "paragraph" &&
                                                     "paragraph " + fieldVals["className"]) ||
                                           fieldVals["className"] }
               onChange        =         { fieldVals["handler"] }
@@ -46,8 +63,9 @@ const Field = React.createClass({
         switch (this.props.fieldVals.fieldType) {
           case "text" :
           case "number" :
-          case "paragraph" :
             return this.makeTextField();
+          case "paragraph" :
+            return this.makeParagraphField();
           case "checkbox" :
           case "radio" :
             return this.makeChoiceField();

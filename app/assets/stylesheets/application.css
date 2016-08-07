@@ -38,3 +38,7 @@ button:focus, input:focus {
   outline: 0px;
   cursor: default;
 }
+
+textarea {
+  color: black;
+}

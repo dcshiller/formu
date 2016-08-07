@@ -6,7 +6,7 @@ div.tabPane {
   width: calc(35% - 1px);
   min-width: 400px;
   /*min-height: px;*/
-  height: calc(100% - 1px);
+  height: calc(100% - 2.5px);
 
   background: #FFCD45;
   /*margin-top: -1px;*/
@@ -20,7 +20,7 @@ div.tabPane {
 div.designTab {
   margin-left: -2px;
   width: calc(100% - 5px);
-  height: calc(100% - 64px);
+  height: calc(100% - 63.5px);
   background:  #ffffe6;
   /*#FFFCB3;*/
   padding-top: 30px;

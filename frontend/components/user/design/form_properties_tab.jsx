@@ -3,6 +3,12 @@ const Field = require('../../field');
 const DesignActions = require('../../../actions/design_actions')
 
 const FormPropertiesTab = React.createClass({
+  componentDidMount(){
+    $('.paragraph').keyup(function(e) {
+      $(this).height(30);
+      $(this).height(this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth")));
+    });
+  },
   inputHandler (e) {
     e.preventDefault();
     DesignActions.changeFormProperty(e.target.id.split("_").pop(), e.target.value);
