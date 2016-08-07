@@ -1,0 +1,17 @@
+
+div.designTab li.fieldChoice  {
+  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 51%, #d7dee3 100%);
+  border: 1px solid #d7dee3;
+  border-radius: 10px;
+  width: 100px;
+  margin-left: 40px;
+  margin-top: 20px;
+  text-align: center;
+  float: left;
+}
+
+div.designTab li.fieldChoice:hover {
+  border: 2px solid #d7dee3;
+  margin-left: 38px;
+  margin-top: 18px;
+}
