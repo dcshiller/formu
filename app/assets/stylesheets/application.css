@@ -46,3 +46,7 @@ button:focus, input:focus {
 textarea {
   color: black;
 }
+
+body {
+  background: rgb(255, 255, 245);
+}

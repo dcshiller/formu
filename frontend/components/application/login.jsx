@@ -7,27 +7,40 @@ const ErrorStore = require('../../stores/error_store.js');
 const Field = require('../field');
 
 const Login = React.createClass({
-  getInitialState () { return {username: "", password: "", errors: {}}},
-  onChange(){
+
+  getInitialState () {
+    if (this.props.location.query["user"] === "Guest")
+      {
+        return {username: "Guest", password: "Password", errors: {}}
+      }
+    return {username: "", password: "", errors: {}}
+  },
+
+  onChange () {
     let user = SessionStore.currentUser()
     if (user){hashHistory.push(user)}
   },
-  componentDidMount() {
+
+  componentDidMount () {
     $('body').css("background-image", "repeating-linear-gradient(  30deg, #3D3D3D 2px, #3D3D3D 2px, #1C1B1B 3px)");
     SessionStore.addListener(this.onChange);
     ErrorStore.addListener(this.newErrors);
   },
-  componentWillUnmount() {
-    $('body').css("background", "white");
+
+  componentWillUnmount () {
+    $('body').css("background", "rgb(255, 255, 245)");
   },
-  newErrors(){
+
+  newErrors () {
     this.setState({errors: ErrorStore.retrieveErrors()})
   },
+
   removeFieldErrors(field){
     let newErrors = this.state.errors;
     newErrors[field] = null;
     this.setState( {errors: newErrors});
   },
+
   inputHandler (e) {
     e.preventDefault();
     let newVals = {};
@@ -35,28 +48,34 @@ const Login = React.createClass({
     newVals[e.target.id] = e.target.value;
     this.setState( newVals )
   },
+
   login () {
     AuthActions.login(this.state)
   },
+
   loginAsGuest () {
     $("#username").val("Guest")
     $("#password").val("Password")
     setTimeout(AuthActions.login.bind(AuthActions , {username:"Guest", password:"Password"}), 600);
   },
+
   cancel () {
     hashHistory.push("/");
   },
+
   fieldErrors(fieldName){
     let thisFieldName = fieldName["fieldName"]
     if (this.state.errors[thisFieldName]){
         return (<span className="errorNote"> {this.state.errors[thisFieldName]} </span>);
     }
   },
+
   errorsPresent(fieldName){
     let thisFieldName = fieldName["fieldName"]
     if(this.state.errors[thisFieldName]){return "fieldBox yesErrors"}
     return "fieldBox noErrors";
   },
+
   formField(fieldName, fieldType){
     return (
       <div className={this.errorsPresent({fieldName})}>
@@ -66,8 +85,9 @@ const Login = React.createClass({
                       fieldValue: this.state[fieldName]}} />
         {this.fieldErrors({fieldName})}
       </div>
-  );
-},
+    );
+  },
+
   render(){
     return (
       <div className="authformOuter">
@@ -94,7 +114,6 @@ const Login = React.createClass({
         </div>
       </div>
     )
-
   }
 });
 

@@ -1,6 +1,7 @@
 
 module.exports = {
-  login(user, successCallBack, failureCallBack){
+
+  login (user, successCallBack, failureCallBack) {
     $.ajax({
       url: "api/session",
       method: "POST",
@@ -10,7 +11,8 @@ module.exports = {
       error(errorMessage){failureCallBack(errorMessage.responseText)}
     });
   },
-  logout(successCallBack, failureCallBack){
+
+  logout (successCallBack, failureCallBack) {
     $.ajax({
       url: "api/session",
       method: "DELETE",
@@ -20,7 +22,8 @@ module.exports = {
       error(errorMessage){failureCallBack(errorMessage.responseText)}
     });
   },
-  createUser(user,successCallBack, failureCallBack){
+
+  createUser (user,successCallBack, failureCallBack) {
     $.ajax({
       url: "api/users",
       method: "POST",
@@ -30,4 +33,5 @@ module.exports = {
       error(errorMessage){failureCallBack(errorMessage.responseText)}
     });
   }
+
 };

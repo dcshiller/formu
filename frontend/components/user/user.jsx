@@ -41,7 +41,7 @@ const User = React.createClass({
     return(
       <div className="userMain container">
         {this.tooSmallWarning()}
-        <UserNavBar />
+        <UserNavBar currentUser={this.state["currentUser"]} />
         {this.props.children}
       </div>
     );

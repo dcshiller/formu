@@ -16,7 +16,7 @@ module.exports = {
         method: "POST",
         dataType: "json",
         data: {form: form},
-        success(successMessage){successCallBack(successMessage)},
+        success(successMessage){successCallBack(JSON.stringify(successMessage))},
         error(errorMessage){failureCallBack(errorMessage)
     }
     });

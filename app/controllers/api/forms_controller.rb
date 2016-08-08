@@ -26,9 +26,10 @@ class Api::FormsController < ApplicationController
     newForm[:designer_id] = currentUser && currentUser.id || 1
     @form = Form.create(newForm)
     if @form.save
-      render json: {form: "saved"}
+      # render json: {password: "incorrect"}, status: 401
+      render json: {form: "Saved"}, status: 200
     else
-      render json: {form: "error"}, status: 422
+      render json: {form: "Error"}, status: 422
     end
   end
 

@@ -6,7 +6,7 @@ const ErrorStore = new Store(AppDispatcher);
 var _errors = [];
 
 ErrorStore.replaceErrors = function(errors){
-  _errors = errors //JSON.parse(errors);
+  _errors = JSON.parse(errors);
   this.__emitChange();
 }
 

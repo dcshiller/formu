@@ -18,9 +18,9 @@ const FormViewPane = React.createClass({
 
   checkSave () {
     let messages = ErrorStore.retrieveErrors();
-    let tempButtonText = messages["form"]
+    let tempButtonText = messages["form"];
     $('.saveButton').text(tempButtonText + "!");
-    setTimeout(function(){  $('.saveButton').text("Save Me");}, 1000)
+    setTimeout(function(){  $('.saveButton').text("Save Me");}, 1000);
   },
 
   addTarget (e) {

@@ -38,19 +38,21 @@ navbar img {
 
 
 
-#login {
-  postiion: relative;
+#login, #loginGuest {
+  position: relative;
+  width: 140px;
   float: right;
   display:block;
   text-decoration: none;
   font-size: inherit;
   color: inherit;
-  margin-right: 30px;
+  text-align: center;
+  margin-right: 20px;
 }
 
-#login:hover {
+#login:hover, #loginGuest:hover {
   color: yellow;
-  margin-right: 17px;
+  // margin-right: 17px;
 }
 
 #logout {
