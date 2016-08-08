@@ -29,7 +29,7 @@ const Login = React.createClass({
 
   componentWillUnmount () {
     $('body').css("background", "rgb(255, 255, 245)");
-    // ErrorStore.removeListener(this.newErrors);
+    // ErrorStore.remove(this.newErrors);
     // this.isUnmounted = true;
   },
 
@@ -60,7 +60,8 @@ const Login = React.createClass({
     AuthActions.login(this.state)
   },
 
-  loginAsGuest () {
+  loginAsGuest (e) {
+    e.preventDefault();
     $("#username").val("Guest")
     $("#password").val("Password")
     setTimeout(AuthActions.login.bind(AuthActions , {username:"Guest", password:"Password"}), 600);
