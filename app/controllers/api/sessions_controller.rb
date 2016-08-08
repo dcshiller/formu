@@ -2,7 +2,6 @@ class Api::SessionsController < ApplicationController
 
   def create
     @user = User.find_by_username(params[:user][:username])
-    debugger
     if @user and @user.is_password?(params[:user][:password])
       render "api/users/show"
     elsif @user
