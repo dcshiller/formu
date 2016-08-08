@@ -6,7 +6,7 @@ module.exports = {
       method: "GET",
       dataType: "json",
       success(formData){successCallBack(formData)},
-      error(errorMessage){failureCallBack(errorMessage.responseText)}
+      error(errorMessage){failureCallBack(errorMessage)}
     });
   },
 

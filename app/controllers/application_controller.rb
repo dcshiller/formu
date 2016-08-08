@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
     User.find_by_session_token(session[:session_token])
   end
 
-  def login(user)
+  def login (user)
     session[:session_token] = User.set_session_token
   end
 
-  def logout()
+  def logout ()
     return true unless currentUser
     currentUser.set_session_token
     session[:session_token] = undefined

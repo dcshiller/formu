@@ -129,7 +129,9 @@ div .formViewPane .dropTarget {
   height: 40px;
   width: 100%;
   margin: -20px -50px -20px 0px;
-  // transition: margin 1s;
+  background: none;
+  /*transition: height 2s;*/
+  transition: background 2s, height 2s;
 }
 
 div .formViewPane .dropTarget:last-of-type {
@@ -137,10 +139,11 @@ div .formViewPane .dropTarget:last-of-type {
 }
 
 div .formViewPane .dropTarget.underDragged {
-  margin: 0px 0px 0px 0px;
+  /*margin: 0px 0px 0px 0px;*/
+  height: 80px;
   border: 1px dashed lightgrey;
   background: rgb(240,242,225);
-  transition: margin, border 10s;
+  transition: height 2s;
 }
 
 

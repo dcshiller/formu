@@ -41,16 +41,16 @@ div.formPropertiesTab form {
   margin-left: 40px;
 }
 
-div.tabPane ul {
+/*div.tabPane ul {
   /*margin-bottom: 30px;*/
-  padding-left: 20px;
-}
+  /*padding-left: 20px;
+}*/
 
 div.tabPane li {
   display: block;
   padding: 3px 10px 3px 10px;
   margin-top: 8px;
-  margin-right: 10px;
+  margin-left: 4%;
   float:left;
 
   background: rgba(255, 255, 230,.5) ;

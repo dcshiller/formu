@@ -41,14 +41,18 @@ const FieldSelectorTab = React.createClass({
     return(
       <div className="designTab">
         <ul>
+        <div className="fieldSelectorGroup container">
           {this.addField("text")}
           {this.addField("number")}
           {this.addField("paragraph")}
           {this.addField("select one")}
           {this.addField("checkbox")}
           {this.addField("dropdown")}
+        </div>
+        <div className="fieldSelectorGroup container ">
           {this.addField("divider")}
           {this.addField("section title")}
+        </div>
         </ul>
       </div>
     )

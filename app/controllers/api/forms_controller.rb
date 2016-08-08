@@ -24,12 +24,11 @@ class Api::FormsController < ApplicationController
     newForm[:fields_attributes].compact!
 
     newForm[:designer_id] = currentUser && currentUser.id || 1
-
-    debugger
-    if Form.create(newForm)
-      render json: "great job".to_json, status: 422
+    @form = Form.create(newForm)
+    if @form.save
+      render json: {form: "saved"}
     else
-      render json: "better luck next time".to_json, status: 422
+      render json: {form: "error"}, status: 422
     end
   end
 

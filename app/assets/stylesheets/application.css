@@ -20,6 +20,10 @@ ul {
   list-style: none;
 }
 
+li {
+  margin-left: 0px;
+}
+
 .container::after {
   content:"";
   display:block;

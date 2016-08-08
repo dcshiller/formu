@@ -2,31 +2,47 @@ const React = require('react')
 const Field = require('../../field')
 const DesignActions = require ('../../../actions/design_actions')
 const FormDatabaseActions = require ('../../../actions/form_database_actions')
+const ErrorStore = require('../../../stores/error_store');
 
 const FormViewPane = React.createClass({
+
   componentDidMount () {
     this.setManualWindowSize();
+    ErrorStore.addListener(this.checkSave);
     window.addEventListener("resize", this.setManualWindowSize, true);
   },
+
   componentWillUnmount () {
     window.removeEventListener("resize", this.setManualWindowSize);
   },
+
+  checkSave () {
+    let messages = ErrorStore.retrieveErrors();
+    let tempButtonText = messages["form"]
+    $('.saveButton').text(tempButtonText + "!");
+    setTimeout(function(){  $('.saveButton').text("Save Me");}, 1000)
+  },
+
   addTarget (e) {
     window.dragged = e.target;
   },
+
   removeTarget (e){
     setTimeout(function(){window.dragged = null;}, 500);
   },
+
   dragOver (e) {
     e.preventDefault();
     if (e.target.className.indexOf("underDragged") === -1 &&
         e.target.className.indexOf("dropTarget") !== -1){e.target.className += " underDragged"}
   },
+
   dragLeave (e) {
     e.preventDefault();
     if (e.target.className.indexOf("underDragged") != -1)
     {e.target.className = "dropTarget"}
   },
+
   dropField (e) {
     this.dragLeave(e)
     let draggedObj = window.dragged;
@@ -42,6 +58,7 @@ const FormViewPane = React.createClass({
       DesignActions.repositionField(fieldId, position);
     }
   },
+
   drawField (fieldObj) {
    return (
             <div className ="formViewEntry">
@@ -68,6 +85,7 @@ const FormViewPane = React.createClass({
             </div>
           )
   },
+
   drawDropTarget (number) {
     return (
       <div className = "dropTarget"
@@ -77,6 +95,7 @@ const FormViewPane = React.createClass({
             onDrop={this.dropField}/>
     )
   },
+
   drawFields () {
     let self = this;
     let arrayOfFields = this.props.form.fields.map(function(field){
@@ -93,20 +112,24 @@ const FormViewPane = React.createClass({
     fieldsWithDropTargets.push(self.drawDropTarget(i));
     return fieldsWithDropTargets;
   },
+
   setManualWindowSize () {
     let navbarSize = Math.min(Math.max(window.innerWidth*.8, 800), 1200);
     let tabPaneSize = Math.max(400, navbarSize*.35);
     let viewPaneSize = navbarSize - tabPaneSize - 56;
     $(".formViewPane").css("width", viewPaneSize);
   },
+
   selectField (e) {
     e.preventDefault();
     let fieldId = e.target.id.split("_")[0];
     DesignActions.focusOnField(fieldId);
   },
+
   saveForm () {
     FormDatabaseActions.saveForm(this.props.form);
   },
+
   render () {
     return(
       <div className="formViewPane">

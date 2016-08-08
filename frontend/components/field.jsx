@@ -3,20 +3,33 @@ const React = require('react')
 const Field = React.createClass({
       makeTextField () {
         let fieldVals = this.props.fieldVals;
-        return (
-            <input
-              fieldName       =         { fieldVals["fieldName"] }
-              id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
-              type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
-                                          fieldVals["fieldType"] }
-              className       =         { (fieldVals["fieldType"] === "paragraph" &&
-                                                    "paragraph " + fieldVals["className"]) ||
-                                          fieldVals["className"] }
-              onChange        =         { fieldVals["handler"] }
-              onSelect        =         { fieldVals["onContainerClick"] }
-              value           =         { fieldVals["fieldValue"] }
-            />
-          )
+        if (fieldVals["fieldValue"]) {
+          return (<input
+                      fieldName       =         { fieldVals["fieldName"] }
+                      id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
+                      type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
+                                                  fieldVals["fieldType"] }
+                      className       =         { (fieldVals["fieldType"] === "paragraph" &&
+                                                            "paragraph " + fieldVals["className"]) ||
+                                                  fieldVals["className"] }
+                      onChange        =         { fieldVals["handler"] }
+                      onSelect        =         { fieldVals["onContainerClick"] }
+                      value           =         { fieldVals["fieldValue"]}
+                    />)
+        }
+        else {
+          return (<input
+            fieldName       =         { fieldVals["fieldName"] }
+            id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
+            type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
+                                        fieldVals["fieldType"] }
+            className       =         { (fieldVals["fieldType"] === "paragraph" &&
+                                                  "paragraph " + fieldVals["className"]) ||
+                                        fieldVals["className"] }
+            onChange        =         { fieldVals["handler"] }
+            onSelect        =         { fieldVals["onContainerClick"] }
+          />)
+        }
       },
       makeParagraphField () {
         let fieldVals = this.props.fieldVals;
@@ -97,6 +110,7 @@ const Field = React.createClass({
         switch (this.props.fieldVals.fieldType) {
           case "text" :
           case "number" :
+          case "password" :
           case "paragraph" :
           case "checkbox" :
           case "radio" :
@@ -118,6 +132,7 @@ const Field = React.createClass({
         switch (this.props.fieldVals.fieldType) {
           case "text" :
           case "number" :
+          case "password" :
             return this.makeTextField();
           case "paragraph" :
             return this.makeParagraphField();

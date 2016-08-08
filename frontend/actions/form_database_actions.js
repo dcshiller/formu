@@ -5,7 +5,7 @@ const ApiFormUtils = require('../utils/api_form_utils.js')
 
 module.exports = {
   getForm (form_id) {
-    ApiFormUtils.getForm(form_id, this.passFormToDispatcher, this.errorMessage)
+    ApiFormUtils.getForm(form_id, this.passFormToDispatcher, this.dispatchMessage)
   },
 
   passFormToDispatcher (form) {
@@ -16,15 +16,10 @@ module.exports = {
   },
 
   saveForm (form) {
-    ApiFormUtils.saveForm(form, this.successMessage , this.errorMessage)
+    ApiFormUtils.saveForm(form, this.dispatchMessage , this.dispatchMessage)
   },
 
-  successMessage (message) {
-
-  },
-
-  errorMessage (message) {
-
+  dispatchMessage (message) {
     AppDispatcher.dispatch({
       actionType: CONSTS.ERROR,
       errors: message
