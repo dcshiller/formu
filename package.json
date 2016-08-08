@@ -20,7 +20,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "heroku-postbuild": "webpack --config webpack.config.prod.js",
+    "postinstall": "./node_modules/.bin/webpack",
     "webpack": "webpack --watch"
   },
   "repository": {
