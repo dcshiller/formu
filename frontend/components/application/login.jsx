@@ -45,7 +45,7 @@ const Login = React.createClass({
     e.preventDefault();
     let newVals = {};
     this.removeFieldErrors(e.target.id);
-    newVals[e.target.id] = e.target.value;
+    newVals[e.target.id.split("_").pop()] = e.target.value;
     this.setState( newVals )
   },
 

@@ -10,40 +10,46 @@ const Signup = React.createClass({
               email: "",
               errors: {} }
   },
+
   inputHandler (e) {
     let newVals = {};
     this.removeFieldErrors(e.target.id);
     newVals[e.target.id] = e.target.value;
     this.setState( newVals );
   },
-  newErrors(){
+
+  newErrors () {
     this.setState({errors: ErrorStore.retrieveErrors()})
   },
-  removeFieldErrors(field){
+
+  removeFieldErrors (field) {
     let newErrors = this.state.errors;
     newErrors[field] = null;
     this.setState( {errors: newErrors});
   },
-  componentDidMount(){
+
+  componentDidMount () {
     ErrorStore.addListener(this.newErrors)
   },
+
   signup () {
     AuthActions.signup(this.state)
   },
-  hideFieldNotes(){
+
+  hideFieldNotes () {
    $('span.fieldNote').hide();
   },
-  selectField(e){
+  selectField (e) {
     let fieldName = e.target.id
     let fieldNote = "#" + fieldName + "fieldNote"
     $(fieldNote).show();
   },
-  fieldErrors(fieldName){
+  fieldErrors (fieldName) {
     if (this.state.errors[fieldName]){
         return (<span className="errorNote"> {this.state.errors[fieldName]} </span>);
     }
   },
-  render(){
+  render () {
     return (
         <div className="signup">
 
