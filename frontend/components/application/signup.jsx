@@ -32,23 +32,27 @@ const Signup = React.createClass({
     ErrorStore.addListener(this.newErrors)
   },
 
-  signup () {
+  signup (e) {
+    e.preventDefault()
     AuthActions.signup(this.state)
   },
 
   hideFieldNotes () {
    $('span.fieldNote').hide();
   },
+
   selectField (e) {
     let fieldName = e.target.id
     let fieldNote = "#" + fieldName + "fieldNote"
     $(fieldNote).show();
   },
+
   fieldErrors (fieldName) {
     if (this.state.errors[fieldName]){
         return (<span className="errorNote"> {this.state.errors[fieldName]} </span>);
     }
   },
+
   render () {
     return (
         <div className="signup">
