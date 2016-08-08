@@ -10,7 +10,7 @@ window.getIfDefined = function(object, property){
 };
 
 const validate = function(nextState, replaceState){
-  if (SessionStore.currentUser())
+  if (!SessionStore.currentUser())
   {
     hashHistory.replace('/login')
   }
