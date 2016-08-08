@@ -1,7 +1,10 @@
-const React = require('react')
+const React = require('react');
 const AuthActions = require('../../actions/auth_actions.js');
-const ErrorStore = require('../../stores/error_store.js')
-const Field = require('../field')
+const ErrorStore = require('../../stores/error_store.js');
+const SessionStore = require('../../stores/session_store.js');
+const Field = require('../field');
+const hashHistory = require('react-router').hashHistory;
+
 
 const Signup = React.createClass({
   getInitialState () {
@@ -11,11 +14,23 @@ const Signup = React.createClass({
               errors: {} }
   },
 
+  componentDidMount () {
+    ErrorStore.addListener(this.newErrors);
+    SessionStore.addListener(this.newUserHandler);
+  },
+
   inputHandler (e) {
     let newVals = {};
     this.removeFieldErrors(e.target.id);
     newVals[e.target.id] = e.target.value;
     this.setState( newVals );
+  },
+
+  newUserHandler () {
+    debugger
+    if (SessionStore.currentUser()) {
+      hashHistory.push(SessionStore.currentUser())
+    }
   },
 
   newErrors () {
@@ -26,10 +41,6 @@ const Signup = React.createClass({
     let newErrors = this.state.errors;
     newErrors[field] = null;
     this.setState( {errors: newErrors});
-  },
-
-  componentDidMount () {
-    ErrorStore.addListener(this.newErrors)
   },
 
   signup (e) {
