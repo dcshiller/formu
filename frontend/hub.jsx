@@ -9,6 +9,13 @@ window.getIfDefined = function(object, property){
   return (object && object[property])
 };
 
+const validate = function(nextState, replaceState){
+  if (SessionStore.currentUser())
+  {
+    hashHistory.replace('/login')
+  }
+};
+
 var routes = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
@@ -17,12 +24,13 @@ var routes = (
       <Route path="signup" component={Signup}/>
     </Route>
     <Route path="login" component={Login}/>
-    <Route path={':username'} component={User}>
+    <Route path={':username'} component={User} onEnter={validate}>
       <IndexRoute component={UserIndex}/>
       <Route path={'/:username/design'} component={Design}/>
     </Route>
   </Router>
 );
+
 
 document.addEventListener("DOMContentLoaded", function(){
     ReactDOM.render(routes,

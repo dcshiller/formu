@@ -5,7 +5,6 @@ const Field = React.createClass({
         let fieldVals = this.props.fieldVals;
         if (fieldVals["fieldValue"]) {
           return (<input
-                      fieldName       =         { fieldVals["fieldName"] }
                       id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
                       type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
                                                   fieldVals["fieldType"] }
@@ -17,9 +16,9 @@ const Field = React.createClass({
                       value           =         { fieldVals["fieldValue"]}
                     />)
         }
+        // fieldName       =         { fieldVals["fieldName"] }
         else {
           return (<input
-            fieldName       =         { fieldVals["fieldName"] }
             id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
             type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
                                         fieldVals["fieldType"] }

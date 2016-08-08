@@ -17,8 +17,8 @@ const Login = React.createClass({
   },
 
   onChange () {
-    let user = SessionStore.currentUser()
-    if (user){hashHistory.push(user)}
+    let userName = SessionStore.currentUser()
+    if (userName){hashHistory.push(userName)}
   },
 
   componentDidMount () {
@@ -29,10 +29,15 @@ const Login = React.createClass({
 
   componentWillUnmount () {
     $('body').css("background", "rgb(255, 255, 245)");
+    // ErrorStore.removeListener(this.newErrors);
+    // this.isUnmounted = true;
   },
 
   newErrors () {
-    this.setState({errors: ErrorStore.retrieveErrors()})
+    if ( !this.isUnMounted )
+      {
+        this.setState( { errors: ErrorStore.retrieveErrors() } )
+      }
   },
 
   removeFieldErrors(field){
@@ -44,12 +49,14 @@ const Login = React.createClass({
   inputHandler (e) {
     e.preventDefault();
     let newVals = {};
-    this.removeFieldErrors(e.target.id);
-    newVals[e.target.id.split("_").pop()] = e.target.value;
+    let fieldName =  e.target.id.split("_").pop()
+    this.removeFieldErrors(fieldName);
+    newVals[fieldName] = e.target.value;
     this.setState( newVals )
   },
 
-  login () {
+  login (e) {
+    e.preventDefault();
     AuthActions.login(this.state)
   },
 
@@ -57,10 +64,6 @@ const Login = React.createClass({
     $("#username").val("Guest")
     $("#password").val("Password")
     setTimeout(AuthActions.login.bind(AuthActions , {username:"Guest", password:"Password"}), 600);
-  },
-
-  cancel () {
-    hashHistory.push("/");
   },
 
   fieldErrors(fieldName){
@@ -108,7 +111,7 @@ const Login = React.createClass({
             {this.formField("username", "text")}
             {this.formField("password", "password")}
             <button onClick={this.login}>Login</button>
-            <button onClick={this.cancel}>Cancel</button>
+            <Link to="/" >Cancel</Link>
           </form>
           <button onClick={this.loginAsGuest}> Login as Guest</button>
         </div>

@@ -10,8 +10,6 @@ const Design = require('./design/design.jsx')
 const User = React.createClass({
   getInitialState () {
     let currentUser = SessionStore.currentUser();
-    if (!currentUser) {
-      hashHistory.push('login')}
     return {currentUser: currentUser};
   },
   tooSmallWarning () {
