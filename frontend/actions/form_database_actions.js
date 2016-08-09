@@ -4,8 +4,34 @@ const ApiFormUtils = require('../utils/api_form_utils.js')
 
 
 module.exports = {
-  getForm (form_id) {
-    ApiFormUtils.getForm(form_id, this.passFormToDispatcher, this.errorMessage)
+
+  addIdAndNotifyErrorStore (message) {
+    AppDispatcher.dispatch({
+      actionType: CONSTS.ADD_FORM_ID,
+      id: message.id
+    });
+    this.errorMessage(message);
+  },
+
+  clearForm () {
+    AppDispatcher.dispatch({
+      actionType: CONSTS.CLEAR_FORM
+    })
+  },
+
+  errorMessage (message) {
+    AppDispatcher.dispatch({
+      actionType: CONSTS.ERROR,
+      errors: message
+    })
+  },
+
+  getForm (formId) {
+    ApiFormUtils.getForm(formId, this.passFormToDispatcher, this.errorMessage)
+  },
+
+  getForms (username) {
+    ApiFormUtils.getForms(username, this.passFormsToDispatcher, this.errorMessage)
   },
 
   passFormToDispatcher (form) {
@@ -15,14 +41,18 @@ module.exports = {
     });
   },
 
-  saveForm (form) {
-    ApiFormUtils.saveForm(form, this.errorMessage, this.errorMessage)
+  passFormsToDispatcher (form) {
+    AppDispatcher.dispatch({
+        actionType: CONSTS.SET_FORMS,
+        forms: form
+    });
   },
 
-  errorMessage (message) {
-    AppDispatcher.dispatch({
-      actionType: CONSTS.ERROR,
-      errors: message
-    })
+  saveForm (form) {
+    ApiFormUtils.saveForm(form, this.addIdAndNotifyErrorStore, this.errorMessage)
   },
+
+  updateForm (form) {
+    ApiFormUtils.updateForm(form, this.errorMessage, this.errorMessage)
+  }
 }

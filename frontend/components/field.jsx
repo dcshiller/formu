@@ -1,69 +1,77 @@
 const React = require('react')
 
 const Field = React.createClass({
+
       makeTextField () {
         let fieldVals = this.props.fieldVals;
         if (fieldVals["fieldValue"]) {
           return (<input
-                      id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
-                      type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
-                                                  fieldVals["fieldType"] }
-                      className       =         { (fieldVals["fieldType"] === "paragraph" &&
-                                                            "paragraph " + fieldVals["className"]) ||
-                                                  fieldVals["className"] }
-                      onChange        =         { fieldVals["handler"] }
-                      onSelect        =         { fieldVals["onContainerClick"] }
-                      value           =         { fieldVals["fieldValue"]}
+                      id              =         { fieldVals.fieldId + "_input_" + fieldVals.fieldName }
+                      key             =         { fieldVals.fieldId + "_input_" + fieldVals.fieldName }
+                      type            =         { (fieldVals.fieldType === "paragraph" && "textarea") ||
+                                                  fieldVals.fieldType }
+                      className       =         { (fieldVals.fieldType === "paragraph" &&
+                                                            "paragraph " + fieldVals.className) ||
+                                                  fieldVals.className }
+                      onChange        =         { fieldVals.handler }
+                      onSelect        =         { fieldVals.onContainerClick }
+                      value           =         { fieldVals.fieldValue}
                     />)
         }
         // fieldName       =         { fieldVals["fieldName"] }
         else {
           return (<input
-            id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
-            type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
-                                        fieldVals["fieldType"] }
-            className       =         { (fieldVals["fieldType"] === "paragraph" &&
-                                                  "paragraph " + fieldVals["className"]) ||
-                                        fieldVals["className"] }
-            onChange        =         { fieldVals["handler"] }
-            onSelect        =         { fieldVals["onContainerClick"] }
+            id              =         { fieldVals.fieldId + "_input_" + fieldVals.fieldName }
+            key              =         { fieldVals.fieldId + "_input_" + fieldVals.fieldName }
+            type            =         { (fieldVals.fieldType === "paragraph" && "textarea") ||
+                                        fieldVals.fieldType }
+            className       =         { (fieldVals.fieldType === "paragraph" &&
+                                                  "paragraph " + fieldVals.className) ||
+                                        fieldVals.className }
+            onChange        =         { fieldVals.handler }
+            onSelect        =         { fieldVals.onContainerClick }
           />)
         }
       },
+
       makeParagraphField () {
         let fieldVals = this.props.fieldVals;
         return (
             <textarea
-              fieldName       =         { fieldVals["fieldName"] }
-              id              =         { fieldVals["fieldId"] + "_input_" + fieldVals["fieldName"] }
-              type            =         { (fieldVals["fieldType"] === "paragraph" && "textarea") ||
-                                          fieldVals["fieldType"] }
-              className       =         { (fieldVals["fieldType"] === "paragraph" &&
-                                                    "paragraph " + fieldVals["className"]) ||
-                                          fieldVals["className"] }
-              onChange        =         { fieldVals["handler"] }
-              onSelect        =         { fieldVals["onContainerClick"] }
-              value           =         { fieldVals["fieldValue"] }
+              fieldName       =         { fieldVals.fieldName }
+              id              =         { fieldVals.fieldId + "_input_" + fieldVals["fieldName"] }
+              key              =         { fieldVals.fieldId + "_input_" + fieldVals["fieldName"] }
+              type            =         { (fieldVals.fieldType === "paragraph" && "textarea") ||
+                                          fieldVals.fieldType }
+              className       =         { (fieldVals.fieldType === "paragraph" &&
+                                                    "paragraph " + fieldVals.className) ||
+                                          fieldVals.className }
+              onChange        =         { fieldVals.handler }
+              onSelect        =         { fieldVals.onContainerClick }
+              value           =         { fieldVals.fieldValue }
             />
           )
       },
+
       makeChoiceField () {
         let fieldVals = this.props.fieldVals;
         return (
           fieldVals.choices.map(function(choice) {
             return (
-              <label  htmlFor    =       { fieldVals["fieldId"] + "_" + choice }
-                      id         =       { fieldVals["fieldId"] + "_label_" + choice }
-                      className  =       { fieldVals["fieldType"] + "choice" }
+              <label  htmlFor    =       { fieldVals.fieldId + "_" + choice }
+                      id         =       { fieldVals.fieldId + "_label_" + choice }
+                      key        =       { fieldVals.fieldId + "_label_" + choice }
+                      className  =       { fieldVals.fieldType + "choice" }
                      >
                 {choice}
                 <input
-                    type        =       { fieldVals["fieldType"] }
-                    id          =       { fieldVals["fieldId"] + "_choice_" + choice }
-                    className   =       { fieldVals["className"] }
-                    onChange    =       { fieldVals["handler"] }
-                    onSelect    =       { fieldVals["onContainerClick"] }
-                    value       =       { fieldVals["fieldValue"] || choice }
+                    type        =       { fieldVals.fieldType }
+                    id          =       { fieldVals.fieldId + "_choice_" + choice }
+                    key         =       { fieldVals.fieldId + "_choice_" + choice }
+                    className   =       { fieldVals.className }
+                    onChange    =       { fieldVals.handler }
+                    onSelect    =       { fieldVals.onContainerClick }
+                    value       =       { fieldVals.fieldValue || choice }
                 />
               </label>
             )
@@ -78,15 +86,15 @@ const Field = React.createClass({
           <div>
             { fieldVals["hideLabel"] ||
              <label
-                   htmlFor       =       { fieldVals["fieldId"] }
-                   className     =       { fieldVals["fieldType"] }
-                   id            =       { fieldVals["fieldId"] + "_label"}
+                   htmlFor       =       { fieldVals.fieldId }
+                   className     =       { fieldVals.fieldType }
+                   id            =       { fieldVals.fieldId + "_label"}
                  >{fieldVals["fieldName"]}</label>
             }
 
             { (fieldVals["instructions"] &&
                <p className = "instructions"
-                   id={fieldVals["fieldId"]+"_instructions"}>
+                   id={fieldVals.fieldId+"_instructions"}>
                    {fieldVals["instructions"]}
                </p>)
             }
@@ -96,13 +104,17 @@ const Field = React.createClass({
 
       makeSectionTitle () {
         return (
-          <h1 id = { this.props.fieldVals["fieldId"] + "_title"}
+          <h1 id = { this.props.fieldVals.fieldId + "_title"}
+              key = { this.props.fieldVals.fieldId + "_title"}
               className = "sectionTitle"
-              > {this.props.fieldVals["fieldName"]}</h1>
+              > { this.props.fieldVals.fieldName }</h1>
         )
       },
+
       makeRule () {
-         return <hr id = { this.props.fieldVals["fieldId"] + "_rule" } />
+         return (<hr id = { this.props.fieldVals.fieldId + "_rule" }
+                    key = { this.props.fieldVals.fieldId + "_rule" }
+                 />)
       },
 
       directToProperDirector () {
@@ -153,17 +165,17 @@ const Field = React.createClass({
       render () {
         let fieldVals = this.props.fieldVals;
         return (
-          <div className      =       { fieldVals["selected"] ? "inputWrapper selected" : "inputWrapper" }
-                draggable     =       { fieldVals["draggable"] }
-                onDragStart   =       { fieldVals["onDragStart"] }
-                onDragEnd     =       { fieldVals["onDragEnd"] }
-                onClick       =       { fieldVals["onContainerClick"] }
-                id            =       { fieldVals["fieldId"] + "_div" }>
+          <div className      =       { fieldVals.selected ? "inputWrapper selected" : "inputWrapper" }
+                draggable     =       { fieldVals.draggable }
+                onDragStart   =       { fieldVals.onDragStart }
+                onDragEnd     =       { fieldVals.onDragEnd }
+                onClick       =       { fieldVals.onContainerClick }
+                id            =       { fieldVals.fieldId + "_div" }
+                key            =       { fieldVals.fieldId + "_div" }>
           { this.directToProperDirector() }
           </div>
          )
       }
 })
-
 
 module.exports = Field;

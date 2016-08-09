@@ -9,7 +9,7 @@ const Field = require('../field');
 const Login = React.createClass({
 
   getInitialState () {
-    if (this.props.location.query["user"] === "Guest")
+    if (getIfDefined(this.props, "location", "query", "user") === "Guest")
       {
         return {username: "Guest", password: "Password", errors: {}}
       }
@@ -18,19 +18,19 @@ const Login = React.createClass({
 
   onChange () {
     let userName = SessionStore.currentUser()
-    if (userName){hashHistory.push(userName)}
+    if (userName){hashHistory.push("/users/" + userName)}
   },
 
   componentDidMount () {
     $('body').css("background-image", "repeating-linear-gradient(  30deg, #3D3D3D 2px, #3D3D3D 2px, #1C1B1B 3px)");
-    SessionStore.addListener(this.onChange);
-    ErrorStore.addListener(this.newErrors);
+    this.sessionStoreReceipt = SessionStore.addListener(this.onChange);
+    this.errorStoreReceipt = ErrorStore.addListener(this.newErrors);
   },
 
   componentWillUnmount () {
     $('body').css("background", "rgb(255, 255, 245)");
-    // ErrorStore.remove(this.newErrors);
-    // this.isUnmounted = true;
+    this.sessionStoreReceipt.remove();
+    this.errorStoreReceipt.remove();
   },
 
   newErrors () {
@@ -62,8 +62,8 @@ const Login = React.createClass({
 
   loginAsGuest (e) {
     e.preventDefault();
-    $("#username").val("Guest")
-    $("#password").val("Password")
+    $("#username").val("Guest") //needs to be changed
+    $("#password").val("Password") //needs to be changed
     setTimeout(AuthActions.login.bind(AuthActions , {username:"Guest", password:"Password"}), 600);
   },
 

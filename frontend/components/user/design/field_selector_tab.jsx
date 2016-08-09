@@ -13,19 +13,24 @@ const dictionary = {
 };
 
 const FieldSelectorTab = React.createClass({
+
   addTarget (e) {
     window.dragged = this.typeTranslator(e.target.id)
   },
+
   typeTranslator (guiName) {
     return dictionary[guiName];
   },
+
   removeTarget (e){
     setTimeout(function(){window.dragged = null;}, 500);
   },
+
   createField (e) {
     let fieldType = this.typeTranslator(e.target.id);
     DesignActions.addField(fieldType, 100000) // note, this places the field at the end.
   },
+
   addField (type) {
     return (
       <li className="fieldChoice"
@@ -37,6 +42,7 @@ const FieldSelectorTab = React.createClass({
       >{type}</li>
     )
   },
+
   render () {
     return(
       <div className="designTab">

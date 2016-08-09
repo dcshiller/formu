@@ -3,15 +3,17 @@ const Link = require('react-router').Link;
 
 
 const UserNavBar = React.createClass({
+
   render(){
     return(
       <navbar>
-        <Link to={ this.props["currentUser"] + "/index"}>
+        <Link to={ this.props.currentUser ? "/users/" +(this.props.currentUser) : "/"}>
           <img src={window.logoURL}/>
         </Link>
       </navbar>
     );
   }
+
 });
 
 

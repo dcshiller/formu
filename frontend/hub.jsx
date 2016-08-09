@@ -4,27 +4,44 @@ import { reactRouter , IndexRoute, Router , Route , hashHistory } from 'react-ro
 import { App, Login, Signup, Splashbar } from './components/application/application_hub.js'
 import { User , UserIndex , Design } from './components/user/user_hub.js'
 const SessionStore = require('./stores/session_store.js')
+const AuthActions = require('./actions/auth_actions.js')
+const FormActions = require('./actions/auth_actions.js')
 
-window.getIfDefined = function(object, property){
-  return (object && object[property])
+window.getIfDefined = function(...args){
+  let nestLevel = args[0];
+  for (var i = 1; i < args.length - 1; i++) {
+    if (args[i])
+      { nestLevel = nestLevel[args[i]]; }
+    else
+      { return undefined; }
+  }
+  return nestLevel[args[i]];
 };
 
-const validate = function(nextState, replaceState){
-  if (!SessionStore.currentUser())
+window.doIfDefined = function(func, arg){
+  if (arg !== undefined) {func.call(this, arg)}
+};
+
+const validate = function(nextState, replace){
+  if (!(window.currentUser || SessionStore.currentUser()))
   {
-    hashHistory.replace('/login')
+    replace('/login')
   }
+};
+
+const populateStores = function(username){
+  AuthActions.loginUser({username: username});
 };
 
 var routes = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Splashbar}/>
-      <Route path="welcome" component={Splashbar}/>
+      <Route path="welcome" component={Splashbar }/>
       <Route path="signup" component={Signup}/>
     </Route>
     <Route path="login" component={Login}/>
-    <Route path={':username'} component={User} onEnter={validate}>
+    <Route path={'users/:username'} component={User} onEnter={validate}>
       <IndexRoute component={UserIndex}/>
       <Route path={'/:username/design'} component={Design}/>
     </Route>
@@ -33,6 +50,7 @@ var routes = (
 
 
 document.addEventListener("DOMContentLoaded", function(){
+    doIfDefined(populateStores, window.currentUser)
     ReactDOM.render(routes,
                     document.getElementById('main')
                    );

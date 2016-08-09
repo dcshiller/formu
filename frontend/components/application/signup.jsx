@@ -15,8 +15,13 @@ const Signup = React.createClass({
   },
 
   componentDidMount () {
-    ErrorStore.addListener(this.newErrors);
-    SessionStore.addListener(this.newUserHandler);
+    this.errorStoreReceipt = ErrorStore.addListener(this.newErrors);
+    this.sessiontoreReceipt = SessionStore.addListener(this.newUserHandler);
+  },
+
+  componentWillUnmount () {
+    this.errorStoreReceipt.remove();
+    this.sessionStoreReceipt.remove();
   },
 
   inputHandler (e) {
@@ -27,7 +32,6 @@ const Signup = React.createClass({
   },
 
   newUserHandler () {
-    debugger
     if (SessionStore.currentUser()) {
       hashHistory.push(SessionStore.currentUser())
     }

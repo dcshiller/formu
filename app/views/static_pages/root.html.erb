@@ -2,7 +2,15 @@
 <script>
   window.logoURL = '<%= image_url('ForMuLogo.png')%>'
   window.trashURL = '<%= image_url('trash.png')%>'
-  window.trashSelectedURL = '<%= image_url('trashSelected.png')%>' 
+  window.trashSelectedURL = '<%= image_url('trashSelected.png')%>'
+
+  // <script id="bootstrap-current-user" type="text/javascript">
+  <% if @currentUser %>
+  	window.currentUser = '<%= @currentUser.username.html_safe %>'
+  <% end %>
+  // </script>
+
+
 </script>
 
 <div id="main">

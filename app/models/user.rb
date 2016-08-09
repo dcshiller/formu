@@ -3,14 +3,24 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  before_validation :set_session_token
+  before_validation :ensure_session_token
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :username, :password_digest, :session_token, presence: true
   validates :username, :email, uniqueness: true
-  validates :password, length: {in: 6..16}
+  validates :password, length: {in: 6..16, allow_nil: true}
 
   def set_session_token
     self.session_token = SecureRandom.urlsafe_base64
+  end
+
+  def set_session_token!
+    self.set_session_token
+    self.save
+    self.session_token
+  end
+
+  def ensure_session_token
+    self.session_token || self.set_session_token
   end
 
   def password=(password)

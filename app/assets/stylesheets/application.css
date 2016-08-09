@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+* {
+  font-family: sans-serif;
+}
 
 ul {
   padding: 0px;
@@ -49,4 +52,9 @@ textarea {
 
 body {
   background: rgb(255, 255, 245);
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

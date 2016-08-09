@@ -3,16 +3,19 @@ const DesignActions = require('../../../actions/design_actions')
 const Field = require('../../field')
 
 const FieldPropertiesTab = React.createClass({
+
   inputHandlerProp (e) {
     e.preventDefault();
     DesignActions.changeFieldProperty(e.target.id.split("_").pop(), e.target.value);
     this.forceUpdate();
   },
+  
   inputHandlerChoice (e) {
     e.preventDefault();
     DesignActions.changeFieldChoice(e.target.id.replace(" ","_").split("_").pop(), e.target.value);
     this.forceUpdate();
   },
+
   render(){
     let choices = (this.props.field && this.props.field.choices);
     let fB_forFieldProps = this.props.fieldBuilder.bind(null, this.inputHandlerProp)

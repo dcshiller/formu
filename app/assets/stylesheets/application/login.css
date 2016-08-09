@@ -73,8 +73,11 @@ form.login span.errorNote {
   color: red;
 }
 
-form.login button {
+form.login button, form.login a {
+  display: block;
+  text-align: center;
   width: 80px;
+  vertical-align: middle;
   height: 30px;
   background: lightgrey;
   border-radius: 10px;

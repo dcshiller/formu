@@ -4,14 +4,22 @@ const SessionStore = require('../../stores/session_store.js')
 const Splashbar = require('./splashbar.jsx')
 
 const App = React.createClass({
+  
   getInitialState(){
     return {user: SessionStore.currentUser() };},
+
   onChange(){
     this.setState({user: SessionStore.currentUser() })
   },
+
   componentDidMount(){
-    SessionStore.addListener(this.onChange);
+    this.sessionStoreReceipt = SessionStore.addListener(this.onChange);
   },
+
+  componentWillUnmount(){
+    this.sessionStoreReceipt.remove()
+  },
+
   render(){
     return(
       <div className="applicationMain">
@@ -20,7 +28,6 @@ const App = React.createClass({
       </div>
     )
   }
-
 });
 
 

@@ -9,6 +9,14 @@ const Navbar = React.createClass({
     return {currentUser: SessionStore.currentUser()}
   },
 
+  componentDidMount () {
+    this.sessionStoreReceipt = SessionStore.addListener(this.userChange);
+  },
+
+  componentWillUnmount () {
+    this.sessionStoreReceipt.remove();
+  },
+
   logout () {
     AuthActions.logout();
   },
@@ -45,10 +53,6 @@ const Navbar = React.createClass({
 
   userChange () {
     this.setState({currentUser: SessionStore.currentUser()});
-  },
-
-  componentDidMount () {
-    SessionStore.addListener(this.userChange);
   },
 
   render () {

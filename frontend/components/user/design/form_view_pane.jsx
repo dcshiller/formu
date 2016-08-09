@@ -8,11 +8,12 @@ const FormViewPane = React.createClass({
 
   componentDidMount () {
     this.setManualWindowSize();
-    ErrorStore.addListener(this.checkSave);
+    this.errorStoreReceipt = ErrorStore.addListener(this.checkSave);
     window.addEventListener("resize", this.setManualWindowSize, true);
   },
 
   componentWillUnmount () {
+    this.errorStoreReceipt.remove();
     window.removeEventListener("resize", this.setManualWindowSize);
   },
 
@@ -24,10 +25,12 @@ const FormViewPane = React.createClass({
   },
 
   addTarget (e) {
+    e.preventDefault();
     window.dragged = e.target;
   },
 
   removeTarget (e){
+    e.preventDefault();
     setTimeout(function(){window.dragged = null;}, 500);
   },
 
@@ -44,6 +47,7 @@ const FormViewPane = React.createClass({
   },
 
   dropField (e) {
+    e.preventDefault();
     this.dragLeave(e)
     let draggedObj = window.dragged;
     let position = e.target.id.split("_")[1]
@@ -63,6 +67,7 @@ const FormViewPane = React.createClass({
    return (
             <div className ="formViewEntry">
               <img className = "deleteButton"
+                  key={fieldObj.fieldId + "_deleteButton"}
                   onClick={DesignActions.deleteField.bind(null, fieldObj.fieldId)}
                   src={window.trashURL}
               />
@@ -90,6 +95,7 @@ const FormViewPane = React.createClass({
     return (
       <div className = "dropTarget"
             id={"drop_" + number}
+            key={"drop_" + number}
             onDragOver={this.dragOver}
             onDragLeave={this.dragLeave}
             onDrop={this.dropField}/>
@@ -126,18 +132,26 @@ const FormViewPane = React.createClass({
     DesignActions.focusOnField(fieldId);
   },
 
-  saveForm () {
-    FormDatabaseActions.saveForm(this.props.form);
+  saveForm (e) {
+    e.preventDefault();
+    if (this.props.form.properties.id){
+      FormDatabaseActions.updateForm(this.props.form);
+    }
+    else {
+      FormDatabaseActions.saveForm(this.props.form);
+    }
   },
 
   render () {
     return(
       <div className="formViewPane">
-          <h1 className="formTitle"> {this.props.form.properties["Title"]} </h1>
-          <p>{this.props.form.properties["Description"]} </p>
+          <h1 className="formTitle"> {this.props.form.properties.Title} </h1>
+          <p>{this.props.form.properties.Description} </p>
           <hr/>
           {this.drawFields()}
-          <button className="saveButton" onClick={this.saveForm}> Save Me </button>
+          <button className="saveButton" onClick={this.saveForm}>
+            {this.props.form.properties.id ? "Update Me" : "Save Me"}
+          </button>
       </div>
     )
   }

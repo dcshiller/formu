@@ -3,17 +3,22 @@ const Field = require('../../field');
 const DesignActions = require('../../../actions/design_actions')
 
 const FormPropertiesTab = React.createClass({
-  componentDidMount(){
+
+  componentDidMount () {
     $('.paragraph').keyup(function(e) {
       $(this).height(30);
       $(this).height(this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth")));
     });
   },
+
   inputHandler (e) {
     e.preventDefault();
-    DesignActions.changeFormProperty(e.target.id.split("_").pop(), e.target.value);
+    let propToChange = e.target.id.split("_").pop();
+    let newValue = e.target.value;
+    DesignActions.changeFormProperty(propToChange, NewValue);
     this.forceUpdate();
   },
+
   render () {
     let fieldBuilder = this.props.fieldBuilder.bind(null, this.inputHandler)
     return(

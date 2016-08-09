@@ -8,13 +8,20 @@ const DesignActions = require('../../../actions/design_actions');
 var TabPanes;
 
 const TabPane = React.createClass({
-  getInitialState(){
+
+  getInitialState () {
     return {paneSelected: 0}
   },
-  fieldBuilder(handler, fieldName, fieldType, fieldValue, options){
+
+  componentWillReceiveProps () {
+    if (this.props.field)
+      {this.setState({paneSelected: 1})}
+  },
+
+  fieldBuilder (handler, fieldName, fieldType, fieldValue, options) {
     let a = (
       <Field fieldVals={ { fieldName: fieldName,
-                  hideLabel:  options && options["hideLabel"],
+                  hideLabel:  options && options.hideLabel,
                   fieldType: fieldType,
                   handler: handler,
                   fieldId: (this.props.field && this.props.field.fieldId) + "_editor",
@@ -22,14 +29,12 @@ const TabPane = React.createClass({
     )
     return a;
   },
+
   selectPane (tabNumber) {
     DesignActions.blurField();
     this.setState({paneSelected: tabNumber});
   },
-  componentWillReceiveProps () {
-    if (this.props.field)
-      {this.setState({paneSelected: 1})}
-  },
+
   returnSelectedTab () {
     switch (this.state.paneSelected){
       case 0 :
@@ -52,10 +57,12 @@ const TabPane = React.createClass({
             break;
     }
   },
+
   tabclickhandler(paneNumber, e){
     e.preventDefault();
     this.selectPane(paneNumber);
   },
+
   newTab(labelText, paneNumber){
     return (
               <li onClick={ this.tabclickhandler.bind(null , paneNumber)}
@@ -65,6 +72,7 @@ const TabPane = React.createClass({
               </li>
           )
   },
+
   render(){
     return (
       <div className="tabPane">

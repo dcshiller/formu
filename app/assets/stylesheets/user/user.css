@@ -43,6 +43,8 @@ div.userMain navbar li {
 }*/
 
 div.userBox {
+  background:white;
+
   width: calc(100% -2px);
   margin: auto;
   min-height: 800px;
@@ -56,16 +58,6 @@ div.userBox h2 {
   margin-top: 0px;
 }
 
-div.userBox #newForm {
-  width: 130px;
-  height: 40px;
-  color: white;
-  border: 1px solid tan;
-  border-radius: 4px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  background: lightgreen;
-}
 
 div.tooSmall {
   position: absolute;

@@ -18,7 +18,6 @@ div.designTab li.fieldChoice:nth-child(2n+1) {
   float: right;
 }
 
-
 div.designTab li.fieldChoice:hover {
   border: 2px solid #d7dee3;
   margin-left: calc(5% - 2px);

@@ -1,10 +1,21 @@
 module.exports = {
 
-  getForm(form_id, successCallBack, failureCallBack){
+  getForm(formId, successCallBack, failureCallBack){
     $.ajax({
-      url: "api/forms/" + form_id,
+      url: "api/forms/" + formId,
       method: "GET",
       dataType: "json",
+      success(formData){successCallBack(formData)},
+      error(errorMessage){failureCallBack(errorMessage)}
+    });
+  },
+
+  getForms(username, successCallBack, failureCallBack){
+    $.ajax({
+      url: "api/forms",
+      method: "GET",
+      dataType: "json",
+      data: { username: username },
       success(formData){successCallBack(formData)},
       error(errorMessage){failureCallBack(errorMessage)}
     });
@@ -15,12 +26,22 @@ module.exports = {
         url: "api/forms",
         method: "POST",
         dataType: "json",
-        data: {form: form},
+        data: { form: form },
         success(successMessage){successCallBack(JSON.stringify(successMessage))},
         error(errorMessage){failureCallBack(errorMessage)
     }
     });
   },
 
-  updateForm(form, successCallBack, failureCallBack){}
+  updateForm(form, successCallBack, failureCallBack){
+    $.ajax({
+        url: "api/forms/" + form.properties.id,
+        method: "PATCH",
+        dataType: "json",
+        data: { form: form },
+        success(successMessage){successCallBack(JSON.stringify(successMessage))},
+        error(errorMessage){failureCallBack(errorMessage)
+    }
+    });
+  }
 }

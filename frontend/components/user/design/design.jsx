@@ -13,10 +13,14 @@ const Design = React.createClass({
   },
 
   componentDidMount () {
-    FormStore.addListener(this.onChange);
+    this.formStoreReceipt = FormStore.addListener(this.newFormProcessor);
   },
 
-  onChange () {
+  componentWillUnmount () {
+    this.formStoreReceipt.remove();
+  },
+
+  newFormProcessor () {
     this.setState({ form: FormStore.getFormInFocus(), field: FormStore.getFieldInFocus()})
   },
 
@@ -31,14 +35,17 @@ const Design = React.createClass({
   render () {
     return (
       <div className="paneContainer container" >
+
           <TabPane  form={this.state.form}
                     field={this.state.field}
                     changeHandler={this.changeHandler}
                     drag={this.drag}
                     drop={this.drop}/>
+
           <FormViewPane form={this.state.form}
                         field={this.state.field}
                         addField={this.addField}/>
+
       </div>
     )
   }

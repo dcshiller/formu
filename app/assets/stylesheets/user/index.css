@@ -1,0 +1,79 @@
+
+
+
+
+div.userBox header {
+  vertical-align: middle;
+    padding: 20px;
+    height: 44px;
+    margin-bottom: 40px;
+    vertical-align: middle;
+}
+
+div.userBox h2 {
+  width: 200px;
+  display: block;
+  float: left;
+  padding: 5px;
+  margin: 0px 0px 0px 0px;
+  vertical-align: middle;
+}
+
+div.userBox #newForm {
+  width: 100px;
+  height: 24px;
+  color: white;
+  /*border: 1px solid tan;*/
+  border-radius: 4px;
+  padding: 7px 15px 7px 15px;
+  text-decoration: none;
+  /*margin-top: 40px;*/
+  float: right;
+  background: rgb(0, 204, 0);
+  border: 1px solid rgb(0, 179, 0);
+  display: block;
+  text-align: center;
+}
+
+div.userBox ul.indexList {
+  background: rgb(224, 240, 255);
+  border: 1px solid rgb(204, 210, 235);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 20px;
+}
+
+div.userBox li.form_index_item {
+  border: 1px solid rgb(204, 210, 235);
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  width: 95%;
+  /*vertical-align: middle;*/
+  margin: 10px 0px;
+}
+
+li.form_index_item span {
+  margin-top: -5px;
+  float: left;
+  /*padding: 10px 10px;*/
+  height: 100%;
+  width: 25%;
+}
+
+li.form_index_item span:nth-child(3), span:nth-child(4) {
+  text-align: right;
+}
+
+div.userBox div.indexContainer {
+  background: rgb(145, 158, 212);
+  border-radius: 10px;
+}
+
+div.userBox div.indexContainer h3 {
+  color: white;
+  padding: 10px;
+  margin: 0px;
+  text-shadow: 1px 1px rgb(105, 128, 172);
+  text-align: center;
+}

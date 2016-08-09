@@ -1,24 +1,15 @@
-json.form do
+json.properties do
+  json.Title @form.title
+  json.Description @form.instructions
+  json.id @form.id
+end
 
-  json.formProperties do
-    json.title @form.title
-    json.instructions @form.instructions
-    json.formId @form.id
+json.fields do
+  json.array! @form.fields do |field|
+    json.type field.field_type
+    json.label field.label
+    json.fieldId field.id
+    json.instructions field.instructions
+    json.choices field.choices.collect {|choice| choice.choice_text}
   end
-
-  json.fields do
-    json.array @form.fields do |field|
-      json.type field.field_type
-      json.label field.label
-      json.fieldId field.id
-      json.instructions field.instructions
-      json.choices do
-          json.array field.choices do |choice|
-            json.choice_text choice.choice_text
-            json.choice_number choice.choice_position
-          end
-      end
-    end
-  end
-
 end
