@@ -15,7 +15,7 @@ const FormPropertiesTab = React.createClass({
     e.preventDefault();
     let propToChange = e.target.id.split("_").pop();
     let newValue = e.target.value;
-    DesignActions.changeFormProperty(propToChange, NewValue);
+    DesignActions.changeFormProperty(propToChange, newValue);
     this.forceUpdate();
   },
 
@@ -25,12 +25,12 @@ const FormPropertiesTab = React.createClass({
       <div className="designTab">
 
         <form className="tabForm">
-          { fieldBuilder("Title",
+          { fieldBuilder("title",
                           "text",
-                          this.props.form.properties["Title"]) }
-          { fieldBuilder( "Description",
+                          this.props.form.properties.title) }
+          { fieldBuilder( "instructions",
                           "paragraph",
-                          this.props.form.properties["Description"]) }
+                          this.props.form.properties.instructions) }
         </form>
       </div>
     )

@@ -5,8 +5,8 @@ const CONSTS = require('../constants/constants');
 const FormStore = new Store(AppDispatcher);
 var _Form = {
           properties: {
-            Title: "Untitled Form",
-            Description: "This is a form. May it soon be awesome."
+            title: "Untitled Form",
+            instructions: "This is a form. May it soon be awesome."
           },
           fields: [
                     // {type: "text",
@@ -25,25 +25,41 @@ var _Form = {
 var _FieldInFocus = null;
 
 FormStore.addField = function (type, pos) {
-  let newId = Math.floor(Math.random()*1000000000).toString(36);
+  let newId = "TEMP" + Math.floor(Math.random()*1000000000);//toString(36);
   let choices;
-  if (type === "checkbox" || type ==="radio") {choices = ["choice 1", "choice 2"]}
-  let newField = {fieldId: newId,
+  if (type === "checkbox" || type ==="radio")
+    {choices = [{choice_text: "choice 1",
+                choice_position: 0,
+                id: "TEMP" + Math.floor(Math.random()*1000000000)},
+                {choice_text: "choice 2",
+                  choice_position: 1,
+                  id: "TEMP" + Math.floor(Math.random()*1000000000)}
+                  ]}
+  let newField = {id: newId,
                   type: type,
                   className: type,
                   choices: choices,
-                  Label: "New Label",
-                  Instructions: "Place your instructions here."};
+                  label: "New Label",
+                  instructions: "Place your instructions here."};
   this.insertFieldAt(newField, pos);
   };
 
 FormStore.addFieldChoice = function (){
-  this.getFieldInFocus().choices.push("choice");
+  this.getFieldInFocus().choices.push({
+                                       choice_text: "choice",
+                                       choice_position: this.getFieldInFocus().choices.length,
+                                       id: "TEMP" + Math.floor(Math.random()*100000000)
+                                     });
   this.__emitChange();
 };
 
-FormStore.changeFieldChoice = function (choice_number, new_value) {
-  this.getFieldInFocus().choices[choice_number] = new_value;
+FormStore.changeFieldChoice = function (choice_id, new_value) {
+  this.getFieldInFocus().choices.forEach(
+    function(choice){
+      if (choice.id == choice_id)
+        {choice.choice_text = new_value}
+    }
+  );
   this.__emitChange();
 };
 
@@ -60,8 +76,8 @@ FormStore.changeFormProperty = function (property_name, new_value) {
 FormStore.clearForm = function () {
   _Form = {
           properties: {
-            Title: "Untitled Form",
-            Description: "This is a form. May it soon be awesome."
+            title: "Untitled Form",
+            instructions: "This is a form. May it soon be awesome."
           },
           fields: []
   };
@@ -80,7 +96,7 @@ FormStore.deleteByFieldPosition = function (fieldPos) {
 FormStore.findPositionByFieldId = function (fieldId) {
   let targetPosition = -1;
   _Form.fields.forEach(function(element, index){
-    if (element.fieldId === fieldId){
+    if (element.id === fieldId){
       targetPosition = index;
     }
   })
@@ -116,7 +132,7 @@ FormStore.repositionField = function (fieldId, pos) {
 
 FormStore.setFormInFocus = function (form) {
   _Form = form;
-  this.__emitChange();
+   this.__emitChange();
 };
 
 FormStore.__onDispatch = function (payload) {

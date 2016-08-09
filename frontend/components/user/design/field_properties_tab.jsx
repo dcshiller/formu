@@ -4,12 +4,22 @@ const Field = require('../../field')
 
 const FieldPropertiesTab = React.createClass({
 
+  addChoiceHandler (e) {
+    e.preventDefault();
+    DesignActions.addFieldChoice();
+  },
+
+  deleteFieldHandler (e, fieldToDelete) {
+    e.preventDefault();
+    DesignActions.deleteField(fieldToDelete);
+  },
+
   inputHandlerProp (e) {
     e.preventDefault();
     DesignActions.changeFieldProperty(e.target.id.split("_").pop(), e.target.value);
     this.forceUpdate();
   },
-  
+
   inputHandlerChoice (e) {
     e.preventDefault();
     DesignActions.changeFieldChoice(e.target.id.replace(" ","_").split("_").pop(), e.target.value);
@@ -17,7 +27,7 @@ const FieldPropertiesTab = React.createClass({
   },
 
   render(){
-    let choices = (this.props.field && this.props.field.choices);
+    let choices = getIfDefined(this.props.field, "choices");
     let fB_forFieldProps = this.props.fieldBuilder.bind(null, this.inputHandlerProp)
     let fB_forFieldChoices = this.props.fieldBuilder.bind(null, this.inputHandlerChoice)
     return(
@@ -26,32 +36,32 @@ const FieldPropertiesTab = React.createClass({
           { !this.props.field && <p> Select a field on right to get started. </p> }
 
           { this.props.field &&
-            fB_forFieldProps( "Label",
+            fB_forFieldProps( "label",
                               "text",
-                              this.props.field && this.props.field["Label"] ) }
+                              this.props.field.label ) }
           { this.props.field &&
-            fB_forFieldProps( "Instructions",
+            fB_forFieldProps( "instructions",
                               "text",
-                              this.props.field && this.props.field["Instructions"]) }
+                              this.props.field.instructions )}
 
-          {choices &&
+          {"radio checkbox".includes(this.props.field.type) &&
             (
               <div className="choices">
               Choices
                 { choices.map(function(choice, index){
-                    return fB_forFieldChoices("Choice " + index,
+                    return fB_forFieldChoices("choice " + choice.id,
                                                "text",
-                                               choices[index],
+                                               choice.choice_text,
                                               {hideLabel: true});
                 })}
-                <button id="addChoiceButton" onClick = {DesignActions.addFieldChoice }> + </button>
+                <button id="addChoiceButton" onClick = { this.addChoiceHandler }> + </button>
               </div>
           )
           }
        </form>
         {this.props.field &&
           <img className = "deleteButton"
-               onClick={DesignActions.deleteField.bind(null, this.props.field.fieldId)}
+               onClick={this.deleteFieldHandler.bind(null, this.props.field.id)}
                src={window.trashURL}
            />
          }

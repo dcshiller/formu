@@ -3,6 +3,6 @@ class FormField < ActiveRecord::Base
   has_many :choices, class_name: :FormFieldChoice, dependent: :destroy, inverse_of: :form_field
   accepts_nested_attributes_for :choices, :allow_destroy => true
 
-  # validates :form_id, presence: true
+  # validates :form, presence: true
 
 end

@@ -21,7 +21,10 @@ const Design = React.createClass({
   },
 
   newFormProcessor () {
-    this.setState({ form: FormStore.getFormInFocus(), field: FormStore.getFieldInFocus()})
+    // let newField = {field: FormStore.getFieldInFocus()};
+    this.setState({field: FormStore.getFieldInFocus()});
+    this.setState({form: FormStore.getFormInFocus()});
+    // this.setState(newField)
   },
 
   drag (object_to_drag) {

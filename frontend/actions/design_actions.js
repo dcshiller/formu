@@ -11,18 +11,23 @@ module.exports = {
     });
   },
 
-  repositionField (fieldId, pos) {
+  addFieldChoice () {
     AppDispatcher.dispatch({
-          actionType: CONSTS.REPOSITION_FIELD,
-          fieldId: fieldId,
-          pos: pos
-      });
+        actionType: CONSTS.ADD_FIELD_CHOICE,
+    });
   },
 
-  deleteField (fieldId) {
+  blurField () {
     AppDispatcher.dispatch({
-      actionType: CONSTS.DELETE_FIELD,
-      fieldId: fieldId,
+          actionType: CONSTS.BLUR_FIELD,
+        });
+  },
+
+  changeFieldChoice (choice_number, new_value) {
+    AppDispatcher.dispatch({
+        actionType: CONSTS.CHANGE_FIELD_CHOICE,
+        choice_number: choice_number,
+        new_value: new_value
     });
   },
 
@@ -34,25 +39,18 @@ module.exports = {
     });
   },
 
-  changeFieldChoice (choice_number, new_value) {
-    AppDispatcher.dispatch({
-        actionType: CONSTS.CHANGE_FIELD_CHOICE,
-        choice_number: choice_number,
-        new_value: new_value
-    });
-  },
-
-  addFieldChoice () {
-    AppDispatcher.dispatch({
-        actionType: CONSTS.ADD_FIELD_CHOICE,
-    });
-  },
-
   changeFormProperty (property_name, new_value) {
     AppDispatcher.dispatch({
         actionType: CONSTS.CHANGE_FORM_PROPERTY,
         property_name: property_name,
         new_value: new_value
+    });
+  },
+
+  deleteField (fieldId) {
+    AppDispatcher.dispatch({
+      actionType: CONSTS.DELETE_FIELD,
+      fieldId: fieldId,
     });
   },
 
@@ -63,11 +61,12 @@ module.exports = {
     });
   },
 
-
-  blurField () {
+  repositionField (fieldId, pos) {
     AppDispatcher.dispatch({
-          actionType: CONSTS.BLUR_FIELD,
-        });
+          actionType: CONSTS.REPOSITION_FIELD,
+          fieldId: fieldId,
+          pos: pos
+      });
   }
 
 };

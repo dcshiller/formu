@@ -67,17 +67,17 @@ const FormViewPane = React.createClass({
    return (
             <div className ="formViewEntry">
               <img className = "deleteButton"
-                  key={fieldObj.fieldId + "_deleteButton"}
-                  onClick={DesignActions.deleteField.bind(null, fieldObj.fieldId)}
+                  key={fieldObj.id + "_deleteButton"}
+                  onClick={DesignActions.deleteField.bind(null, fieldObj.id)}
                   src={window.trashURL}
               />
                 <Field fieldVals={ {
-                    fieldName: fieldObj.Label || "New Field",
-                    instructions: fieldObj.Instructions,
+                    fieldName: fieldObj.label || "New Field",
+                    instructions: fieldObj.instructions,
                     fieldType: (fieldObj.type || "text"),
-                    fieldId: (fieldObj.fieldId),
-                    className: fieldObj.className,
-                    selected:  this.props.field && fieldObj.fieldId === this.props.field.fieldId,
+                    fieldId: (fieldObj.id || fieldObj.fieldId),
+                    className: fieldObj.className || fieldObj.type,
+                    selected:  this.props.field && fieldObj.id === this.props.field.id,
                     handler: null,
                     readOnly: true,
                     draggable: true,
@@ -128,7 +128,7 @@ const FormViewPane = React.createClass({
 
   selectField (e) {
     e.preventDefault();
-    let fieldId = e.target.id.split("_")[0];
+    let fieldId = parseInt(e.target.id.split("_")[0]);
     DesignActions.focusOnField(fieldId);
   },
 
@@ -145,8 +145,8 @@ const FormViewPane = React.createClass({
   render () {
     return(
       <div className="formViewPane">
-          <h1 className="formTitle"> {this.props.form.properties.Title} </h1>
-          <p>{this.props.form.properties.Description} </p>
+          <h1 className="formTitle"> {this.props.form.properties.title} </h1>
+          <p>{this.props.form.properties.instructions} </p>
           <hr/>
           {this.drawFields()}
           <button className="saveButton" onClick={this.saveForm}>
