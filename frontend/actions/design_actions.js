@@ -47,13 +47,6 @@ module.exports = {
     });
   },
 
-  deleteField (fieldId) {
-    AppDispatcher.dispatch({
-      actionType: CONSTS.DELETE_FIELD,
-      fieldId: fieldId,
-    });
-  },
-
   focusOnField (fieldId) {
     AppDispatcher.dispatch({
       actionType: CONSTS.FOCUS_ON_FIELD,

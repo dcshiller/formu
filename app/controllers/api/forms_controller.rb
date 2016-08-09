@@ -15,18 +15,17 @@ class Api::FormsController < ApplicationController
     updated_form = translate_form_data
     @form = Form.find(updated_form[:id])
     if @form.update(updated_form)
-      # render json: {password: "incorrect"}, status: 401
-      @form.fields.each do |field|
-        if ( updated_form[:fields_attributes].none? do |tempField|
-                      tempField["id"].to_i == field.id
-                      # # ||
-                      # tempField["label"] == field.label &&
-                      #   tempField["field_type"] == field.field_type #CHOICES
-              end
-            )
-          FormField.delete(field.id)
-        end
-      end
+      # # render json: {password: "incorrect"}, status: 401
+      # @form.fields.each do |field|
+      #   if ( updated_form[:fields_attributes].none? do |tempField|
+      #                 tempField["id"].to_i == field.id ||
+      #                 tempField["label"] == field.label &&
+      #                   tempField["field_type"] == field.field_type #CHOICES
+      #         end
+      #       )
+      #     FormField.delete(field.id)
+      #   end
+      # end
 
       @form.choices do |choice|
         if updated_form[:fields_attributes].none? do |field|
@@ -34,7 +33,6 @@ class Api::FormsController < ApplicationController
         end
           FormFieldChoice.delete(choice.id)
         end
-
       end
 
       render json: {form: "Updated"}, status: 200

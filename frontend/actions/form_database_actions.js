@@ -19,6 +19,21 @@ module.exports = {
     })
   },
 
+  deleteField (id) {
+    if (id.slice)
+      this.deleteFieldSuccess(id);
+    else {
+      ApiFormUtils.deleteField(id, this.deleteFieldSuccess.bind(null, id), this.errorMessage);
+    }
+  },
+
+  deleteFieldSuccess (fieldId) {
+    AppDispatcher.dispatch({
+      actionType: CONSTS.DELETE_FIELD,
+      fieldId: fieldId,
+    });
+  },
+
   errorMessage (message) {
     AppDispatcher.dispatch({
       actionType: CONSTS.ERROR,

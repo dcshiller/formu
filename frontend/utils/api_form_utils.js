@@ -1,6 +1,16 @@
 module.exports = {
 
-  getForm(formId, successCallBack, failureCallBack){
+  deleteField (fieldId, successCallBack, failureCallBack) {
+    $.ajax({
+        url: "api/fields/" + fieldId,
+        method: "DELETE",
+        dataType: "json",
+        success(successMessage){successCallBack(successMessage)},
+        error(errorMessage){failureCallBack(errorMessage)}
+      });
+  },
+
+  getForm (formId, successCallBack, failureCallBack) {
     $.ajax({
       url: "api/forms/" + formId,
       method: "GET",
@@ -10,7 +20,7 @@ module.exports = {
     });
   },
 
-  getForms(username, successCallBack, failureCallBack){
+  getForms (username, successCallBack, failureCallBack) {
     $.ajax({
       url: "api/forms",
       method: "GET",
@@ -21,7 +31,7 @@ module.exports = {
     });
   },
 
-  saveForm(form, successCallBack, failureCallBack){
+  saveForm (form, successCallBack, failureCallBack) {
     $.ajax({
         url: "api/forms",
         method: "POST",

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create], format: :json
     resource :session, only: [:create, :destroy], format: :json
     resources :forms, except: [:new, :edit], format: :json
+    resources :fields, only: [:destroy], format: :json
   end
 
 

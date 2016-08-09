@@ -29,9 +29,14 @@ const FormViewPane = React.createClass({
     window.dragged = e.target;
   },
 
-  removeTarget (e){
+  removeTarget (e) {
     e.preventDefault();
     setTimeout(function(){window.dragged = null;}, 500);
+  },
+
+  deleteField (fieldId, e) {
+    // DesignActions.deleteField.bind(fieldId)
+    FormDatabaseActions.deleteField(fieldId)
   },
 
   dragOver (e) {
@@ -68,7 +73,7 @@ const FormViewPane = React.createClass({
             <div className ="formViewEntry">
               <img className = "deleteButton"
                   key={fieldObj.id + "_deleteButton"}
-                  onClick={DesignActions.deleteField.bind(null, fieldObj.id)}
+                  onClick={this.deleteField.bind(null, fieldObj.id)}
                   src={window.trashURL}
               />
                 <Field fieldVals={ {
