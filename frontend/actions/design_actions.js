@@ -18,6 +18,7 @@ module.exports = {
   },
 
   blurField () {
+    console.log("blurred")
     AppDispatcher.dispatch({
           actionType: CONSTS.BLUR_FIELD,
         });

@@ -133,7 +133,11 @@ const FormViewPane = React.createClass({
 
   selectField (e) {
     e.preventDefault();
-    let fieldId = parseInt(e.target.id.split("_")[0]);
+    let fieldId;
+    let idString = e.target.id.split("_")[0];
+    if (idString.slice && idString.slice(0,4) != "TEMP")
+      {fieldId = parseInt(fieldId);}
+    else {fieldId = e.target.id.split("_")[0];}
     DesignActions.focusOnField(fieldId);
   },
 

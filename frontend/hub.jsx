@@ -15,7 +15,7 @@ window.getIfDefined = function(...args){
     else
       { return undefined; }
   }
-  return nestLevel[args[i]];
+  return nestLevel && nestLevel[args[i]];
 };
 
 window.doIfDefined = function(func, arg){

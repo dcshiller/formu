@@ -1,5 +1,6 @@
 const React = require('react');
 const DesignActions = require('../../../actions/design_actions')
+const FormDatabaseActions = require('../../../actions/form_database_actions')
 const Field = require('../../field')
 
 const FieldPropertiesTab = React.createClass({
@@ -9,9 +10,10 @@ const FieldPropertiesTab = React.createClass({
     DesignActions.addFieldChoice();
   },
 
-  deleteFieldHandler (e, fieldToDelete) {
+  deleteFieldHandler (fieldToDelete, e) {
     e.preventDefault();
-    DesignActions.deleteField(fieldToDelete);
+    DesignActions.blurField();
+    FormDatabaseActions.deleteField(fieldToDelete);
   },
 
   inputHandlerProp (e) {
@@ -44,7 +46,7 @@ const FieldPropertiesTab = React.createClass({
                               "text",
                               this.props.field.instructions )}
 
-          {"radio checkbox".includes(this.props.field.type) &&
+          {this.props.field && "radio checkbox".includes(this.props.field.type) &&
             (
               <div className="choices">
               Choices

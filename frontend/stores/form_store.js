@@ -84,7 +84,7 @@ FormStore.clearForm = function () {
 },
 
 FormStore.deleteByFieldId = function (fieldId) {
-  let a = this.findPositionByFieldId(fieldId);
+  // let a = this.findPositionByFieldId(fieldId);
   this.deleteByFieldPosition(this.findPositionByFieldId(fieldId))
   this.__emitChange();
 };
