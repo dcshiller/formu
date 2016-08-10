@@ -111,6 +111,10 @@ div .formViewEntry {
   position: relative;
 }
 
+div .formViewEntry * {
+  cursor: pointer;
+}
+
 div .formViewEntry:hover .deleteButton {
   display: block;
   opacity: .3;
@@ -148,14 +152,16 @@ div .formViewPane .dropTarget.underDragged {
 
 
 div button.saveButton {
-  padding: 20px;
+  padding: 10px 10px 20px 10px;
   z-index: 10;
   background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 51%, #d7dee3 100%);
   border: 1px solid #d7dee3;
   border-radius: 10px;
-  margin-left: calc(50% - 30px);
+  position: absolute;
+  bottom: 20px;
+  right: calc(50% - 250px);
   width: 100px;
-  height: 60px;
+  height: 40px;
 }
 
 div button.saveButton:hover {

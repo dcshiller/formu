@@ -77,9 +77,6 @@ const Field = React.createClass({
         let fieldVals = this.props.fieldVals;
         return (<div className      =       { (nestLevel > 1 && " ") ||
                                               (fieldVals.selected ? "inputWrapper selected" : "inputWrapper") }
-                      draggable     =       { fieldVals.draggable }
-                      onDragStart   =       { fieldVals.onDragStart }
-                      onDragEnd     =       { fieldVals.onDragEnd }
                       onClick       =       { fieldVals.onContainerClick }
                       id            =       { fieldVals.fieldId + "_div_" + nestLevel }
                       key            =       { fieldVals.fieldId + "_div" + nestLevel }>
@@ -87,6 +84,10 @@ const Field = React.createClass({
                       { content2 }
                 </div> )
       },
+
+      // draggable     =       { fieldVals.draggable }
+      // onDragStart   =       { fieldVals.onDragStart }
+      // onDragEnd     =       { fieldVals.onDragEnd }
 
       render () {
         let fieldVals = this.props.fieldVals;

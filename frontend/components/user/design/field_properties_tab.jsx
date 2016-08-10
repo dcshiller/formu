@@ -50,7 +50,7 @@ const FieldPropertiesTab = React.createClass({
             (
               <div className="choices">
               Choices
-                { choices.map(function(choice, index){
+                { choices && choices.map(function(choice, index){
                     return fB_forFieldChoices("choice " + choice.id,
                                                "text",
                                                choice.choice_text,

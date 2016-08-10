@@ -55,10 +55,10 @@ FormStore.addFieldChoice = function (){
 
 FormStore.changeFieldChoice = function (choice_id, new_value) {
   this.getFieldInFocus().choices.forEach(
-    function(choice){
-      if (choice.id == choice_id)
-        {choice.choice_text = new_value}
-    }
+  function(choice){
+    if (choice.id == choice_id)
+      {choice.choice_text = new_value}
+  }
   );
   this.__emitChange();
 };
@@ -95,11 +95,16 @@ FormStore.deleteByFieldPosition = function (fieldPos) {
 
 FormStore.findPositionByFieldId = function (fieldId) {
   let targetPosition = -1;
-  _Form.fields.forEach(function(element, index){
-    if (element.id === fieldId){
-      targetPosition = index;
+  for (let i = 0; i < _Form.fields.length; i++){
+    if (_Form.fields[i] == undefined) {
+       _Form.fields.splice(i, 1);
+       console.log("removed one")
+       i--;
+     }
+    if (_Form.fields[i].id == fieldId){
+      targetPosition = i
     }
-  })
+  }
   return targetPosition;
 };
 
@@ -123,10 +128,12 @@ FormStore.insertFieldAt = function (field, pos) {
 };
 
 FormStore.repositionField = function (fieldId, pos) {
+  fieldId = fieldId.slice && fieldId.slice(0,4) == "TEMP" ? fieldId : parseInt(fieldId);
   let fieldToBeMoved = this.findElementByFieldId(fieldId);
   let oldPos = this.findPositionByFieldId(fieldId);
+  debugger
   this.deleteByFieldId(fieldId);
-  if (pos < oldPos) {pos}
+  if (oldPos < pos) {pos = pos - 1}
   this.insertFieldAt(fieldToBeMoved, pos);
 };
 

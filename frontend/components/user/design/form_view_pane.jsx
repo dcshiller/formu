@@ -25,12 +25,12 @@ const FormViewPane = React.createClass({
   },
 
   addTarget (e) {
-    e.preventDefault();
+    // e.preventDefault();
     window.dragged = e.target;
   },
 
   removeTarget (e) {
-    e.preventDefault();
+    // e.preventDefault();
     setTimeout(function(){window.dragged = null;}, 500);
   },
 
@@ -46,31 +46,38 @@ const FormViewPane = React.createClass({
   },
 
   dragLeave (e) {
-    e.preventDefault();
+    // e.preventDefault();
     if (e.target.className.indexOf("underDragged") != -1)
     {e.target.className = "dropTarget"}
   },
 
   dropField (e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.dragLeave(e)
     let draggedObj = window.dragged;
     let position = e.target.id.split("_")[1]
-    if (!draggedObj.className) {
-      DesignActions.addField(draggedObj.replace(" ",""), position);
-    }
-    else if ("inputWrapper sectionTitle".includes(draggedObj.className)) {
-      let fieldId = getIfDefined(draggedObj.getElementsByTagName("input")[0] , "id");
-      fieldId = (fieldId || getIfDefined(draggedObj.getElementsByTagName("hr")[0], "id"));
-      fieldId = (fieldId || getIfDefined(draggedObj, "id"));
-      fieldId = fieldId.split("_")[0];
-      DesignActions.repositionField(fieldId, position);
-    }
+    // if (!draggedObj.className) {
+    //   DesignActions.addField(draggedObj.replace(" ",""), position);
+    // }
+    // // else if ("formViewEntry".includes(draggedObj.className)) {
+    //   let fieldId = getIfDefined(draggedObj.getElementsByTagName("input")[0] , "id");
+    //   fieldId = (fieldId || getIfDefined(draggedObj.getElementsByTagName("hr")[0], "id"));
+    //   fieldId = (fieldId || getIfDefined(draggedObj, "id"));
+    let fieldId = draggedObj.id.split("_")[0];
+    DesignActions.repositionField(fieldId, position);
+    debugger
+    // }
   },
 
   drawField (fieldObj) {
    return (
-            <div className ="formViewEntry">
+            <div className ="formViewEntry"
+                 key={ fieldObj.id + "_outer_div" }
+                 id={ fieldObj.id + "_outer_div" }
+                 draggable={true}
+                 onDragStart = {this.addTarget}
+                 onDragEnd = {this.removeTarget}
+                 onClick = {this.selectField} >
               <img className = "deleteButton"
                   key={fieldObj.id + "_deleteButton"}
                   onClick={this.deleteField.bind(null, fieldObj.id)}
@@ -85,16 +92,19 @@ const FormViewPane = React.createClass({
                     selected:  this.props.field && fieldObj.id === this.props.field.id,
                     handler: null,
                     readOnly: true,
-                    draggable: true,
                     choices: fieldObj.choices,
-                    onDragStart: this.addTarget,
-                    onDragEnd:this.removeTarget,
                     onContainerClick: this.selectField,
                     fieldValue: (fieldObj.val || "" )
                   } }/>
             </div>
           )
   },
+
+  // // draggable: true,
+  // onDragStart: this.addTarget,
+  // onDragEnd:this.removeTarget,
+
+
 
   drawDropTarget (number) {
     return (
@@ -135,9 +145,9 @@ const FormViewPane = React.createClass({
     e.preventDefault();
     let fieldId;
     let idString = e.target.id.split("_")[0];
-    if (idString.slice && idString.slice(0,4) != "TEMP")
-      {fieldId = parseInt(fieldId);}
-    else {fieldId = e.target.id.split("_")[0];}
+    if (idString.slice(0,4) != "TEMP")
+      {fieldId = parseInt(idString);}
+    else {fieldId = idString;}
     DesignActions.focusOnField(fieldId);
   },
 

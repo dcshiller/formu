@@ -53,7 +53,6 @@ const FieldSelectorTab = React.createClass({
           {this.addField("paragraph")}
           {this.addField("select one")}
           {this.addField("checkbox")}
-          {this.addField("dropdown")}
         </div>
         <div className="fieldSelectorGroup container ">
           {this.addField("divider")}

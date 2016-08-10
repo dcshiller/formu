@@ -48,7 +48,7 @@ module.exports = {
     });
   },
 
-  focusOnField (fieldId) {
+  focusOnField (fieldId) {    
     AppDispatcher.dispatch({
       actionType: CONSTS.FOCUS_ON_FIELD,
       fieldId: fieldId

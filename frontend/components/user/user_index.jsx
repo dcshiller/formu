@@ -42,6 +42,7 @@ const UserIndex = React.createClass({
                     </button>
                   </span>
                   <span id={"form_" + index + "_share"}> Share </span>
+                  <span id={"form_" + index + "_delete"}> <img src={window.trashURL}/> </span>
               </li>)
     });
   },
