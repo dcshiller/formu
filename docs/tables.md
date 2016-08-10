@@ -1,4 +1,3 @@
-ynr
 ##### Users
 
 | Column Name | Type | Relation | Other |

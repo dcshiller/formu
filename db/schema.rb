@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807155625) do
+ActiveRecord::Schema.define(version: 20160810201249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20160807155625) do
 
   add_index "form_field_choices", ["form_field_id"], name: "index_form_field_choices_on_form_field_id", using: :btree
 
+  create_table "form_field_responses", force: :cascade do |t|
+    t.integer "form_field_id",  null: false
+    t.integer "response_id",    null: false
+    t.text    "response_value"
+  end
+
+  add_index "form_field_responses", ["form_field_id"], name: "index_form_field_responses_on_form_field_id", using: :btree
+  add_index "form_field_responses", ["response_id"], name: "index_form_field_responses_on_response_id", using: :btree
+
   create_table "form_fields", force: :cascade do |t|
     t.integer  "form_id",      null: false
     t.string   "label"
@@ -35,6 +44,14 @@ ActiveRecord::Schema.define(version: 20160807155625) do
   end
 
   add_index "form_fields", ["form_id"], name: "index_form_fields_on_form_id", using: :btree
+
+  create_table "form_responses", force: :cascade do |t|
+    t.integer  "form_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "form_responses", ["form_id"], name: "index_form_responses_on_form_id", using: :btree
 
   create_table "forms", force: :cascade do |t|
     t.string   "title",        null: false
