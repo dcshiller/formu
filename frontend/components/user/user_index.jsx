@@ -1,5 +1,6 @@
 const React = require('react');
 const hashHistory = require('react-router').hashHistory;
+const Link = require('react-router').Link;
 const SessionStore = require('../../stores/session_store');
 const FormsStore = require('../../stores/forms_store.js');
 const AuthActions = require('../../actions/auth_actions.js');
@@ -43,12 +44,15 @@ const UserIndex = React.createClass({
     return this.state.forms.map(function(form, index){
       return (<li id={"form_item_" + index}
                   key={"form_item_" + index}
-                  className="form_index_item">
+                  className="form_index_item container">
                   <span id={"form_" + index + "_title"}> {form.title} </span>
                   <span id={"form_" + index + "_created_at"}> {form.created_at} </span>
+                  <span id={"form_" + index + "_link"}>
+                    <Link to={`${self.state.username}/form/${form.id}`}> link </Link>
+                  </span>
                   <span id={"form_" + index + "_edit"}>
                     <button onClick={self.editFormHandler.bind(null, form.id)}>
-                      Edit
+                      edit
                     </button>
                   </span>
                   <span id={"form_" + index + "_share"}> Share </span>

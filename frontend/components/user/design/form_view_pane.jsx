@@ -57,7 +57,6 @@ const FormViewPane = React.createClass({
     this.dragLeave(e)
     let draggedObj = window.dragged;
     let position = e.target.id.split("_")[1]
-    debugger
     if (!(draggedObj instanceof Object)) {
       DesignActions.addField(draggedObj.replace(" ",""), position);
     }
@@ -71,6 +70,7 @@ const FormViewPane = React.createClass({
   },
 
   drawField (fieldObj) {
+    
    return (
             <div className ="formViewEntry"
                  key={ fieldObj.id + "_outer_div" }
