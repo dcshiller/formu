@@ -59,6 +59,7 @@ const FieldSelectorTab = React.createClass({
           {this.addField("section title")}
         </div>
         </ul>
+        <p> Click or drag a field to add it to the form! </p>
       </div>
     )
   }

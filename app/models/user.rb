@@ -1,5 +1,19 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  email           :string           not null
+#  password_digest :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  session_token   :string
+#
+
 class User < ActiveRecord::Base
   has_many :forms, foreign_key: :designer_id, dependent: :destroy
+  has_many :responses, through: :forms
 
   attr_reader :password
 
