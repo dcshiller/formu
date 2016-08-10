@@ -70,7 +70,7 @@ const FormViewPane = React.createClass({
   },
 
   drawField (fieldObj) {
-    
+
    return (
             <div className ="formViewEntry"
                  key={ fieldObj.id + "_outer_div" }

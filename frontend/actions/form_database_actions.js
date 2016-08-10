@@ -75,7 +75,7 @@ module.exports = {
   },
 
   saveForm (form) {
-    ApiFormUtils.saveForm(form, this.addIdAndNotifyErrorStore.bind(this), this.errorMessage)
+    ApiFormUtils.saveForm(form, this.passFormToDispatcher, this.errorMessage)
   },
 
   updateForm (form) {
