@@ -4,6 +4,7 @@ import { reactRouter , IndexRoute, Router , Route , hashHistory } from 'react-ro
 import { App, Login, Signup, Splashbar } from './components/application/application_hub.js';
 import { User , UserIndex , Design } from './components/user/user_hub.js';
 const Respond = require('./components/respond/respond.jsx');
+const Response = require('./components/respond/response.jsx')
 const SessionStore = require('./stores/session_store.js');
 const AuthActions = require('./actions/auth_actions.js');
 const FormActions = require('./actions/auth_actions.js');
@@ -42,6 +43,7 @@ var routes = (
       <Route path="welcome" component={Splashbar }/>
       <Route path="signup" component={Signup}/>
       <Route path={':username/form/:formId'} component={Respond}/>
+      <Route path={':username/form/:formId/:responseId'} component={Response}/>
     </Route>
     <Route path="login" component={Login}/>
     <Route path={'users/:username'} component={User} onEnter={validate}>
