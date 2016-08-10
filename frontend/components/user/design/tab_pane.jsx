@@ -19,15 +19,13 @@ const TabPane = React.createClass({
   },
 
   fieldBuilder (handler, fieldName, fieldType, fieldValue, options) {
-    let a = (
-      <Field fieldVals={ { fieldName: fieldName,
+    return (  <Field fieldVals={ { fieldName: fieldName,
                   hideLabel:  options && options.hideLabel,
                   fieldType: fieldType,
                   handler: handler,
                   fieldId: (this.props.field && this.props.field.id) + "_editor",
                   fieldValue: fieldValue}} />
     )
-    return a;
   },
 
   selectPane (tabNumber) {

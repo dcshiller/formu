@@ -105,8 +105,6 @@ const FormViewPane = React.createClass({
   // onDragStart: this.addTarget,
   // onDragEnd:this.removeTarget,
 
-
-
   drawDropTarget (number) {
     return (
       <div className = "dropTarget"

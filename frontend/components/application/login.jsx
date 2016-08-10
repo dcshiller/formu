@@ -86,7 +86,7 @@ const Login = React.createClass({
         <Field fieldVals={ { fieldName: fieldName,
                       fieldType: fieldType,
                       handler: this.inputHandler,
-                      fieldValue: this.state[fieldName]}} />
+                      fieldValue: this.state[fieldName]} } />
         {this.fieldErrors({fieldName})}
       </div>
     );

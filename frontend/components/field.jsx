@@ -16,13 +16,16 @@ const Field = React.createClass({
               <label
                    htmlFor       =       { fieldVals.fieldId }
                    className     =       { fieldVals.fieldType }
-                   id            =       { fieldVals.fieldId + "_label"}
+                   id            =       { fieldVals.fieldId + 3 + "_label"}
+                   key           =       { fieldVals.fieldId + 3 + "_label"}
                  >{fieldVals["fieldName"]}</label>
             ),
 
             (fieldVals["instructions"] &&
                <p className = "instructions"
-                   id={fieldVals.fieldId+"_instructions"}>
+                   id={fieldVals.fieldId + "_instructions" + fieldName}
+                   key={fieldVals.fieldId + "_instructions" + fieldName}
+                   >
                    {fieldVals["instructions"]}
                </p>
              )
@@ -78,8 +81,8 @@ const Field = React.createClass({
         return (<div className      =       { (nestLevel > 1 && " ") ||
                                               (fieldVals.selected ? "inputWrapper selected" : "inputWrapper") }
                       onClick       =       { fieldVals.onContainerClick }
-                      id            =       { fieldVals.fieldId + "_div_" + nestLevel }
-                      key            =       { fieldVals.fieldId + "_div" + nestLevel }>
+                      id            =       { fieldVals.fieldId + "_div_" + nestLevel}
+                      key            =       { fieldVals.fieldId + "_div_" + nestLevel}>
                       { content1 }
                       { content2 }
                 </div> )

@@ -51,7 +51,7 @@ const FieldPropertiesTab = React.createClass({
               <div className="choices">
               Choices
                 { choices && choices.map(function(choice, index){
-                    return fB_forFieldChoices("choice " + choice.id,
+                    return fB_forFieldChoices("choice_" + choice.id,
                                                "text",
                                                choice.choice_text,
                                               {hideLabel: true});

@@ -78,7 +78,9 @@ const UserIndex = React.createClass({
       <div className="userBox">
         <header className="header">
           <h2> Form Manager </h2>
-          <button onClick={this.newFormHandler} id="newForm"> + New Form</button>
+          <button onClick={this.newFormHandler} id="newForm">
+            + New Form
+          </button>
         </header>
           <div className="indexContainer">
             <h3> Your Forms </h3>
