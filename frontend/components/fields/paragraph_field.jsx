@@ -5,7 +5,6 @@ const ParagraphField = React.createClass({
     let fieldVals = this.props.fieldVals;
     return (
               <textarea
-                fieldName       =         { fieldVals.fieldName }
                 id              =         { fieldVals.fieldId + "_input_" + fieldVals["fieldName"] }
                 key              =         { fieldVals.fieldId + "_input_" + fieldVals["fieldName"] }
                 type            =         { (fieldVals.fieldType === "paragraph" && "textarea") ||
@@ -21,5 +20,6 @@ const ParagraphField = React.createClass({
 
   }
 });
+// fieldName       =         { fieldVals.fieldName }
 
 module.exports = ParagraphField;

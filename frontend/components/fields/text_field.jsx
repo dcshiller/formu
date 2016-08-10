@@ -20,7 +20,7 @@ const TextField = React.createClass({
     else {
       return (<input
                     id              =         { fieldVals.fieldId + "_input_" + fieldVals.fieldName }
-                    key              =         { fieldVals.fieldId + "_input_" + fieldVals.fieldName }
+                    key             =         { fieldVals.fieldId + "_input_" + fieldVals.fieldName }
                     type            =         { (fieldVals.fieldType === "paragraph" && "textarea") ||
                                                                                     fieldVals.fieldType }
                     className       =         { (fieldVals.fieldType === "paragraph" &&
