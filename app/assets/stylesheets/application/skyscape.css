@@ -3,7 +3,7 @@ div.skyscape {
   position: absolute;
   top: 52px;
   margin-left: -10px;
-  width: 110%;
+  width: calc(100% + 10px);
   height: 400px;
   background: #e86f69;
 }
@@ -33,28 +33,28 @@ div.skyscape img.cloud3, img.cloud4 {
 
 div.skyscape img.cloud1.visible {
   top: 100px;
-  left: 31%;
+  left: 27%;
   transition: left 5s;
   transition-timing-function: cubic-bezier(.6, 0, 0, 1);
 }
 
 div.skyscape img.cloud2.visible {
   top: 200px;
-  left: 21%;
+  left: 17%;
   transition: left 5s;
   transition-timing-function: cubic-bezier(.6, 0, 0, 1);
 }
 
 div.skyscape img.cloud3.visible {
   top: 120px;
-  right: 22%;
+  right: 27%;
   transition: right 5s;
   transition-timing-function: cubic-bezier(.6, 0, 0, 1);
 }
 
 div.skyscape img.cloud4.visible {
   top: 220px;
-  right: 13%;
+  right: 15%;
   transition: right 5s;
   transition-timing-function: cubic-bezier(.6, 0, 0, 1);
 }
@@ -65,7 +65,6 @@ div.skyscape img.mammoth {
   bottom: -23px;
   right: 31%;
 }
-
 
 div.skyscape .signup {
   width: 200px;
@@ -85,4 +84,18 @@ div.skyscape .signup {
 
 div.skyscape .signup:hover {
   background: #00e600;
+}
+
+div span.tagline {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 30%;
+    display: block;
+    width: 100%;
+}
+
+div span.tagline .red {
+  color: red;
 }
