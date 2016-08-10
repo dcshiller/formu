@@ -1,11 +1,17 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-import { reactRouter , IndexRoute, Router , Route , hashHistory } from 'react-router'
-import { App, Login, Signup, Splashbar } from './components/application/application_hub.js'
-import { User , UserIndex , Design } from './components/user/user_hub.js'
-const SessionStore = require('./stores/session_store.js')
-const AuthActions = require('./actions/auth_actions.js')
-const FormActions = require('./actions/auth_actions.js')
+import { reactRouter , IndexRoute, Router , Route , hashHistory } from 'react-router';
+import { App, Login, Signup, Splashbar } from './components/application/application_hub.js';
+import { User , UserIndex , Design } from './components/user/user_hub.js';
+const Respond = require('./components/respond/respond.jsx');
+const SessionStore = require('./stores/session_store.js');
+const AuthActions = require('./actions/auth_actions.js');
+const FormActions = require('./actions/auth_actions.js');
+
+
+window.doIfDefined = function(func, arg){
+  if (arg !== undefined) {func.call(this, arg)}
+};
 
 window.getIfDefined = function(...args){
   let nestLevel = args[0];
@@ -18,8 +24,8 @@ window.getIfDefined = function(...args){
   return nestLevel && nestLevel[args[i]];
 };
 
-window.doIfDefined = function(func, arg){
-  if (arg !== undefined) {func.call(this, arg)}
+const populateStores = function(username){
+  AuthActions.loginUser({username: username});
 };
 
 const validate = function(nextState, replace){
@@ -27,10 +33,6 @@ const validate = function(nextState, replace){
   {
     replace('/login')
   }
-};
-
-const populateStores = function(username){
-  AuthActions.loginUser({username: username});
 };
 
 var routes = (
@@ -45,9 +47,9 @@ var routes = (
       <IndexRoute component={UserIndex}/>
       <Route path={'/:username/design'} component={Design}/>
     </Route>
+    <Route path={':username/form/:formid'} component={Respond}/>
   </Router>
 );
-
 
 document.addEventListener("DOMContentLoaded", function(){
     doIfDefined(populateStores, window.currentUser)
