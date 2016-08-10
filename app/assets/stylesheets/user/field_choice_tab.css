@@ -1,0 +1,42 @@
+
+div.designTab li.fieldChoice  {
+  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 90%, #d7dee3 100%);
+  border: 1px solid #d7dee3;
+  border-radius: 10px;
+  width: 100px;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+div.designTab li.fieldChoice:nth-child(2n) {
+  float: left;
+}
+
+div.designTab li.fieldChoice:nth-child(2n+1) {
+  float: right;
+}
+
+div.designTab li.fieldChoice:nth-child(5) {
+  margin-right: calc(50% - 42px);
+}
+
+div.designTab li.fieldChoice:nth-child(5):hover {
+  /*margin-bottom: 2px;*/
+}
+
+div.designTab li.fieldChoice:hover {
+  background: linear-gradient(to bottom,  #f5f7f9 10%, #d7dee3 50%,  #f6f8f9  100%);
+  /*border: 2px solid rgb(202, 212, 217);*/
+  /*margin-left: calc(1%);*/
+  /*margin-top: 18px;*/
+}
+
+div.designTab div.fieldSelectorGroup {
+  border: 1px inset rgba(230, 172, 0, .25);
+  background: rgba(230, 172, 0, .05);
+  margin: 20px 30px 20px 30px;
+  padding: 30px 30px 50px 30px;
+}

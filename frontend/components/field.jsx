@@ -23,8 +23,8 @@ const Field = React.createClass({
 
             (fieldVals["instructions"] &&
                <p className = "instructions"
-                   id={fieldVals.fieldId + "_instructions" + fieldName}
-                   key={fieldVals.fieldId + "_instructions" + fieldName}
+                   id={fieldVals.fieldId + "_instructions" + fieldVals.fieldName}
+                   key={fieldVals.fieldId + "_instructions" + fieldVals.fieldName}
                    >
                    {fieldVals["instructions"]}
                </p>
