@@ -41,13 +41,13 @@ var routes = (
       <IndexRoute component={Splashbar}/>
       <Route path="welcome" component={Splashbar }/>
       <Route path="signup" component={Signup}/>
+      <Route path={':username/form/:formId'} component={Respond}/>
     </Route>
     <Route path="login" component={Login}/>
     <Route path={'users/:username'} component={User} onEnter={validate}>
       <IndexRoute component={UserIndex}/>
       <Route path={'/:username/design'} component={Design}/>
     </Route>
-    <Route path={':username/form/:formid'} component={Respond}/>
   </Router>
 );
 
