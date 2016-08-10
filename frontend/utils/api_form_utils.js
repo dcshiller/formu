@@ -10,6 +10,16 @@ module.exports = {
       });
   },
 
+  deleteForm(formId, successCallBack, failureCallBack) {
+    $.ajax({
+        url: "api/forms/" + formId,
+        method: "DELETE",
+        dataType: "json",
+        success(successMessage){successCallBack(successMessage.id)},
+        error(errorMessage){failureCallBack(errorMessage)}
+      });
+  },
+
   getForm (formId, successCallBack, failureCallBack) {
     $.ajax({
       url: "api/forms/" + formId,
@@ -37,7 +47,7 @@ module.exports = {
         method: "POST",
         dataType: "json",
         data: { form: form },
-        success(successMessage){successCallBack(JSON.stringify(successMessage))},
+        success(id){successCallBack(id)},
         error(errorMessage){failureCallBack(errorMessage)
     }
     });

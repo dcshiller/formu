@@ -28,6 +28,16 @@ const UserIndex = React.createClass({
     this.formsStoreReceipt.remove();
   },
 
+  deleteFormHandler (id, e) {
+    e.preventDefault();
+    FormDatabaseActions.deleteForm(id);
+  },
+
+  editFormHandler (formId) {
+    FormDatabaseActions.getForm(formId);
+    hashHistory.push(`${this.state.username}/design`);
+  },
+
   formLis () {
     let self = this;
     return this.state.forms.map(function(form, index){
@@ -42,9 +52,16 @@ const UserIndex = React.createClass({
                     </button>
                   </span>
                   <span id={"form_" + index + "_share"}> Share </span>
-                  <span id={"form_" + index + "_delete"}> <img src={window.trashURL}/> </span>
+                  <span id={"form_" + index + "_delete"}>
+                    <img onClick={self.deleteFormHandler.bind(null, form.id)} src={window.trashURL}/>
+                  </span>
               </li>)
     });
+  },
+
+  newFormHandler () {
+    FormDatabaseActions.clearForm();
+    hashHistory.push(`${this.state.username}/design`);
   },
 
   processNewForms () {
@@ -54,16 +71,6 @@ const UserIndex = React.createClass({
   processNewUser () {
     this.setState({username: SessionStore.currentUser()})
     FormDatabaseActions.getForms(this.state.username);
-  },
-
-  newFormHandler () {
-    FormDatabaseActions.clearForm();
-    hashHistory.push(`${this.state.username}/design`);
-  },
-
-  editFormHandler (formId) {
-    FormDatabaseActions.getForm(formId);
-    hashHistory.push(`${this.state.username}/design`);
   },
 
   render () {

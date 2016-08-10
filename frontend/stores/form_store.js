@@ -131,7 +131,6 @@ FormStore.repositionField = function (fieldId, pos) {
   fieldId = fieldId.slice && fieldId.slice(0,4) == "TEMP" ? fieldId : parseInt(fieldId);
   let fieldToBeMoved = this.findElementByFieldId(fieldId);
   let oldPos = this.findPositionByFieldId(fieldId);
-  debugger
   this.deleteByFieldId(fieldId);
   if (oldPos < pos) {pos = pos - 1}
   this.insertFieldAt(fieldToBeMoved, pos);
@@ -155,7 +154,7 @@ FormStore.__onDispatch = function (payload) {
     break;
 
     case CONSTS.ADD_FORM_ID :
-      _Form.properties.id = payload.id
+      _Form.properties.id = (_Form.properties.id || payload.id)
       this.__emitChange();
     break;
 
@@ -180,7 +179,7 @@ FormStore.__onDispatch = function (payload) {
       this.clearForm();
     break
 
-    case CONSTS.DELETE_FIELD :
+    case CONSTS.FIELD_DELETED :
       this.deleteByFieldId(payload.fieldId);
     break;
 

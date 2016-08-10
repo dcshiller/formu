@@ -21,7 +21,8 @@ const FormViewPane = React.createClass({
     let messages = ErrorStore.retrieveErrors();
     let tempButtonText = messages["form"];
     $('.saveButton').text(tempButtonText + "!");
-    setTimeout(function(){  $('.saveButton').text("Save Me");}, 1000);
+    setTimeout(function(){ $('.saveButton').text("Update Me")}, 1000);
+    // setTimeout(this.forceUpdate.bind(this), 1000);
   },
 
   addTarget (e) {
@@ -56,17 +57,17 @@ const FormViewPane = React.createClass({
     this.dragLeave(e)
     let draggedObj = window.dragged;
     let position = e.target.id.split("_")[1]
-    // if (!draggedObj.className) {
-    //   DesignActions.addField(draggedObj.replace(" ",""), position);
-    // }
-    // // else if ("formViewEntry".includes(draggedObj.className)) {
+    debugger
+    if (!(draggedObj instanceof Object)) {
+      DesignActions.addField(draggedObj.replace(" ",""), position);
+    }
+    else {
     //   let fieldId = getIfDefined(draggedObj.getElementsByTagName("input")[0] , "id");
     //   fieldId = (fieldId || getIfDefined(draggedObj.getElementsByTagName("hr")[0], "id"));
     //   fieldId = (fieldId || getIfDefined(draggedObj, "id"));
     let fieldId = draggedObj.id.split("_")[0];
     DesignActions.repositionField(fieldId, position);
-    debugger
-    // }
+     }
   },
 
   drawField (fieldObj) {
@@ -169,7 +170,7 @@ const FormViewPane = React.createClass({
           <hr/>
           {this.drawFields()}
           <button className="saveButton" onClick={this.saveForm}>
-            {this.props.form.properties.id ? "Update Me" : "Save Me"}
+            { this.props.form.properties.id ? "Update Me" : "Save Me" }
           </button>
       </div>
     )

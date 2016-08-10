@@ -79,8 +79,22 @@ form.login button, form.login a {
   width: 80px;
   vertical-align: middle;
   height: 30px;
-  background: lightgrey;
+  float: right;
+  margin-right: 10px;
+  font-size: 16px;
+  /*padding: 4px;*/
+  vertical-align: center;
+  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 40%, #d7dee3 100%);
+  border: 1px solid #d7dee3;
+
+  /*background: lightgrey;*/
   border-radius: 10px;
+  /*border: 1px solid grey;*/
+}
+
+form.login a {
+  padding-top: 5px;
+  height: 25px;
 }
 
 #largeSignUp {

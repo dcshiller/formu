@@ -34,15 +34,19 @@ class Api::FormsController < ApplicationController
           FormFieldChoice.delete(choice.id)
         end
       end
-
-      render json: {form: "Updated"}, status: 200
+      render json: {form: "Updated", id: @form.id}, status: 200
     else
       render json: {form: "Error"}, status: 422
     end
   end
 
   def destroy
-
+    @form = Form.find(params[:id])
+    if @form.destroy
+      render json: {form: "Delete Suceeded", id: params[:id]}, status: 200
+    else
+      render json: {form: "Delete Failed"}, status: 400
+    end
   end
 
   def show

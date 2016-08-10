@@ -10,7 +10,7 @@ module.exports = {
       actionType: CONSTS.ADD_FORM_ID,
       id: message.id
     });
-    this.errorMessage(message);
+    this.errorMessage(JSON.stringify(message));
   },
 
   clearForm () {
@@ -29,15 +29,26 @@ module.exports = {
 
   deleteFieldSuccess (fieldId) {
     AppDispatcher.dispatch({
-      actionType: CONSTS.DELETE_FIELD,
+      actionType: CONSTS.FIELD_DELETED,
       fieldId: fieldId,
     });
+  },
+
+  deleteForm (id) {
+    ApiFormUtils.deleteForm(id, this.formDeleted, this.errorMessage)
   },
 
   errorMessage (message) {
     AppDispatcher.dispatch({
       actionType: CONSTS.ERROR,
       errors: message
+    })
+  },
+
+  formDeleted (id) {
+    AppDispatcher.dispatch({
+      actionType: CONSTS.FORM_DELETED,
+      id: id
     })
   },
 
