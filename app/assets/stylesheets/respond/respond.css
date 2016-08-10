@@ -1,0 +1,59 @@
+
+main.formContainer {
+  width: 900px;
+  padding: 4% 8% 4%;
+  background: white;
+  min-height: 600px;
+  border: 1px solid darkgrey;
+  margin: auto;
+  margin-top: 150px;
+  position: relative;
+}
+
+p.notFoundMessage {
+  font-size: 24px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  top: 200px;
+  width: 100%;
+}
+
+main p.instructions {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: grey;
+}
+
+main.formContainer input, textarea {
+    color: transparent;
+}
+
+main.formContainer textarea.paragraph {
+  height: 50px;
+  word-wrap: break-word;
+}
+
+main.formContainer label.checkbox, label.radio {
+    // margin-bottom: 10px;
+    padding: 5px;
+    display: block;
+}
+
+main.formContainer label.checkboxchoice, label.radiochoice{
+    margin-bottom: 5px;
+    padding: 5px;
+    display: block;
+}
+
+main.formContainer input[type="checkbox"] {
+  width: 80px;
+  margin-top: 0px;
+  float: left;
+}
+
+main.formContainer input.radio {
+  width: 80px;
+  margin-top: 0px;
+  float: left;
+}

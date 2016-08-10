@@ -1,0 +1,97 @@
+
+div.signup {
+  width: 80%;
+}
+
+div.signup h1 {
+  text-align: center;
+  padding:20px;
+}
+
+div.signup h2{
+  color: lightblue;
+  margin-bottom: 60px;
+  font-size: 30px;
+}
+
+div.signup ul {
+  padding-left: 0px;
+  list-style: none;
+}
+
+div.signup li {
+  padding: 5px;
+  font-size: 20px;
+  color: grey;
+}
+
+div.signup sidebar {
+  margin-top: -30px;
+  float: right;
+  text-align: center;
+}
+
+form.signup {
+  width: 60%;//382px;
+  max-width: 700px;
+  height: 414px;
+  background: #f1f1f1;
+  border: 1px solid #dad5d5;
+  border-radius: 6px;
+  padding: 40px;
+  padding-top: 60px;
+  margin: auto;
+}
+
+form.signup input {
+  width: 99%;
+  height: 40px;
+  padding-left: 1%;
+  /*background: lightyellow;*/
+  margin-bottom: 40px;
+}
+
+form.signup input#username {
+  background: white;
+}
+form.signup button {
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  border: 0px;
+  height: 60px;
+  background: lightgreen;
+}
+
+form.signup div.fieldLabel {
+  position: relative;
+  // background: ;
+}
+
+form.signup span.fieldNote {
+  float: right;
+  display: none;
+}
+
+form.signup span.errorNote:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid lightgrey;
+    border-right:10px solid transparent;
+    left:8px;
+    top:-7px;
+}
+
+form.signup span.errorNote {
+  position: relative;
+  padding:10px;
+  top: -25px;
+  left: 40px;
+  border-radius: 15px;
+  background: lightgrey;
+}

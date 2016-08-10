@@ -1,0 +1,17 @@
+
+div.paneContainer {
+  position: absolute;
+  width: 80%;
+  max-width: inherit;
+  min-width: 800px;
+  min-height: 600px;
+  margin-bottom: 60px;
+}
+
+div.paneContainer input {
+  /*float: right;*/
+  margin-top: 15px;
+  padding: 4px;
+  width: calc(100% - 25px);
+  height: 15px;
+}

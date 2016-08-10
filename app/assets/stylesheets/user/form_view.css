@@ -1,0 +1,171 @@
+div .formViewPane {
+    display: block;
+    float: right;
+    padding: 30px;
+    width: calc(65% - 60px);
+    /*min-width: 600px;*/
+    height: 100%;
+    min-height: 600px;
+    border-bottom: 2px solid lightgrey;
+    border-right: 2px solid lightgrey;
+    border-bottom-right-radius: 10px;
+    background: white;
+}
+
+div .formViewPane .tooSmall {
+  width: 400px;
+}
+
+div .formViewPane {
+  margin-left: 30px;
+}
+
+div .formViewPane h1.formTitle {
+  padding: 10px 10px 10px 0px;
+}
+
+div.formViewPane hr {
+  width: 98%;
+  margin-right: 20px;
+  border-top-style: dotted;
+  border-color: lightgrey;
+}
+
+div .formViewPane input, div .formViewPane textarea {
+  display: block;
+  width: 50%;
+}
+
+div .formViewPane input.number {
+  display: block;
+  width: 50px;
+}
+
+div .formViewPane .inputWrapper {
+  padding: 20px;
+}
+
+div .formViewPane .inputWrapper:hover {
+  background: rgb(240,242,225);
+  transition: background .2s;
+}
+
+div .formViewPane .inputWrapper.selected {
+  background: rgba(200,200,225,.3);
+}
+
+div p.instructions {
+    margin-top: 0px;
+    margin-left: 10px;
+    color: grey;
+}
+
+div .formViewPane input, textarea {
+    color: transparent;
+}
+
+div .formViewPane textarea.paragraph {
+  height: 50px;
+  word-wrap: break-word;
+}
+
+div .formViewPane label.checkbox, label.radio {
+    // margin-bottom: 10px;
+    padding: 5px;
+    display: block;
+}
+
+div .formViewPane label.checkboxchoice, label.radiochoice{
+    margin-bottom: 5px;
+    padding: 5px;
+    display: block;
+}
+
+div .formViewPane input[type="checkbox"] {
+  width: 80px;
+  margin-top: 0px;
+  float: left;
+}
+
+div .formViewPane input.radio {
+  width: 80px;
+  margin-top: 0px;
+  float: left;
+}
+
+div.inputWrapper {
+  position: relative;
+}
+
+div .formViewPane .deleteButton {
+  position: absolute;
+  display: none;
+  z-index: 1;
+  bottom: 20px;
+  left: calc(100% - 50px);
+  height: 20px;
+  width: 20px;
+}
+
+div .formViewEntry {
+  position: relative;
+}
+
+div .formViewEntry * {
+  cursor: pointer;
+}
+
+div .formViewEntry:hover .deleteButton {
+  display: block;
+  opacity: .3;
+  background: rgba(240,242,225, 1);
+
+}
+
+div .formViewEntry .deleteButton:hover {
+  opacity: 1;
+  background: white;
+}
+
+div .formViewPane .dropTarget {
+  z-index: 2;
+  position: relative;
+  height: 40px;
+  width: 100%;
+  margin: -20px -50px -20px 0px;
+  background: none;
+  /*transition: height 2s;*/
+  transition: background 2s, height 2s;
+}
+
+div .formViewPane .dropTarget:last-of-type {
+  min-height: 200px;
+}
+
+div .formViewPane .dropTarget.underDragged {
+  /*margin: 0px 0px 0px 0px;*/
+  height: 80px;
+  border: 1px dashed lightgrey;
+  background: rgb(240,242,225);
+  transition: height 2s;
+}
+
+
+div button.saveButton {
+  padding: 10px 10px 20px 10px;
+  z-index: 10;
+  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 51%, #d7dee3 100%);
+  border: 1px solid #d7dee3;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 20px;
+  right: calc(50% - 250px);
+  width: 100px;
+  height: 40px;
+}
+
+div button.saveButton:hover {
+  /*width: 98px;*/
+  background: linear-gradient(to bottom,  #f6f8f9 10%, #f5f7f9 21%, #d7dee3 100%);
+  border: 2px solid #d7dee3;
+}
