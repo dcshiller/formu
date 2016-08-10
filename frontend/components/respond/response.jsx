@@ -16,13 +16,12 @@ const Respond = React.createClass({
 
   componentDidMount () {
     this.formStoreReceipt = FormStore.addListener(this.retrieveForm);
-    FormDatabaseActions.getForm(this.props.params.formId);
-    this.errorStoreReceipt = ErrorStore.addListener(this.checkErrors);
+    // FormDatabaseActions.getForm(this.props.params.formId);
+    // this.errorStoreReceipt = ErrorStore.addListener(this.checkErrors);
   },
 
   componentWillUnmount () {
     this.formStoreReceipt.remove();
-    this.errorStoreReceipt.remove();
   },
 
   checkErrors () {
@@ -60,17 +59,17 @@ const Respond = React.createClass({
     }
   },
 
-  getResponses () {
-    return {responses:  $('form').serializeArray(), id: this.state.form.properties.id};
-  },
+  // getResponses () {
+  //   return {responses:  $('form').serializeArray(), id: this.state.form.properties.id};
+  // },
 
   retrieveForm () {
     this.setState({form: FormStore.getFormInFocus()})
   },
 
-  submitResponses () {
-    ResponseDatabaseActions.submitResponse(this.getResponses())
-  },
+  // submitResponses () {
+  //   ResponseDatabaseActions.submitResponse(this.getResponses())
+  // },
 
   render(){
     return (

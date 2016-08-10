@@ -4,7 +4,7 @@ const SessionStore = require('../../stores/session_store.js')
 const Splashbar = require('./splashbar.jsx')
 
 const App = React.createClass({
-  
+
   getInitialState(){
     return {user: SessionStore.currentUser() };},
 

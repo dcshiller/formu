@@ -28,9 +28,17 @@ const Navbar = React.createClass({
   loginOrLogout () {
     if (SessionStore.currentUser())
       {
-       return  (<button onClick={this.logout} id="logout">
-                  LOGOUT {this.state.currentUser}
-                </button>);
+       return  (
+                <span className="container">
+                  <button onClick={this.logout} id="logout">
+                    LOGOUT
+                  </button>
+
+                  <Link to={"/users/" + this.state.currentUser}>
+                    INDEX
+                  </Link>
+                </span>
+              );
       }
     return ( <span className="container">
                <Link to="login"
@@ -60,7 +68,7 @@ const Navbar = React.createClass({
       <div>
         <navbar>
           <header>
-            <Link to="/"> <img id="logo" src={window.logoURL}/> </Link>
+          <Link className="logoLink" to="/"> <img id="logo" src={window.logoURL}/> </Link>
             {this.loginOrLogout()}
           </header>
         </navbar>

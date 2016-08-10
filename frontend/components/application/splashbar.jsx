@@ -5,9 +5,19 @@ const hashHistory = require('react-router').hashHistory
 
 const Splashbar = React.createClass({
 
-  render(){
+  startClouds () {
+    $('img[class^=cloud]').addClass('visible');
+  },
+
+  render () {
+    setTimeout(this.startClouds, 1000)
     return (
       <div className="skyscape">
+        <img className="cloud1" src={window.cloud1URL}/>
+        <img className="cloud2" src={window.cloud2URL}/>
+        <img className="cloud3" src={window.cloud3URL}/>
+        <img className="cloud4" src={window.cloud4URL}/>
+        <img className="mammoth" src={window.mammothURL}/>
         <h1> Create and share your forms. </h1>
         <Link to='signup' className="signup">SIGN UP</Link>
       </div>

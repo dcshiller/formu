@@ -6,6 +6,7 @@ const ParagraphField = React.createClass({
     return (
               <textarea
                 id              =         { fieldVals.fieldId + "_input_" + fieldVals["fieldName"] }
+                name              =         { fieldVals.fieldId }
                 key              =         { fieldVals.fieldId + "_input_" + fieldVals["fieldName"] }
                 type            =         { (fieldVals.fieldType === "paragraph" && "textarea") ||
                                             fieldVals.fieldType }

@@ -17,10 +17,11 @@ const ChoiceField = React.createClass({
                   type        =       { fieldVals.fieldType }
                   id          =       { fieldVals.fieldId + "_choice_" + index + "_" + choice.id}
                   key         =       { fieldVals.fieldId + "_choice_"  + index + "_" + choice.id}
+                  name       =       { fieldVals.fieldId }
                   className   =       { fieldVals.className }
                   onChange    =       { fieldVals.handler }
                   onSelect    =       { fieldVals.onContainerClick }
-                  value       =       { fieldVals.fieldValue || choice }
+                  value       =       { choice.id }
               />
             </label>
             )
@@ -31,5 +32,8 @@ const ChoiceField = React.createClass({
     )
   }
 });
+
+
+//NB: removed || choice from value on input choice.
 
 module.exports = ChoiceField;
