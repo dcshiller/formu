@@ -38,8 +38,7 @@ navbar img {
 }
 
 
-
-#login, #loginGuest {
+div.applicationMain navbar a {
   position: relative;
   width: 140px;
   float: right;
@@ -49,6 +48,10 @@ navbar img {
   color: inherit;
   text-align: center;
   margin-right: 20px;
+}
+
+div.applicationMain navbar .logoLink {
+  float:left;
 }
 
 #login:hover, #loginGuest:hover {

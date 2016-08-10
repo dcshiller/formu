@@ -20,6 +20,8 @@ p.notFoundMessage {
   width: 100%;
 }
 
+/*$("[id^=256_input]").value*/
+
 main p.instructions {
     margin-top: 0px;
     margin-left: 10px;
@@ -34,10 +36,10 @@ main.formContainer .respondFieldWrapper:first-of-type {
 main.formContainer .respondFieldWrapper {
   margin-bottom: 40px;
 }
-
+/*
 main.formContainer input, textarea {
     color: transparent;
-}
+}*/
 
 main.formContainer textarea.paragraph {
   height: 50px;
