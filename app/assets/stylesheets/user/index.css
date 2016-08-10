@@ -89,7 +89,7 @@ li.form_index_item img {
   cursor: pointer;
 }
 
-li.form_index_item img {
+li.form_index_item img:hover {
   opacity: 1;
 }
 
