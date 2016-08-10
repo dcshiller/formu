@@ -1,0 +1,2 @@
+module ResponsesControllerHelper
+end
