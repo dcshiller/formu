@@ -9,7 +9,6 @@ width: 100%}
 body {
   position: relative;
   padding:0px;
-  // background: green;
 }
 
 div.applicationMain navbar {
@@ -22,7 +21,7 @@ div.applicationMain navbar {
   background: #e66760;
   text-shadow: 1px 1px rgba(98, 81, 207, .3);
   height: 22px;
-  width: 100%;
+  width: calc(100% - 30px);
 }
 
 navbar header {
