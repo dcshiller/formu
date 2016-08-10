@@ -15,7 +15,7 @@ const Field = React.createClass({
             ( fieldVals["hideLabel"] ||
               <label
                    htmlFor       =       { fieldVals.fieldId }
-                   className     =       { fieldVals.fieldType }
+                   className     =       { fieldVals.fieldType + " inputLabel" }
                    id            =       { fieldVals.fieldId + 3 + "_label"}
                    key           =       { fieldVals.fieldId + 3 + "_label"}
                  >{fieldVals["fieldName"]}</label>

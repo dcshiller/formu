@@ -7,6 +7,7 @@ main.formContainer {
   border: 1px solid darkgrey;
   margin: auto;
   margin-top: 150px;
+  margin-bottom: 150px;
   position: relative;
 }
 
@@ -25,6 +26,15 @@ main p.instructions {
     color: grey;
 }
 
+
+main.formContainer .respondFieldWrapper:first-of-type {
+  margin-top: 100px;
+}
+
+main.formContainer .respondFieldWrapper {
+  margin-bottom: 40px;
+}
+
 main.formContainer input, textarea {
     color: transparent;
 }
@@ -34,10 +44,23 @@ main.formContainer textarea.paragraph {
   word-wrap: break-word;
 }
 
+
+main.formContainer .respondFieldWrapper .radiochoice {
+    margin-bottom: 0px;
+}
+
+main.formContainer .respondFieldWrapper>.inputWrapper>div>div {
+  margin-bottom: 20px;
+}
+
 main.formContainer label.checkbox, label.radio {
     // margin-bottom: 10px;
     padding: 5px;
     display: block;
+}
+
+main.formContainer hr {
+  margin: 100px 0px 100px 0px;
 }
 
 main.formContainer label.checkboxchoice, label.radiochoice{

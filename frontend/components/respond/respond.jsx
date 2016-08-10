@@ -30,6 +30,7 @@ const Respond = React.createClass({
 
   drawField (fieldObj) {
      return (
+       <div className="respondFieldWrapper">
         <Field fieldVals={ {
             fieldName: fieldObj.label || " ",
             instructions: fieldObj.instructions,
@@ -38,6 +39,7 @@ const Respond = React.createClass({
             className: fieldObj.className || fieldObj.type,
             choices: fieldObj.choices,
           } }/>
+      </div>
         )
    },
 
