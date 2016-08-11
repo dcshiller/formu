@@ -46,7 +46,7 @@ const Field = React.createClass({
             );
           case "rule" :
 
-          case "h" :
+          case "section_title" :
             return this.directToProperStructuralElementMaker();
           break;
         }
@@ -69,7 +69,7 @@ const Field = React.createClass({
 
       directToProperStructuralElementMaker () {
         switch (this.props.fieldVals.fieldType) {
-          case "h" :
+          case "section_title" :
             return (<SectionTitle fieldVals={this.props.fieldVals}/>)
           case "rule" :
             return (<Rule fieldVals={this.props.fieldVals}/>)

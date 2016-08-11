@@ -20,7 +20,7 @@ div.applicationMain navbar {
   margin: 0px;
   padding: 20px;
   background: #e66760;
-  text-shadow: 1px 1px rgba(98, 81, 207, .3);
+  text-shadow: 1px 1px rgba(98, 81, 207, .35);
   height: 22px;
   width: calc(100% - 30px);
 }
@@ -60,6 +60,7 @@ div.applicationMain navbar .logoLink {
 }
 
 #logout {
+  text-shadow: 1px 1px rgba(98, 81, 207, .35);
   position: relative;
   float: right;
   padding: 10px;

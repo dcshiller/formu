@@ -34,7 +34,7 @@ const Response = React.createClass({
     return (
       <li className="responseWrapper"
           key={`response_${index}`}>
-        { responseObj.section_title   &&  <h4 key={`st_${index}`}> {responseObj.section_title} </h4> }
+        { responseObj.section_title   &&  <h4 key={`section_title_${index}`}> {responseObj.section_title} </h4> }
         { responseObj.rule            &&  <hr key={`rule_${index}`}/>  }
         { responseObj.response_value  &&
             <label className="question" key={`label_${index}`}>

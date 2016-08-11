@@ -1,3 +1,8 @@
+div .tabForm {
+  position: fixed;
+width: 400px;
+}
+
 div .tabForm div {
   padding: 20px;
 }
@@ -43,6 +48,8 @@ div .deleteButton {
   width: 40px;
   opacity: .3;
   display: block;
+  /*position: fixed;*/
+  /*bottom: 20%;*/
   margin: auto;
   margin-top: 50px;
 }

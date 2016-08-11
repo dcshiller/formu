@@ -1,4 +1,11 @@
 
+
+
+div.designTab .fieldSelectorGroups {
+    position: fixed;
+    width: 400px;
+}
+
 div.designTab li.fieldChoice  {
   background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 90%, #d7dee3 100%);
   border: 1px solid #d7dee3;
@@ -39,4 +46,18 @@ div.designTab div.fieldSelectorGroup {
   background: rgba(230, 172, 0, .05);
   margin: 20px 30px 20px 30px;
   padding: 30px 30px 50px 30px;
+}
+
+div.designTab p.instructions {
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  bottom: 26px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+div.designTab p.instructions.visible {
+  opacity: 1;
 }

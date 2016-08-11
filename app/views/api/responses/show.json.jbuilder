@@ -14,7 +14,7 @@ sorted_fields = @response.form.fields.sort {|field1, field2| field1.position <=>
 
 json.responses do
   json.array! sorted_fields do |field|
-    if field.field_type == "h"
+    if field.field_type == "section_title"
       json.section_title field.label
     elsif field.field_type == "rule"
       json.rule "true"

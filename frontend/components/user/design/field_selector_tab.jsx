@@ -9,26 +9,13 @@ const dictionary = {
   "checkbox": "checkbox",
   "dropdown": "dropdown",
   "divider": "rule",
-  "section title": "h"
+  "section title": "section_title"
 };
 
 const FieldSelectorTab = React.createClass({
 
   addTarget (e) {
     window.dragged = this.typeTranslator(e.target.id)
-  },
-
-  typeTranslator (guiName) {
-    return dictionary[guiName];
-  },
-
-  removeTarget (e){
-    setTimeout(function(){window.dragged = null;}, 500);
-  },
-
-  createField (e) {
-    let fieldType = this.typeTranslator(e.target.id);
-    DesignActions.addField(fieldType, 100000) // note, this places the field at the end.
   },
 
   addField (type) {
@@ -43,23 +30,46 @@ const FieldSelectorTab = React.createClass({
     )
   },
 
+  createField (e) {
+    let fieldType = this.typeTranslator(e.target.id);
+    DesignActions.addField(fieldType, 100000) // note, this places the field at the end.
+  },
+
+  hideInstructions (e){
+    $('.instructions').removeClass("visible");
+  },
+
+  removeTarget (e){
+    setTimeout(function(){window.dragged = null;}, 500);
+  },
+
+  showInstructions (e){
+    $('.instructions').addClass("visible")
+  },
+
+  typeTranslator (guiName) {
+    return dictionary[guiName];
+  },
+
   render () {
     return(
-      <div className="designTab">
-        <ul>
-        <div className="fieldSelectorGroup container">
-          {this.addField("text")}
-          {this.addField("number")}
-          {this.addField("paragraph")}
-          {this.addField("select one")}
-          {this.addField("checkbox")}
-        </div>
-        <div className="fieldSelectorGroup container ">
-          {this.addField("divider")}
-          {this.addField("section title")}
-        </div>
+      <div className="designTab"
+           onMouseOver={this.showInstructions}
+           onMouseLeave={this.hideInstructions}>
+        <ul className ="fieldSelectorGroups">
+          <div className="fieldSelectorGroup container">
+            {this.addField("text")}
+            {this.addField("number")}
+            {this.addField("paragraph")}
+            {this.addField("select one")}
+            {this.addField("checkbox")}
+          </div>
+          <div className="fieldSelectorGroup container ">
+            {this.addField("divider")}
+            {this.addField("section title")}
+          </div>
         </ul>
-        <p> Click or drag a field to add it to the form! </p>
+        <p className="instructions"> Click or drag a field to add it to the form! </p>
       </div>
     )
   }
