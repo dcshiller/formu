@@ -36,7 +36,10 @@ const Splashbar = React.createClass({
         <span className="tagline">
           Building forms can be tiresome.<br/><br/>
 
-          <span className="red">Forμ</span> makes it quicker and easier.
+          <span className="red">Forμ</span> makes it quicker and easier. <br/><br/><br/><br/>
+
+
+          A <a href="http://www.wufoo.com">wufoo</a> clone.
         </span>
       </div>
     )
