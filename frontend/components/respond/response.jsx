@@ -1,85 +1,84 @@
 
 const React = require('react');
 const hashHistory = require('react-router').hashHistory;
-const ErrorStore = require('../../stores/error_store');
-const FormStore = require('../../stores/form_store.js');
+const ErrorStore = require('../../stores/error_store.js');
+const ResponseStore = require('../../stores/response_store.js');
 const FormDatabaseActions = require('../../actions/form_database_actions.js');
 const ResponseDatabaseActions = require('../../actions/response_database_actions.js');
-const Field = require('../field');
+// const Field = require('../field');
 
 
-const Respond = React.createClass({
+const Response = React.createClass({
 
   getInitialState () {
-    return {form: FormStore.getFormInFocus()}
+    return {response: ResponseStore.getResponse()}
   },
 
   componentDidMount () {
-    this.formStoreReceipt = FormStore.addListener(this.retrieveForm);
-    // FormDatabaseActions.getForm(this.props.params.formId);
-    // this.errorStoreReceipt = ErrorStore.addListener(this.checkErrors);
+    this.responseStoreReceipt = ResponseStore.addListener(this.retrieveResponse);
+    this.errorStoreReceipt = ErrorStore.addListener(this.checkErrors);
+    ResponseDatabaseActions.getResponse(this.props.params.responseId);
   },
 
   componentWillUnmount () {
-    this.formStoreReceipt.remove();
+    this.responseStoreReceipt.remove();
+    this.errorStoreReceipt.remove();
   },
 
   checkErrors () {
     let errors = ErrorStore.retrieveErrors();
-    if (errors.form === "Not Found"){this.setState({form: "FORM NOT FOUND"})}
+    if (errors.response === "Not Found"){this.setState({response: "RESPONSE NOT FOUND"})}
   },
 
-  drawField (fieldObj) {
+  drawResponse (responseObj) {
     return (
-      <div className="respondFieldWrapper">
-      <Field fieldVals={ {
-        fieldName: fieldObj.label || " ",
-        instructions: fieldObj.instructions,
-        fieldType: (fieldObj.type),
-        fieldId: fieldObj.id,
-        className: fieldObj.className || fieldObj.type,
-        choices: fieldObj.choices,
-      } }/>
-      </div>
+      <li className="responseWrapper">
+        { responseObj.section_title   &&  <h4> {responseObj.section_title} </h4> }
+        { responseObj.rule            &&  <hr/>  }
+        { responseObj.response_value  &&
+            <label className="question"> {responseObj.field_label} </label> }
+        { responseObj.response_value  && responseObj.response_value.map(
+              function(val, index){
+                return <p className="answer"> {val} </p>
+              }
+        )}
+
+      </li>
     )
   },
 
-  drawFields () {
-    if (this.state.form == "FORM NOT FOUND")
+  drawResponses () {
+    if (this.state.response == "RESPONSE NOT FOUND")
     {
-      return <p className="notFoundMessage"> Form Not Found </p>
+      return <p className="notFoundMessage"> Response Not Found </p>
     }
-    else if (this.state.form && this.state.form.fields)
+    else if (this.state.response && this.state.response.responses)
     {
       let self = this;
-      let arrayOfFields = this.state.form.fields.map(function(field){
-        return  self.drawField(field)
+      let arrayOfResponses = this.state.response.responses.map(function(response){
+        return  ( <ul>
+                    {self.drawResponse(response)}
+                  </ul>)
       })
-      return arrayOfFields;
+      return arrayOfResponses;
     }
   },
 
-  // getResponses () {
-  //   return {responses:  $('form').serializeArray(), id: this.state.form.properties.id};
-  // },
-
-  retrieveForm () {
-    this.setState({form: FormStore.getFormInFocus()})
+  retrieveResponse () {
+    this.setState({response: ResponseStore.getResponse()})
   },
-
-  // submitResponses () {
-  //   ResponseDatabaseActions.submitResponse(this.getResponses())
-  // },
 
   render(){
     return (
-      <main className="formContainer">
-        { <h1> { this.state.form.properties.title } </h1> }
-        { <p className="instructions"> {this.state.form.properties.instructions }</p> }
-        <form>
-        { this.drawFields() }
-        </form>
-        <button onClick={this.submitResponses}> Submit Responses </button>
+      <main className="formContainer responseContainer">
+        { <h1 className="formResponseTitle"> { this.state.response.form_title } </h1> }
+        <h2> Response ID: {this.state.response.id} </h2>
+        <h3> Completed on {this.state.response.created_at} GMT
+          <hr/>
+        </h3>
+        <div>
+          { this.drawResponses() }
+        </div>
       </main>
     );
   }
@@ -87,4 +86,4 @@ const Respond = React.createClass({
 });
 
 
-module.exports = Respond;
+module.exports = Response;

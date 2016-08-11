@@ -17,13 +17,23 @@ class Api::ResponsesController < ApplicationController
       {form_field_id: form_field_id, response_value: response_value}
     end
 
-  new_response_props = {form_id: params[:id], field_responses_attributes: response_hashes}
-  @new_response = FormResponse.new(new_response_props)
-  if @new_response.save
-    render :show
-  else
-    render json: new_response.errors.messages, status: 400
+    new_response_props = {form_id: params[:id], field_responses_attributes: response_hashes}
+    @response = FormResponse.new(new_response_props)
+    if @response.save
+      render :show
+    else
+      render json: new_response.errors.messages, status: 400
+    end
   end
-end
+
+  def show
+    @response = FormResponse.includes(:form, :fields).find(params[:id])
+    if @response
+      render :show
+    else
+      render json: {response: "NOT FOUND"}, status: 400
+    end
+  end
+
 
 end

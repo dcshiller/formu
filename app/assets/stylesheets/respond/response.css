@@ -1,0 +1,39 @@
+
+
+h1.formResponseTitle {
+  /*font-size: 60px;*/
+  margin-bottom: 20px;
+}
+
+main.formContainer h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+main.formContainer h3 {
+  font-size: : 20px;
+  margin-bottom: 60px;
+}
+
+
+li.responseWrapper {
+  margin-top: 40px;
+}
+
+li.responseWrapper h4 {
+  font-size: 20px;
+}
+
+main.responseContainer hr {
+  margin: 20px 0px 0px 0px;
+}
+
+label.question {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+p.answer {
+  margin-left: 20px;
+  /*margin-bottom: 5px;*/
+}

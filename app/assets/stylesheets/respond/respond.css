@@ -3,7 +3,8 @@ main.formContainer {
   width: 900px;
   padding: 4% 8% 4%;
   background: white;
-  min-height: 600px;
+  /*min-height: 600px;*/
+  min-height: 800px;
   border: 1px solid darkgrey;
   margin: auto;
   margin-top: 150px;
