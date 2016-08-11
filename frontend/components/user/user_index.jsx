@@ -42,25 +42,44 @@ const UserIndex = React.createClass({
   formLis () {
     let self = this;
     return this.state.forms.map(function(form, index){
-      return (<li id={"form_item_" + index}
-                  key={"form_item_" + index}
+      return (
+              <li id={`form_item_${index}`}
+                  key={`form_item_${index}`}
                   className="form_index_item container">
                   <span id={"form_" + index + "_title"}> {form.title} </span>
                   <span id={"form_" + index + "_created_at"}> {form.created_at} </span>
-                  <span id={"form_" + index + "_link"}>
-                    <Link to={`${self.state.username}/form/${form.id}`}> link </Link>
-                  </span>
                   <span id={"form_" + index + "_edit"}>
+                    <Link to={`${self.state.username}/form/${form.id}`}> link</Link>, {" "}
                     <button onClick={self.editFormHandler.bind(null, form.id)}>
                       edit
-                    </button>
+                    </button>,
+                      share
                   </span>
-                  <span id={"form_" + index + "_share"}> Share </span>
+                  <span>
+                    <button onClick={self.toggleResponse.bind(self, index)}>responses</button> ({form.responses.length})
+                    { form.responses.length > 0 && self.state.forms[index].selected && (
+                      <ul className="responseList">
+                        { self.formResponseLis(form) }
+                      </ul>)
+                    }
+                  </span>
                   <span id={"form_" + index + "_delete"}>
                     <img onClick={self.deleteFormHandler.bind(null, form.id)} src={window.trashURL}/>
                   </span>
-              </li>)
+              </li>
+            )
     });
+  },
+
+  formResponseLis(form) {
+    let self = this;
+    if(!form.responses){return}
+    return form.responses.map(function(response, index){
+      return (<li id={"response_item_" + index}
+                  key={"response_item_" + index}>
+                  {<Link to={`${self.state.username}/form/${form.id}/${response.id}}`}> {response.created_at}</Link>}
+              </li>)
+    })
   },
 
   newFormHandler () {
@@ -75,6 +94,13 @@ const UserIndex = React.createClass({
   processNewUser () {
     this.setState({username: SessionStore.currentUser()})
     FormDatabaseActions.getForms(this.state.username);
+  },
+
+  toggleResponse (form_number) {
+    let new_selected_value = !this.state.forms[form_number].selected;
+    let forms = this.state.forms;
+    this.state.forms[form_number].selected = new_selected_value;
+    this.setState({forms: forms})
   },
 
   render () {

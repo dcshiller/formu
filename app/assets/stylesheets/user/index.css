@@ -6,7 +6,6 @@ div.userBox header {
     vertical-align: middle;
 }
 
-
 div.userBox h2 {
   width: 200px;
   display: block;
@@ -77,6 +76,7 @@ li.form_index_item span {
 
 li.form_index_item a, li.form_index_item button {
   font-size: inherit;
+  padding: 0px;
   text-decoration: underline;
   color: rgb(94, 28, 28);
 }
@@ -98,8 +98,10 @@ li.form_index_item span:first-child  {
   text-align: left;
 }
 
-li.form_index_item span:last-child {
+li.form_index_item span:last-of-type {
   width: 20px;
   position: absolute;
   right: 10px;
+  clear: both;
+
 }
