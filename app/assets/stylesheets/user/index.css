@@ -33,16 +33,18 @@ div.userBox #newForm {
   height: 30px;
   color: white;
   text-shadow: 1px 1px rgb(105, 128, 172);
-  /*border: 1px solid tan;*/
   border-radius: 4px;
   padding: 7px 15px 7px 15px;
   text-decoration: none;
-  /*margin-top: 40px;*/
   float: right;
   background: rgb(145, 158, 212);
   border: 2px solid rgb(130, 125,210);
   display: block;
   text-align: center;
+}
+
+div.userBox #newForm:hover {
+  background: rgb(165, 178, 232);
 }
 
 div.userBox ul.indexList {

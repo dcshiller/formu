@@ -83,3 +83,16 @@ main.formContainer input.radio {
   margin-top: 0px;
   float: left;
 }
+
+main.formContainer .submitButton {
+  margin: auto;
+  display: block;
+  color: rgb(70, 70, 70);
+  margin-top: 200px;
+  margin-bottom: 100px;
+  font-size: 20px;
+}
+
+main.formContainer .submitButton:hover {
+  color: black;
+}

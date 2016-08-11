@@ -120,3 +120,8 @@ div span.tagline {
 div span.tagline .red {
   color: red;
 }
+
+div span.tagline a {
+  color: rgb(102, 179, 255);
+  font-weight: 700;
+}
