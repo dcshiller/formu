@@ -1,9 +1,15 @@
 const React = require('react');
 const Link = require('react-router').Link;
 const hashHistory = require('react-router').hashHistory
-
+const AuthActions = require('../../actions/auth_actions.js');
 
 const Splashbar = React.createClass({
+
+  loginAsGuest (e) {
+    e.preventDefault();
+    AuthActions.login({username:"Guest", password:"Password"});
+    hashHistory.push("/users/Guest" )
+  },
 
   startClouds () {
     $('img[class^=cloud]').addClass('visible');
@@ -18,9 +24,14 @@ const Splashbar = React.createClass({
           <img className="cloud2" src={window.cloud2URL}/>
           <img className="cloud3" src={window.cloud3URL}/>
           <img className="cloud4" src={window.cloud4URL}/>
-          <img className="mammoth" src={window.mammothURL}/>
+          <img className="mammoth" src={window.mammothURL} alt="Muey the Mastodon"/>
           <h1> Create and share your forms. </h1>
-          <Link to='signup' className="signup">SIGN UP</Link>
+          <div className="buttonBar container">
+            <button id="skyscapeLogin" onClick={this.loginAsGuest}>
+              GUEST LOGIN
+            </button>
+            <Link to='signup' id="skyscapeSignup">SIGN UP</Link>
+          </div>
         </div>
         <span className="tagline">
           Building forms can be tiresome.<br/><br/>
