@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails_12factor'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -25,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
 
+# gem 'postmark-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a d/ebugger console
+  gem "letter_opener"
   gem 'byebug'
   gem 'binding_of_caller'
   gem 'pry-rails'

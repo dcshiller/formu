@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @recipient %></h1>
+    <p>
+      <%= @sender %> has requested that you fill out a form on www.formu.herokuapp.com.
+    </p>
+    <p>
+      They write:
+      <blockquote>
+        <%= @custom_message %>
+      </blockquote>
+    </p>
+    <p>
+      To complete and submit this form, just follow this link: <%= @form_path %>.
+    </p>
+  </body>
+</html>

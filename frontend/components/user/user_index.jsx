@@ -2,11 +2,25 @@ const React = require('react');
 const hashHistory = require('react-router').hashHistory;
 const Link = require('react-router').Link;
 const SessionStore = require('../../stores/session_store');
+const ErrorStore = require('../../stores/error_store');
 const FormsStore = require('../../stores/forms_store.js');
 const AuthActions = require('../../actions/auth_actions.js');
+const EmailActions = require('../../actions/email_actions.js');
 const FormDatabaseActions = require('../../actions/form_database_actions.js');
+const Modal = require('react-modal');
 
 var newFormsListener;
+
+const customStyles = {
+  content : {
+    top                   : '20%',
+    left                  : '35%',
+    right                 : '35%',
+    bottom                : '20%'
+  }
+};
+
+
 
 const UserIndex = React.createClass({
 
@@ -14,12 +28,18 @@ const UserIndex = React.createClass({
     let currentUser = SessionStore.currentUser();
     return {
       username: SessionStore.currentUser(),
-      forms: FormsStore.getForms(currentUser)
+      forms: FormsStore.getForms(currentUser),
+      emailModal: false
     };
+  },
+
+  componentWillMount () {
+    Modal.setAppElement('body');
   },
 
   componentDidMount () {
     this.sessionStoreReceipt = SessionStore.addListener(this.processNewUser)
+    this.errorStoreReceipt = ErrorStore.addListener(this.processErrors)
     this.formsStoreReceipt = FormsStore.addListener(this.processNewForms)
     FormDatabaseActions.getForms(this.state.username);
   },
@@ -27,11 +47,37 @@ const UserIndex = React.createClass({
   componentWillUnmount () {
     this.sessionStoreReceipt.remove();
     this.formsStoreReceipt.remove();
+    this.errorStoreReceipt.remove();
+  },
+
+  closeModal () {
+    this.setState({emailModal: false});
   },
 
   deleteFormHandler (id, e) {
     e.preventDefault();
     FormDatabaseActions.deleteForm(id);
+  },
+
+  drawModal () {
+   return (  <Modal
+               isOpen={this.state.emailModal}
+               onRequestClose={this.closeModal}
+               style={customStyles}>
+               <h2>Invitation for form {this.formModalChoice}</h2>
+               <form id="emailInputForm">
+                   <label for="emailinput">Recipient's email: </label>
+                   <input id="emailinput" name="email" type="text"></input>
+                   <label for="recipientinput">Recipient's name: </label>
+                   <input id="recipientinput" name="recipient"></input>
+                   <label for="senderinput">Your name: </label>
+                   <input id="senderinput" name="sender"></input>
+                   <label for="custominput">Custom message: </label>
+                   <input id="custominput" name="custom_message"></input>
+               </form>
+               <button onClick={this.sendInvitation.bind(null, this.formModalChoice)}>send</button>
+               <button onClick={this.closeModal}>close</button>
+             </Modal> )
   },
 
   editFormHandler (formId) {
@@ -71,7 +117,7 @@ const UserIndex = React.createClass({
     });
   },
 
-  formResponseLis(form) {
+  formResponseLis (form) {
     let self = this;
     if(!form.responses){return}
     return form.responses.map(function(response, index){
@@ -82,9 +128,26 @@ const UserIndex = React.createClass({
     })
   },
 
+  getEmailParams (form_id) {
+    let email_form_entries = $('#emailInputForm').serializeArray();
+    let form_path = `${this.state.username}/forms/`
+    email_form_entries.push({name: "path", value: form_path});
+    return {emailParams:  email_form_entries}
+  },
+
+  openModal (formChoice) {
+    this.formModalChoice = formChoice;
+    this.setState({modalIsOpen: true});
+  },
+
   newFormHandler () {
     FormDatabaseActions.clearForm();
     hashHistory.push(`${this.state.username}/design`);
+  },
+
+  processErrors () {
+    if (ErrorStore.retrieveErrors().email == "success")
+      {this.setState({emailModal: false})}
   },
 
   processNewForms () {
@@ -94,6 +157,10 @@ const UserIndex = React.createClass({
   processNewUser () {
     this.setState({username: SessionStore.currentUser()})
     FormDatabaseActions.getForms(this.state.username);
+  },
+
+  sendInvitation () {
+    EmailActions.sendInvitation(this.getEmailParams());
   },
 
   toggleResponse (form_number) {
@@ -118,6 +185,9 @@ const UserIndex = React.createClass({
               { this.formLis() }
             </ul>
           </div>
+
+          { this.drawModal() }
+
       </div>
     )
   }

@@ -13,6 +13,10 @@ const Splashbar = React.createClass({
 
   startClouds () {
     $('img[class^=cloud]').addClass('visible');
+    setInterval(function(){
+      if ($('.mammothLids')) {
+        $('.mammothLids').addClass("visible")
+    }}, 1000);
   },
 
   render () {

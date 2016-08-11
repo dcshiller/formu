@@ -105,5 +105,21 @@ li.form_index_item span:last-of-type {
   position: absolute;
   right: 10px;
   clear: both;
+}
 
+@emailInputForm label {
+  float: left;
+  margin-bottom: 20px;
+}
+
+#emailInputForm input {
+  width: 55%;
+  float: right;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+#emailInputForm div:last-of-type input {
+  width: 100%;
+  height: 120px;
 }

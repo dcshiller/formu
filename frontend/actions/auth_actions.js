@@ -4,6 +4,13 @@ const CONSTS = require('../constants/constants.js');
 
 const AuthActions = {
 
+  errorMessage(message){
+    AppDispatcher.dispatch({
+      actionType: CONSTS.ERROR,
+      errors: message
+    })
+  },
+
   login(user){
     ApiAuthUtils.login(user, this.loginUser, this.errorMessage)
   },
@@ -28,12 +35,7 @@ const AuthActions = {
     ApiAuthUtils.createUser(user, this.loginUser, this.errorMessage)
   },
 
-  errorMessage(message){
-    AppDispatcher.dispatch({
-      actionType: CONSTS.ERROR,
-      errors: message
-    })
-  },
+
 };
 
 module.exports = AuthActions;

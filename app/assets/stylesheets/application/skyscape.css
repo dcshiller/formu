@@ -63,9 +63,23 @@ div.skyscape img.cloud4.visible {
 div.skyscape img.mammoth {
   position: absolute;
   width: 200px;
-  bottom: -23px;
+  bottom: -25px;
   right: 31%;
 }
+
+/*div.skyscape img.mammothLids {
+  position: absolute;
+  width: 200px;
+  top: 284px;
+  right: 31%;
+  opacity: 0;
+}
+
+img.mammothLids.visible {
+   opacity: 1;
+   z-index: 5;
+   background: green;
+}*/
 
 div.skyscape div.buttonBar {
   margin: auto;

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'static_pages#root'
+  post 'api/invitation/', to: 'api/emails#invitational_email', format: :json
 
   namespace :api do
     resources :users, only: [:create], format: :json
