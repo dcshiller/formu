@@ -25,3 +25,5 @@ class Api::ResponsesController < ApplicationController
     render json: new_response.errors.messages, status: 400
   end
 end
+
+end
