@@ -19,7 +19,7 @@ class Api::ResponsesController < ApplicationController
     end
   end
 
-  new_response_props = {form_id: @form.id, field_responses_attributes: response_hashes}
+  new_response_props = {form_id: @form["id"], field_responses_attributes: response_hashes}
   @new_response = FormResponse.new(new_response_props)
   if @new_response.save
     render :show
