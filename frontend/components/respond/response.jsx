@@ -30,16 +30,20 @@ const Response = React.createClass({
     if (errors.response === "Not Found"){this.setState({response: "RESPONSE NOT FOUND"})}
   },
 
-  drawResponse (responseObj) {
+  drawResponse (responseObj, index) {
     return (
-      <li className="responseWrapper">
-        { responseObj.section_title   &&  <h4> {responseObj.section_title} </h4> }
-        { responseObj.rule            &&  <hr/>  }
+      <li className="responseWrapper"
+          key={`response_${index}`}>
+        { responseObj.section_title   &&  <h4 key={`st_${index}`}> {responseObj.section_title} </h4> }
+        { responseObj.rule            &&  <hr key={`rule_${index}`}/>  }
         { responseObj.response_value  &&
-            <label className="question"> {responseObj.field_label} </label> }
+            <label className="question" key={`label_${index}`}>
+              {responseObj.field_label}
+            </label> }
         { responseObj.response_value  && responseObj.response_value.map(
-              function(val, index){
-                return <p className="answer"> {val} </p>
+              function(val, choice_index){
+                return <p className="answer"
+                          key={`${responseObj.response_value}_choice_${choice_index}`}> {val} </p>
               }
         )}
 
@@ -55,9 +59,10 @@ const Response = React.createClass({
     else if (this.state.response && this.state.response.responses)
     {
       let self = this;
-      let arrayOfResponses = this.state.response.responses.map(function(response){
-        return  ( <ul>
-                    {self.drawResponse(response)}
+      let arrayOfResponses = this.state.response.responses.map(function(response, index){
+        return  ( <ul
+                      key={`ul_${index}`}>
+                    {self.drawResponse(response, index)}
                   </ul>)
       })
       return arrayOfResponses;

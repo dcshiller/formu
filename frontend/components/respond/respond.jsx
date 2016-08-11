@@ -30,9 +30,10 @@ const Respond = React.createClass({
     if (errors.form === "Not Found"){this.setState({form: "FORM NOT FOUND"})}
   },
 
-  drawField (fieldObj) {
+  drawField (fieldObj, index) {
     return (
-      <div className="respondFieldWrapper">
+      <div className="respondFieldWrapper"
+           key={`wrapper_${index}`}>
       <Field fieldVals={ {
         fieldName: fieldObj.label || " ",
         instructions: fieldObj.instructions,
@@ -53,8 +54,8 @@ const Respond = React.createClass({
     else if (this.state.form && this.state.form.fields)
     {
       let self = this;
-      let arrayOfFields = this.state.form.fields.map(function(field){
-        return  self.drawField(field)
+      let arrayOfFields = this.state.form.fields.map(function(field, index){
+        return  self.drawField(field, index)
       })
       return arrayOfFields;
     }
@@ -80,7 +81,7 @@ const Respond = React.createClass({
         <form>
         { this.drawFields() }
         </form>
-        <button onClick={this.submitResponses}> Submit Responses </button>
+        <button className="submitButton" onClick={this.submitResponses}> Submit Form </button>
       </main>
     );
   }
