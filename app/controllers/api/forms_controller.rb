@@ -47,8 +47,8 @@ class Api::FormsController < ApplicationController
   end
 
   def index
+    @currentUser = User.includes(forms: :responses).find_by_session_token(session[:session_token])
     if currentUser.username == params[:username]
-      @forms = currentUser.forms
       render :index
     else
       render json: {forms: "Not Current User"}, status: 400
