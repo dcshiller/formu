@@ -22,7 +22,6 @@ const FormViewPane = React.createClass({
     let tempButtonText = messages["form"];
     $('.saveButton').text(tempButtonText + "!");
     setTimeout(function(){ $('.saveButton').text("Update Me")}, 1000);
-    // setTimeout(this.forceUpdate.bind(this), 1000);
   },
 
   addTarget (e) {

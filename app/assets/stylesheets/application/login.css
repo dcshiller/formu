@@ -92,9 +92,18 @@ form.login button, form.login a {
   /*border: 1px solid grey;*/
 }
 
+
+form.login button:last-of-type {
+  width: auto;
+}
+
 form.login a {
   padding-top: 5px;
   height: 25px;
+}
+form.login button:hover , form.login a:hover {
+  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 90%, #d7dee3 100%);
+
 }
 
 #largeSignUp {

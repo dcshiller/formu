@@ -64,7 +64,7 @@ const Login = React.createClass({
     e.preventDefault();
     $("#username").val("Guest") //needs to be changed
     $("#password").val("Password") //needs to be changed
-    setTimeout(AuthActions.login.bind(AuthActions , {username:"Guest", password:"Password"}), 600);
+    setTimeout(AuthActions.login.bind(AuthActions, {username:"Guest", password:"Password"}), 600);
   },
 
   fieldErrors(fieldName){
@@ -113,8 +113,8 @@ const Login = React.createClass({
             {this.formField("password", "password")}
             <button onClick={this.login}>Login</button>
             <Link to="/" >Cancel</Link>
+            <button onClick={this.loginAsGuest}> Login as Guest</button>
           </form>
-          <button onClick={this.loginAsGuest}> Login as Guest</button>
         </div>
       </div>
     )

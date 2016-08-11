@@ -15,11 +15,12 @@ const User = React.createClass({
   },
 
   componentDidMount () {
-    window.addEventListener("resize", this.forceUpdate.bind(this), true)
+    window.resizeListener = this.forceUpdate.bind(this, null)
+    window.addEventListener("resize", resizeListener)
   },
 
   componentWillUnmount(){
-    window.removeEventListener("resize", this.forceUpdate.bind(this))
+    window.removeEventListener("resize", window.resizeListener)
   },
 
   tooSmallWarning () {

@@ -19,7 +19,8 @@ div.skyscape h1 {
 
 div.skyscape img.cloud1, img.cloud2, img.cloud3, img.cloud4 {
   width: 8%;
-  position: fixed;
+  min-width: 100px;
+  position: absolute;
   opacity: .4;
 }
 
@@ -32,29 +33,29 @@ div.skyscape img.cloud3, img.cloud4 {
 }
 
 div.skyscape img.cloud1.visible {
-  top: 100px;
-  left: 27%;
+  top: 60px;
+  left: calc(45% - 300px);
   transition: left 5s;
   transition-timing-function: cubic-bezier(.6, 0, 0, 1);
 }
 
 div.skyscape img.cloud2.visible {
-  top: 200px;
-  left: 17%;
+  top: 160px;
+  left: calc(35% - 300px);
   transition: left 5s;
   transition-timing-function: cubic-bezier(.6, 0, 0, 1);
 }
 
 div.skyscape img.cloud3.visible {
-  top: 120px;
-  right: 27%;
+  top: 50px;
+  right: calc(45% - 300px);
   transition: right 5s;
   transition-timing-function: cubic-bezier(.6, 0, 0, 1);
 }
 
 div.skyscape img.cloud4.visible {
-  top: 220px;
-  right: 15%;
+  top: 130px;
+  right: calc(35% - 300px);
   transition: right 5s;
   transition-timing-function: cubic-bezier(.6, 0, 0, 1);
 }
@@ -66,25 +67,45 @@ div.skyscape img.mammoth {
   right: 31%;
 }
 
-div.skyscape .signup {
-  width: 200px;
+div.skyscape div.buttonBar {
   margin: auto;
-  font-size: 30px;
-  display: block;
+  display: flex;
+  justify-content: center;
+}
+
+div.skyscape .buttonBar #skyscapeSignup, #skyscapeLogin {
+  font-size: 20px;
+  float: left;
   color: white;
-  text-align:center;
+  display: flex;
   text-decoration: none;
   border: 1px solid white;
-  background: #00cc00;
-  height: 35px;
   padding: 6px;
+  justify-content: center;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-div.skyscape .signup:hover {
-  background: #00e600;
+div.skyscape .buttonBar #skyscapeSignup {
+  width: 200px;
+  margin-left: 20px;
+  background: rgb(0, 204, 0);
+  }
+
+div.skyscape .buttonBar #skyscapeLogin {
+  width: 242px;
+  background: rgb(102, 179, 255);
+  }
+
+div.skyscape #skyscapeSignup:hover {
+  background: rgb(31, 225, 31);
 }
+
+div.skyscape .buttonBar #skyscapeLogin:hover {
+  width: 242px;
+  background: rgb(122, 200, 255);
+  }
+
 
 div span.tagline {
     text-align: center;
