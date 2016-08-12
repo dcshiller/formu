@@ -3,6 +3,7 @@ const React = require('react');
 const hashHistory = require('react-router').hashHistory;
 const ErrorStore = require('../../stores/error_store');
 const FormStore = require('../../stores/form_store.js');
+const ResponseStore = require('../../stores/response_store.js');
 const FormDatabaseActions = require('../../actions/form_database_actions.js');
 const ResponseDatabaseActions = require('../../actions/response_database_actions.js');
 const Field = require('../field');
@@ -23,6 +24,7 @@ const Respond = React.createClass({
   componentWillUnmount () {
     this.formStoreReceipt.remove();
     this.errorStoreReceipt.remove();
+    this.responseStoreReceipt && this.responseStoreReceipt.remove();
   },
 
   checkErrors () {
@@ -65,12 +67,19 @@ const Respond = React.createClass({
     return {responses:  $('form').serializeArray(), id: this.state.form.properties.id};
   },
 
+  moveToResponseView () {
+    let username = location.hash.split("/")[1]
+    hashHistory.push(`${username}/form/${this.state.form.properties.id}/${ResponseStore.getResponse().id}`);
+  },
+
   retrieveForm () {
-    this.setState({form: FormStore.getFormInFocus()})
+    this.setState({form: FormStore.getFormInFocus()});
   },
 
   submitResponses () {
-    ResponseDatabaseActions.submitResponse(this.getResponses())
+    debugger
+    this.responseStoreReceipt = ResponseStore.addListener(this.moveToResponseView)
+    ResponseDatabaseActions.submitResponse(this.getResponses());
   },
 
   render(){

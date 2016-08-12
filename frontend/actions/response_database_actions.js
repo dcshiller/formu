@@ -20,7 +20,7 @@ module.exports = {
   },
 
   submitResponse (responseData) {
-      ApiResponseUtils.submitResponse(responseData, this.confirmResponse, this.errorMessage)
+      ApiResponseUtils.submitResponse(responseData, this.passResponseToDispatcher, this.errorMessage);
   }
 
 };

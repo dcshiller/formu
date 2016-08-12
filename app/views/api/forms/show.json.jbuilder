@@ -4,8 +4,10 @@ json.properties do
   json.id @form.id
 end
 
+sorted_fields = @form.fields.sort {|field1, field2| field1.position <=> field2.position}
+
 json.fields do
-  json.array! @form.fields do |field|
+  json.array! sorted_fields do |field|
     json.type field.field_type
     json.label field.label
     json.id field.id
