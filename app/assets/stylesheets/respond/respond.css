@@ -10,6 +10,7 @@ main.formContainer {
   margin-top: 150px;
   margin-bottom: 150px;
   position: relative;
+  box-shadow: 3px 10px 10px 2px rgba(10, 10, 10, .15);
 }
 
 p.notFoundMessage {
