@@ -59,7 +59,7 @@ module.exports = {
         method: "PATCH",
         dataType: "json",
         data: { form: form },
-        success(successMessage){successCallBack(JSON.stringify(successMessage))},
+        success(formData){successCallBack(formData)},
         error(errorMessage){failureCallBack(errorMessage)
     }
     });

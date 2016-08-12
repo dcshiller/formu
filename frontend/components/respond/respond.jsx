@@ -77,7 +77,6 @@ const Respond = React.createClass({
   },
 
   submitResponses () {
-    debugger
     this.responseStoreReceipt = ResponseStore.addListener(this.moveToResponseView)
     ResponseDatabaseActions.submitResponse(this.getResponses());
   },

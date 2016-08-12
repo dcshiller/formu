@@ -22,7 +22,7 @@ class Api::FormsController < ApplicationController
           FormFieldChoice.delete(choice.id)
         end
       end
-      render json: {form: "Updated", id: @form.id}, status: 200
+      render :show
     else
       render json: {form: "Error"}, status: 422
     end
@@ -48,7 +48,7 @@ class Api::FormsController < ApplicationController
 
   def index
     @currentUser = User.includes(forms: :responses).find_by_session_token(session[:session_token])
-    if currentUser.username == params[:username]
+    if currentUser && currentUser.username == params[:username]
       render :index
     else
       render json: {forms: "Not Current User"}, status: 400
@@ -80,7 +80,7 @@ class Api::FormsController < ApplicationController
     translated_form[:fields_attributes] && translated_form[:fields_attributes].collect!.with_index do |field, index|
       field[:position] = index
       field[:label] = field[:label]
-      field[:instructions] = field[:Instructions]
+      field[:instructions] = field[:instructions]
       field[:field_type] = field[:type]
       field.delete :className
       field.delete "id" if (field["id"] && field["id"].is_a?(String) && field["id"].slice(0,4) == "TEMP")
@@ -99,6 +99,7 @@ class Api::FormsController < ApplicationController
       field.delete :choices
       field
     end
+
     translated_form[:fields_attributes].compact! if translated_form[:fields_attributes]
 
     translated_form[:id] = params[:form][:properties][:id]

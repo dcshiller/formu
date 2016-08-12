@@ -16,8 +16,8 @@ const Field = React.createClass({
               <label
                    htmlFor       =       { fieldVals.fieldId }
                    className     =       { fieldVals.fieldType + " inputLabel" }
-                   id            =       { fieldVals.fieldId + 3 + "_label"}
-                   key           =       { fieldVals.fieldId + 3 + "_label"}
+                   id            =       { fieldVals.fieldId  + "_label"}
+                   key           =       { fieldVals.fieldId  + "_label"}
                  >{fieldVals["fieldName"]}</label>
             ),
 

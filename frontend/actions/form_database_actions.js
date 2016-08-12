@@ -79,6 +79,6 @@ module.exports = {
   },
 
   updateForm (form) {
-    ApiFormUtils.updateForm(form, this.errorMessage, this.errorMessage)
+    ApiFormUtils.updateForm(form, this.passFormToDispatcher, this.errorMessage)
   }
 }

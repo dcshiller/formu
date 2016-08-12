@@ -20,8 +20,6 @@ const customStyles = {
   }
 };
 
-
-
 const UserIndex = React.createClass({
 
   getInitialState () {
@@ -98,8 +96,7 @@ const UserIndex = React.createClass({
                     <Link to={`${self.state.username}/form/${form.id}`}> link</Link>, {" "}
                     <button onClick={self.editFormHandler.bind(null, form.id)}>
                       edit
-                    </button>,
-                      share
+                    </button>
                   </span>
                   <span>
                     <button onClick={self.toggleResponse.bind(self, index)}>responses</button> ({form.responses.length})

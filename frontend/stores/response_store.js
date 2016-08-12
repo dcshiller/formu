@@ -11,7 +11,6 @@ ResponseStore.getResponse = function () {
 };
 
 ResponseStore.__onDispatch = function(payload){
-  debugger
   switch (payload.actionType) {
     case CONSTS.SET_RESPONSE :
       _Response = payload.response;

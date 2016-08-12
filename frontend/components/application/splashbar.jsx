@@ -13,10 +13,10 @@ const Splashbar = React.createClass({
 
   startClouds () {
     $('img[class^=cloud]').addClass('visible');
-    setInterval(function(){
-      if ($('.mammothLids')) {
-        $('.mammothLids').addClass("visible")
-    }}, 1000);
+    // setInterval(function(){
+    //   if ($('.mammothLids')) {
+    //     $('.mammothLids').addClass("visible")
+    // }}, 1000);
   },
 
   render () {
@@ -38,7 +38,7 @@ const Splashbar = React.createClass({
           </div>
         </div>
         <span className="tagline">
-          Building forms can be tiresome.<br/><br/>
+          Building forms can be beastly.<br/><br/>
 
           <span className="red">Forμ</span> makes it quicker and easier. <br/><br/><br/><br/>
 
