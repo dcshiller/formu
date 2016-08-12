@@ -1,6 +1,7 @@
 div .tabForm {
   position: fixed;
 width: 400px;
+
 }
 
 div .tabForm div {
@@ -19,6 +20,14 @@ div .tabForm div textarea.paragraph {
   height: 60px;
 }
 
+div.choices {
+  bottom: 200px;
+  max-height: 250px;
+  overflow: scroll;
+}
+div.choices::-webkit-scrollbar {
+display: none;
+}
 
 div .tabForm div.choices .inputWrapper {
   padding: 5px 20px 5px 20px;
@@ -52,10 +61,17 @@ div .deleteButton {
   /*bottom: 20%;*/
   margin: auto;
   margin-top: 50px;
+  /*margin-top: -200px;*/
 }
 
 div .deleteButton:hover {
   opacity: 1;
+}
+
+div .deleteButon:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 div .tabForm p {

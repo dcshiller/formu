@@ -34,7 +34,7 @@ const FieldPropertiesTab = React.createClass({
     let fB_forFieldChoices = this.props.fieldBuilder.bind(null, this.inputHandlerChoice)
     return(
       <div className="designTab">
-        <form className="tabForm">
+        <form className="tabForm container">
           { !this.props.field && <p> Double click on a field on right to get started. </p> }
 
           { this.props.field &&
