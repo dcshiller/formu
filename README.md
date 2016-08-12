@@ -2,15 +2,24 @@
 
   *A form building website.*
 
+
+  ![MainScreenshot]
+[MainScreenshot]: ./docs/ForMuFrontPage.png
+
+
 [Link][link]
 
 [link]: https://formu.herokuapp.com
 
 ### Overview
+<!-- ![GUI](./docs/ForMuGUI.png) -->
 
-This website reproduces some of the essential functions of survey monkey's wufoo.com. The site centers on a dynamic form-building application, that allows for drag and drop placement of five different varieties of form field. The site also hosts the forms, which can be filled out. Responses are available on the form-builders index page.
+This website reproduces some of the essential functions of survey monkey's wufoo.com. The site centers on a dynamic form-building application, that allows for drag and drop placement of fields and structural elements. The site also hosts the forms, which can be filled out by anyone with the appropriate link. All responses to a give form are available on the designer's index page.
+
 
 ### Main Features
+
+
 
 * User signup, login, and session authentication
 * Form-building GUI
