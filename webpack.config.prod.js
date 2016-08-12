@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname,
   entry: "./frontend/hub.jsx",
   output: {
-    path: './app/assets/javascripts'),
+    path: './app/assets/javascripts',
     filename: "bundle.js"
   },
   resolve: {
