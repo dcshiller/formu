@@ -21,8 +21,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "heroku-postbuild": "webpack --config webpack.config.prod.js",
-    "webpack": "webpack --watch"
+    "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
