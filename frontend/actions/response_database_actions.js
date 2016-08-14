@@ -5,7 +5,7 @@ const ApiResponseUtils = require('../utils/api_response_utils.js')
 module.exports = {
 
   errorMessage (errorMessage) {
-    debugger
+    
   },
 
   getResponse (responseId) {

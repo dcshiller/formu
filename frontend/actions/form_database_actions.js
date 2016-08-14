@@ -36,7 +36,6 @@ module.exports = {
   },
 
   deleteChoiceSuccess (choiceId) {
-    debugger
       AppDispatcher.dispatch({
         actionType: CONSTS.CHOICE_DELETED,
         choiceId: choiceId

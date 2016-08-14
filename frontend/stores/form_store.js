@@ -90,7 +90,6 @@ FormStore.deleteByChoiceId = function (choiceId) {
       }}
   }
   );
-  debugger
   this.__emitChange();
 };
 

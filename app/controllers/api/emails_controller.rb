@@ -4,7 +4,6 @@ class Api::EmailsController < ApplicationController
     first_field = params["emailParams"].values[0]
     accum_start = {first_field["name"] => first_field["value"]}
     massaged_params = params["emailParams"].values[1..-1].inject(accum_start) {|accum, field| accum.merge!({field["name"] => field["value"]}) }
-    debugger
     invitation = FormInvitationMailer.invitation_email(massaged_params["email"],
                                           massaged_params["recipient"],
                                           massaged_params["sender"],
