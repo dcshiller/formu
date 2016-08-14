@@ -33,7 +33,7 @@ const Signup = React.createClass({
 
   newUserHandler () {
     if (SessionStore.currentUser()) {
-      hashHistory.push(SessionStore.currentUser())
+      hashHistory.push("users/" + SessionStore.currentUser())
     }
   },
 

@@ -4,12 +4,14 @@
 
 html, body{
 height: 100%;
-width: 100%}
+width: 100%;
+}
 
 body {
   position: relative;
   padding: 0px;
   margin: 0px;
+  overflow-x: hidden;
 }
 
 div.applicationMain navbar {
@@ -70,4 +72,14 @@ div.applicationMain navbar .logoLink {
   border: none;
   font: inherit;
   color: inherit;
+}
+
+.standardButton {
+  text-align: center;
+  font-size: 16px;
+  vertical-align: center;
+  background: linear-gradient(to bottom,  #f6f8f9 20%, #f5f7f9 40%, #d7dee3 100%);
+  border: 1px solid #d7dee3;
+  border-radius: 10px;
+  min-width: 80px;
 }
