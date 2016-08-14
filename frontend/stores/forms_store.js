@@ -29,7 +29,6 @@ FormsStore.__onDispatch = function(payload){
       this.__emitChange();
     break;
   }
-
 };
 
 
