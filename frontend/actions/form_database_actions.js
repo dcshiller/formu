@@ -19,12 +19,28 @@ module.exports = {
     })
   },
 
+  deleteChoice (id) {
+    if (id.slice) // note, this tests for a string, since instanceof doesn't work
+      this.deleteChoiceSuccess(id);
+    else {
+      ApiFormUtils.deleteChoice(id, this.deleteChoiceSuccess.bind(null, id), this.errorMessage);
+    }
+  },
+
   deleteField (id) {
     if (id.slice)
       this.deleteFieldSuccess(id);
     else {
       ApiFormUtils.deleteField(id, this.deleteFieldSuccess.bind(null, id), this.errorMessage);
     }
+  },
+
+  deleteChoiceSuccess (choiceId) {
+    debugger
+      AppDispatcher.dispatch({
+        actionType: CONSTS.CHOICE_DELETED,
+        choiceId: choiceId
+      });
   },
 
   deleteFieldSuccess (fieldId) {
@@ -75,10 +91,12 @@ module.exports = {
   },
 
   saveForm (form) {
+    this.errorMessage({form: 'Saving...'});
     ApiFormUtils.saveForm(form, this.passFormToDispatcher, this.errorMessage)
   },
 
   updateForm (form) {
+    this.errorMessage({form: 'Updating...'});
     ApiFormUtils.updateForm(form, this.passFormToDispatcher, this.errorMessage)
   }
 }
