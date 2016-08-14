@@ -1,5 +1,3 @@
-
-
 div.userMain {
   padding-top: 20px;
   width: 80%;
@@ -13,8 +11,7 @@ div.userMain navbar {
   width: calc(100% - 11.7x);
   height: 35px;
   padding: 5px;
-  /*background: #FC0505;*/
-    background:  linear-gradient(to top right,  rgb(240, 2, 2) 5%, #FC0505 20%,  rgb(240, 2, 2) 70%);
+  background:  linear-gradient(to top right,  rgb(240, 2, 2) 5%, #FC0505 20%,  rgb(240, 2, 2) 70%);
   border-radius: 20px 20px 0px 0px;
   border-top: 1px solid rgba(153, 0, 0, .5);
   border-right: 1px solid rgba(153, 0, 0, .5);
