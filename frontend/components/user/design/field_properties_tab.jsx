@@ -10,6 +10,11 @@ const FieldPropertiesTab = React.createClass({
     DesignActions.addFieldChoice();
   },
 
+  deleteChoiceHandler (choiceToDelete, e) {
+    e.preventDefault();
+    FormDatabaseActions.deleteChoice(choiceToDelete);
+  },
+
   deleteFieldHandler (fieldToDelete, e) {
     e.preventDefault();
     DesignActions.blurField();
@@ -32,6 +37,7 @@ const FieldPropertiesTab = React.createClass({
     let choices = getIfDefined(this.props.field, "choices");
     let fB_forFieldProps = this.props.fieldBuilder.bind(null, this.inputHandlerProp)
     let fB_forFieldChoices = this.props.fieldBuilder.bind(null, this.inputHandlerChoice)
+    let self = this;
     return(
       <div className="designTab">
         <form className="tabForm container">
@@ -51,10 +57,16 @@ const FieldPropertiesTab = React.createClass({
               <div className="choices">
               Choices
                 {choices && choices.map(function(choice, index){
-                    return fB_forFieldChoices("choice_" + choice.id,
+                    return (<div key={`Choice_${index}`}
+                                className="choiceRow container">
+                            {fB_forFieldChoices("choice_" + choice.id,
                                                "text",
                                                choice.choice_text,
-                                              {hideLabel: true});
+                                              {hideLabel: true})}
+                              <img className="choiceDeleteButton"
+                                   onClick={self.deleteChoiceHandler.bind(null, choice.id)}
+                                   src={window.trashURL}/>
+                            </div>)
                 })}
                 <button id="addChoiceButton" onClick = { this.addChoiceHandler }> + </button>
               </div>

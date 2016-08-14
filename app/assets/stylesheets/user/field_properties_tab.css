@@ -25,16 +25,38 @@ div.choices {
   max-height: 250px;
   overflow: scroll;
 }
+
+div div.choiceRow {
+  margin: 0px;
+  padding: 0px;
+}
+
 div.choices::-webkit-scrollbar {
 display: none;
 }
 
 div .tabForm div.choices .inputWrapper {
-  padding: 5px 20px 5px 20px;
+  padding: 5px 10px 5px 10px;
+  width: 80%;
+  float: left;
 }
 
 div .tabForm div.choices input, textarea {
   margin-top: 5px;
+}
+
+div .tabForm div.choices img.choiceDeleteButton {
+  height: 20px;
+  width: auto;
+  margin-top: 8px;
+  padding: 5px 0px;
+  float: left;
+  opacity: .3;
+  cursor: pointer;
+}
+
+div .tabForm div.choices img.choiceDeleteButton:hover {
+  opacity: 1;
 }
 
 div #addChoiceButton {
@@ -49,7 +71,7 @@ div #addChoiceButton {
 
 div #addChoiceButton:hover {
   color: red;
-  margin-top: 7px;
+  margin-top: 5px;
   font-size: 35px;
 }
 
