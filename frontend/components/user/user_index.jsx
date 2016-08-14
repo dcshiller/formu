@@ -11,15 +11,6 @@ const Modal = require('react-modal');
 
 var newFormsListener;
 
-const customStyles = {
-  content : {
-    top                   : '20%',
-    left                  : '35%',
-    right                 : '35%',
-    bottom                : '20%'
-  }
-};
-
 const UserIndex = React.createClass({
 
   getInitialState () {
@@ -27,7 +18,7 @@ const UserIndex = React.createClass({
     return {
       username: SessionStore.currentUser(),
       forms: FormsStore.getForms(currentUser),
-      emailModal: false
+      invitationModal: false
     };
   },
 
@@ -49,7 +40,7 @@ const UserIndex = React.createClass({
   },
 
   closeModal () {
-    this.setState({emailModal: false});
+    this.setState({invitationModal: false});
   },
 
   deleteFormHandler (id, e) {
@@ -59,11 +50,13 @@ const UserIndex = React.createClass({
 
   drawModal () {
    return (  <Modal
-               isOpen={this.state.emailModal}
+               className="emailModal"
+               overlayClassName="emailModalOverlay"
+               isOpen={this.state.invitationModal}
                onRequestClose={this.closeModal}
-               style={customStyles}>
-               <h2>Invitation for form {this.formModalChoice}</h2>
-               <form id="emailInputForm">
+               >
+               <h2>Invitation for form {this.state.formModalChoice}</h2>
+               <form id="emailInputForm" className="container">
                    <label for="emailinput">Recipient's email: </label>
                    <input id="emailinput" name="email" type="text"></input>
                    <label for="recipientinput">Recipient's name: </label>
@@ -73,8 +66,8 @@ const UserIndex = React.createClass({
                    <label for="custominput">Custom message: </label>
                    <input id="custominput" name="custom_message"></input>
                </form>
-               <button onClick={this.sendInvitation.bind(null, this.formModalChoice)}>send</button>
-               <button onClick={this.closeModal}>close</button>
+               <button className="standardButton" onClick={this.sendInvitation.bind(null, this.state.formModalChoice)}>send</button>
+               <button className="standardButton" onClick={this.closeModal}>close</button>
              </Modal> )
   },
 
@@ -93,9 +86,10 @@ const UserIndex = React.createClass({
                   <span id={"form_" + index + "_title"}> {form.title} </span>
                   <span id={"form_" + index + "_created_at"}> {form.created_at} </span>
                   <span id={"form_" + index + "_edit"}>
-                    <Link to={`${self.state.username}/form/${form.id}`}> link</Link>, {" "}
+                  <button onClick={self.invitationModalHandler.bind(null, form.id)}> <img src={envelopeURL}/></button>
+                    <Link to={`${self.state.username}/form/${form.id}`}><img src={linkURL}/></Link>
                     <button onClick={self.editFormHandler.bind(null, form.id)}>
-                      edit
+                      <img src={editURL}/>
                     </button>
                   </span>
                   <span>
@@ -125,17 +119,20 @@ const UserIndex = React.createClass({
     })
   },
 
-  getEmailParams (form_id) {
-    let email_form_entries = $('#emailInputForm').serializeArray();
-    let form_path = `${this.state.username}/forms/`
-    email_form_entries.push({name: "path", value: form_path});
-    return {emailParams:  email_form_entries}
+  getEmailParams (formId) {
+    let emailFormEntries = $('#emailInputForm').serializeArray();
+    let formPath = `www.formu.herokuapp.com/#/${this.state.username}/forms/${formId}`
+    emailFormEntries.push({name: "path", value: formPath});
+    return {emailParams:  emailFormEntries}
   },
 
-  openModal (formChoice) {
-    this.formModalChoice = formChoice;
-    this.setState({modalIsOpen: true});
+  invitationModalHandler (formId) {
+    this.setState({invitationModal: true, formModalChoice: formId})
   },
+
+  // openModal (formChoice) {
+  //   this.setState({modalIsOpen: true});
+  // },
 
   newFormHandler () {
     FormDatabaseActions.clearForm();
@@ -144,7 +141,7 @@ const UserIndex = React.createClass({
 
   processErrors () {
     if (ErrorStore.retrieveErrors().email == "success")
-      {this.setState({emailModal: false})}
+      {this.setState({invitationModal: false})}
   },
 
   processNewForms () {
@@ -156,8 +153,8 @@ const UserIndex = React.createClass({
     FormDatabaseActions.getForms(this.state.username);
   },
 
-  sendInvitation () {
-    EmailActions.sendInvitation(this.getEmailParams());
+  sendInvitation (formId) {
+    EmailActions.sendInvitation(this.getEmailParams(formId));
   },
 
   toggleResponse (form_number) {
