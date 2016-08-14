@@ -1,5 +1,15 @@
 module.exports = {
 
+  deleteChoice (choiceId, successCallBack, failureCallBack) {
+  $.ajax({
+      url: "api/choices/" + choiceId,
+      method: "DELETE",
+      dataType: "json",
+      success(successMessage){successCallBack(successMessage)},
+      error(errorMessage){failureCallBack(errorMessage)}
+    });
+  },
+
   deleteField (fieldId, successCallBack, failureCallBack) {
     $.ajax({
         url: "api/fields/" + fieldId,

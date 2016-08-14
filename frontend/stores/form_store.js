@@ -9,16 +9,6 @@ var _Form = {
             instructions: "This is a form. May it soon be awesome."
           },
           fields: [
-                    // {type: "text",
-                    // fieldId: "aaaaaa",
-                    // Label: "My Label",
-                    // Instructions: "My Instructions"},
-
-                    // {type: "checkbox",
-                    // fieldId: "bbbb",
-                    // Label: "My Label",
-                    // Instructions: "ChooseOne",
-                    // choices: ["c1", "c2"]}
                   ]
 };
 
@@ -89,6 +79,21 @@ FormStore.deleteByFieldId = function (fieldId) {
   this.__emitChange();
 };
 
+FormStore.deleteByChoiceId = function (choiceId) {
+  _Form.fields.forEach(function(field){
+    if(field.choices)
+      { for(let i = 0; i < field.choices.length; i++){
+          if (field.choices[i].id == choiceId) {
+            field.choices.splice(i,1);
+            i--;
+          }
+      }}
+  }
+  );
+  debugger
+  this.__emitChange();
+};
+
 FormStore.deleteByFieldPosition = function (fieldPos) {
   _Form.fields.splice(fieldPos,1)
 };
@@ -98,7 +103,6 @@ FormStore.findPositionByFieldId = function (fieldId) {
   for (let i = 0; i < _Form.fields.length; i++){
     if (_Form.fields[i] == undefined) {
        _Form.fields.splice(i, 1);
-       console.log("removed one")
        i--;
      }
     if (_Form.fields[i].id == fieldId){
@@ -174,7 +178,9 @@ FormStore.__onDispatch = function (payload) {
     case CONSTS.CHANGE_FORM_PROPERTY :
       this.changeFormProperty(payload.property_name, payload.new_value);
     break;
-
+    case CONSTS.CHOICE_DELETED :
+      this.deleteByChoiceId(payload.choiceId);
+    break;
     case CONSTS.CLEAR_FORM :
       this.clearForm();
     break
