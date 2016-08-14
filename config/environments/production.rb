@@ -20,7 +20,7 @@ Rails.application.configure do
     :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'YOUR_APPS_DOMAIN', #eg: 'yourappname.herokuapp.com'
+    :domain         => 'formu.herokuapp.com', #eg: 'yourappname.herokuapp.com'
     :authentication => :plain,
   }
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
