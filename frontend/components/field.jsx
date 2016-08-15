@@ -78,7 +78,7 @@ const Field = React.createClass({
 
       wrapDiv(nestLevel, content1, content2) {
         let fieldVals = this.props.fieldVals;
-        let identifier =  fieldVals.fieldId + "_div_" + nestLevel + "_" + Math.random();
+        let identifier =  fieldVals.fieldId + "_div_" + nestLevel + "_";
         return (<div className      =       { (nestLevel > 1 && " ") ||
                                               (fieldVals.selected ? "inputWrapper selected" : "inputWrapper") }
                       onClick       =       { fieldVals.onContainerClick }

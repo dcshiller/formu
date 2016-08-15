@@ -4,7 +4,7 @@ const ChoiceField = React.createClass({
   render () {
     let fieldVals = this.props.fieldVals;
     return (
-        <div key = {Math.random()}>
+        <div>
          { fieldVals.choices.map(function(choice, index) {
           return (
             <label  htmlFor    =       { fieldVals.fieldId + "_choice_" + index + "_"  + choice.id  }
