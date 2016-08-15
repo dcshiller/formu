@@ -111,9 +111,9 @@ const Login = React.createClass({
             <hr/>
             {this.formField("username", "text")}
             {this.formField("password", "password")}
-            <button onClick={this.login}>Login</button>
-            <Link to="/" >Cancel</Link>
-            <button onClick={this.loginAsGuest}> Login as Guest</button>
+            <button className="standardButton" onClick={this.login}>Login</button>
+            <Link className="standardButton" to="/" >Cancel</Link>
+            <button className="standardButton" onClick={this.loginAsGuest}> Login as Guest</button>
           </form>
         </div>
       </div>
