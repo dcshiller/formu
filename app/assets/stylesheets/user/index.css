@@ -119,10 +119,10 @@ li.form_index_item span:last-of-type {
   opacity: 1;
   z-index: 3;
   width: 500px;
-  height: 400px;
+  height: 440px;
   position: fixed;
   top: calc(50% - 230px);
-  left: calc(50% - 280px);
+  left: calc(50% - 300px);
   background: rgb(250, 252, 255);
   padding: 27px;
   border: 3px solid grey;
@@ -153,13 +153,14 @@ li.form_index_item span:last-of-type {
 #emailInputForm label {
   float: left;
   /*flex-grow: 0;*/
-  width: 33%;
+  /*width: 30%;*/
+  width: 150px;
   display: block;
   margin-bottom: 28px;
 }
 
 #emailInputForm input {
-  width: 65%;
+  width: 250px;
   float: right;
   margin-bottom: 25px;
 }
