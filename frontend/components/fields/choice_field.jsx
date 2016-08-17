@@ -33,7 +33,4 @@ const ChoiceField = React.createClass({
   }
 });
 
-
-//NB: removed || choice from value on input choice.
-
 module.exports = ChoiceField;
