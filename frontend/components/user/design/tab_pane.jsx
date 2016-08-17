@@ -20,10 +20,10 @@ const TabPane = React.createClass({
 
   fieldBuilder (handler, fieldName, fieldType, fieldValue, options) {
     return (  <Field fieldVals={ { fieldName: fieldName,
-                  hideLabel:  options && options.hideLabel,
+                  hideLabel:  getIfDefined(options, "hideLabel"),
                   handler: handler,
                   fieldType: fieldType,
-                  fieldId: (this.props.field && this.props.field.id),
+                  fieldId: getIfDefined(this.props.field,"id"),
                   fieldValue: fieldValue}} />
     )
   },

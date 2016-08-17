@@ -56,7 +56,7 @@ const Response = React.createClass({
     {
       return <p className="notFoundMessage"> Response Not Found </p>
     }
-    else if (this.state.response && this.state.response.responses)
+    else if (getIfDefined(this.state.response, "responses"))
     {
       let self = this;
       let arrayOfResponses = this.state.response.responses.map(function(response, index){

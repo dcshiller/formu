@@ -22,9 +22,9 @@ const Respond = React.createClass({
   },
 
   componentWillUnmount () {
-    this.formStoreReceipt.remove();
-    this.errorStoreReceipt.remove();
-    this.responseStoreReceipt && this.responseStoreReceipt.remove();
+    doIfDefined( this.formStoreReceipt, remove );
+    doIfDefined( this.errorStoreReceipt, remove );
+    doIfDefined( this.responseStoreReceipt, remove );
   },
 
   checkErrors () {
@@ -53,7 +53,7 @@ const Respond = React.createClass({
     {
       return <p className="notFoundMessage"> Form Not Found </p>
     }
-    else if (this.state.form && this.state.form.fields)
+    else if (getIfDefined(this.state.form, "fields"))
     {
       let self = this;
       let arrayOfFields = this.state.form.fields.map(function(field, index){
