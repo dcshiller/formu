@@ -59,11 +59,10 @@ const Field = React.createClass({
           case "password" :
             return (<TextField fieldVals={this.props.fieldVals}/>);
           case "paragraph" :
-            return (<ParagraphField fieldVals={this.props.fieldVals}/>); // this.makeParagraphField();
+            return (<ParagraphField fieldVals={this.props.fieldVals}/>);
           case "checkbox" :
           case "radio" :
             return (<ChoiceField fieldVals={this.props.fieldVals}/>)
-          // return this.makeChoiceField();
         }
       },
 
@@ -88,10 +87,6 @@ const Field = React.createClass({
                       { content2 }
                 </div> )
       },
-
-      // draggable     =       { fieldVals.draggable }
-      // onDragStart   =       { fieldVals.onDragStart }
-      // onDragEnd     =       { fieldVals.onDragEnd }
 
       render () {
         let fieldVals = this.props.fieldVals;
