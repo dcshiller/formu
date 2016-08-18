@@ -24,7 +24,7 @@ Rails.application.configure do
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
     :domain         => 'formu.derekshiller.com', #eg: 'yourappname.herokuapp.com'
     :authentication => :plain,
-  # }
+  }
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like
