@@ -27,10 +27,10 @@ Rails.application.configure do
   # }
 
   ActionMailer::Base.smtp_settings = {
-  :port           => ENV['MAILGUN_SMTP_PORT'],
-  :address        => ENV['MAILGUN_SMTP_SERVER'],
-  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+  :port           => '587' #ENV['MAILGUN_SMTP_PORT'],
+  :address        => '209.61.151.224'  #ENV['MAILGUN_SMTP_SERVER'],
+  :user_name      => 'postmaster@formu.derekshiller.com' #ENV['MAILGUN_SMTP_LOGIN'],
+  :password       => 'ab433f8c8b08015746ea720069c39653' #ENV['MAILGUN_SMTP_PASSWORD'],
   :domain         => 'formu.derekshiller.com',
   :authentication => :plain,
 }
