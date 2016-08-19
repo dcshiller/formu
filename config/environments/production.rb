@@ -38,7 +38,7 @@ Rails.application.configure do
   :port           => '587', #ENV['MAILGUN_SMTP_PORT'],
   :address        =>  'smtp.gmail.com',  #ENV['MAILGUN_SMTP_SERVER'],
   :user_name      => 'dcshiller', #ENV['MAILGUN_SMTP_LOGIN'],
-  :password       => 'unicorn', #ENV['MAILGUN_SMTP_PASSWORD'],
+  :password       =>  ENV['MAILGUN_SMTP_PASSWORD'],
   :domain         => 'formu.derekshiller.com',
   :authentication => :plain,
 }
