@@ -26,14 +26,31 @@ Rails.application.configure do
   #   :authentication => :plain,
   # }
 
-  ActionMailer::Base.smtp_settings = {
+  #   ActionMailer::Base.smtp_settings = {
+  #   :port           => '587', #ENV['MAILGUN_SMTP_PORT'],
+  #   :address        =>  '209.61.151.224',  #ENV['MAILGUN_SMTP_SERVER'],
+  #   :user_name      => 'postmaster@formu.derekshiller.com', #ENV['MAILGUN_SMTP_LOGIN'],
+  #   :password       => 'ab433f8c8b08015746ea720069c39653', #ENV['MAILGUN_SMTP_PASSWORD'],
+  #   :domain         => 'formu.derekshiller.com',
+  #   :authentication => :plain,
+  # }
+    ActionMailer::Base.smtp_settings = {
   :port           => '587', #ENV['MAILGUN_SMTP_PORT'],
-  :address        =>  "smtp.formu.derekshiller.com", #'209.61.151.224',  #ENV['MAILGUN_SMTP_SERVER'],
-  :user_name      => 'postmaster@formu.derekshiller.com', #ENV['MAILGUN_SMTP_LOGIN'],
-  :password       => 'ab433f8c8b08015746ea720069c39653', #ENV['MAILGUN_SMTP_PASSWORD'],
+  :address        =>  'smtp.gmail.com',  #ENV['MAILGUN_SMTP_SERVER'],
+  :user_name      => 'dcshiller', #ENV['MAILGUN_SMTP_LOGIN'],
+  :password       => 'unicorn', #ENV['MAILGUN_SMTP_PASSWORD'],
   :domain         => 'formu.derekshiller.com',
   :authentication => :plain,
 }
+
+#   ActionMailer::Base.smtp_settings = {
+#   :port           => '587', #ENV['MAILGUN_SMTP_PORT'],
+#   :address        =>  '209.61.151.224',  #ENV['MAILGUN_SMTP_SERVER'],
+#   :user_name      => 'postmaster@formu.derekshiller.com', #ENV['MAILGUN_SMTP_LOGIN'],
+#   :password       => 'ab433f8c8b08015746ea720069c39653', #ENV['MAILGUN_SMTP_PASSWORD'],
+#   :domain         => 'formu.derekshiller.com',
+#   :authentication => :plain,
+# }
 ActionMailer::Base.delivery_method = :smtp
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
