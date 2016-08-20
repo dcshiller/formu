@@ -22,9 +22,9 @@ const Respond = React.createClass({
   },
 
   componentWillUnmount () {
-    doIfDefined( this.formStoreReceipt, remove );
-    doIfDefined( this.errorStoreReceipt, remove );
-    doIfDefined( this.responseStoreReceipt, remove );
+    doIfDefined( "remove", this, "formStoreReceipt" );
+    doIfDefined( "remove", this, "errorStoreReceipt" );
+    doIfDefined( "remove", this, "responseStoreReceipt" );
   },
 
   checkErrors () {
