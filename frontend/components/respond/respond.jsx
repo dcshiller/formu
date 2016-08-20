@@ -22,8 +22,8 @@ const Respond = React.createClass({
   },
 
   componentWillUnmount () {
-    this.formStoreReceipt.remove());
-    this.errorStoreReceipt.remove());
+    this.formStoreReceipt.remove();
+    this.errorStoreReceipt.remove();
     doIfDefined( "remove", this, "responseStoreReceipt" );
   },
 
