@@ -40,9 +40,10 @@ button {
   border: none;
 }
 
-input:hover {
-  cursor: default;
+input[type="textarea"], input[type="text"] {
+  cursor: text;
 }
+
 button:focus, input:focus {
   outline: 0px;
   cursor: default;
@@ -59,4 +60,9 @@ body {
 a {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+}
+
+span.red {
+  color: red;
 }

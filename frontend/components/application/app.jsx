@@ -8,16 +8,16 @@ const App = React.createClass({
   getInitialState(){
     return {user: SessionStore.currentUser() };},
 
-  onChange(){
-    this.setState({user: SessionStore.currentUser() })
-  },
-
   componentDidMount(){
     this.sessionStoreReceipt = SessionStore.addListener(this.onChange);
   },
 
   componentWillUnmount(){
     this.sessionStoreReceipt.remove()
+  },
+
+  onChange(){
+    this.setState({user: SessionStore.currentUser() })
   },
 
   render(){
