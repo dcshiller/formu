@@ -16,10 +16,6 @@ const Login = React.createClass({
     return {username: "", password: "", errors: {}}
   },
 
-  onChange () {
-    let userName = SessionStore.currentUser()
-    if (userName){hashHistory.push("/users/" + userName)}
-  },
 
   componentDidMount () {
     $('body').css("background-image", "repeating-linear-gradient(  30deg, #3D3D3D 2px, #3D3D3D 2px, #1C1B1B 3px)");
@@ -33,17 +29,29 @@ const Login = React.createClass({
     this.errorStoreReceipt.remove();
   },
 
-  newErrors () {
-    if ( !this.isUnMounted )
-      {
-        this.setState( { errors: ErrorStore.retrieveErrors() } )
-      }
+  errorsPresent(fieldName){
+    let thisFieldName = fieldName["fieldName"]
+    if(this.state.errors[thisFieldName]){return "fieldBox yesErrors"}
+    return "fieldBox noErrors";
   },
 
-  removeFieldErrors(field){
-    let newErrors = this.state.errors;
-    newErrors[field] = null;
-    this.setState( {errors: newErrors});
+  fieldErrors(fieldName){
+    let thisFieldName = fieldName["fieldName"]
+    if (this.state.errors[thisFieldName]){
+        return (<span className="errorNote"> {this.state.errors[thisFieldName]} </span>);
+    }
+  },
+
+  formField(fieldName, fieldType){
+    return (
+      <div className={this.errorsPresent({fieldName})}>
+        <Field fieldVals={ { fieldName: fieldName,
+                      fieldType: fieldType,
+                      handler: this.inputHandler,
+                      fieldValue: this.state[fieldName]} } />
+        {this.fieldErrors({fieldName})}
+      </div>
+    );
   },
 
   inputHandler (e) {
@@ -67,30 +75,24 @@ const Login = React.createClass({
     setTimeout(AuthActions.login.bind(AuthActions, {username:"Guest", password:"Password"}), 600);
   },
 
-  fieldErrors(fieldName){
-    let thisFieldName = fieldName["fieldName"]
-    if (this.state.errors[thisFieldName]){
-        return (<span className="errorNote"> {this.state.errors[thisFieldName]} </span>);
-    }
+  newErrors () {
+    if ( !this.isUnMounted )
+      {
+        this.setState( { errors: ErrorStore.retrieveErrors() } )
+      }
   },
 
-  errorsPresent(fieldName){
-    let thisFieldName = fieldName["fieldName"]
-    if(this.state.errors[thisFieldName]){return "fieldBox yesErrors"}
-    return "fieldBox noErrors";
+  onChange () {
+    let userName = SessionStore.currentUser()
+    if (userName){hashHistory.push("/users/" + userName)}
   },
 
-  formField(fieldName, fieldType){
-    return (
-      <div className={this.errorsPresent({fieldName})}>
-        <Field fieldVals={ { fieldName: fieldName,
-                      fieldType: fieldType,
-                      handler: this.inputHandler,
-                      fieldValue: this.state[fieldName]} } />
-        {this.fieldErrors({fieldName})}
-      </div>
-    );
+  removeFieldErrors(field){
+    let newErrors = this.state.errors;
+    newErrors[field] = null;
+    this.setState( {errors: newErrors});
   },
+
 
   render(){
     return (
