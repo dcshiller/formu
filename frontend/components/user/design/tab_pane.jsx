@@ -21,9 +21,10 @@ const TabPane = React.createClass({
   fieldBuilder (handler, fieldName, fieldType, fieldValue, options) {
     return (  <Field fieldVals={ { fieldName: fieldName,
                   hideLabel:  getIfDefined(options, "hideLabel"),
+                  autoFocus: getIfDefined(options, "autoFocus"),
                   handler: handler,
                   fieldType: fieldType,
-                  fieldId: getIfDefined(this.props.field,"id"),
+                  fieldId: getIfDefined(this.props.field, "id"),
                   fieldValue: fieldValue}} />
     )
   },

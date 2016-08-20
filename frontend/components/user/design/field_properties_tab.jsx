@@ -46,7 +46,7 @@ const FieldPropertiesTab = React.createClass({
           { this.props.field &&
             fB_forFieldProps( "label",
                               "text",
-                              this.props.field.label ) }
+                              this.props.field.label, {autoFocus: true} ) }
           { this.props.field && this.props.field.type !="section_title" &&
             fB_forFieldProps( "instructions",
                               "text",
@@ -62,7 +62,8 @@ const FieldPropertiesTab = React.createClass({
                             {fB_forFieldChoices("choice_" + choice.id,
                                                "text",
                                                choice.choice_text,
-                                              {hideLabel: true})}
+                                              {hideLabel: true})
+                                            }
                               <img className="choiceDeleteButton"
                                    onClick={self.deleteChoiceHandler.bind(null, choice.id)}
                                    src={window.trashURL}/>
