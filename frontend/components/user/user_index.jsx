@@ -175,9 +175,7 @@ const UserIndex = React.createClass({
               { this.formLis() }
             </ul>
           </div>
-
           { this.drawModal() }
-
       </div>
     )
   }
