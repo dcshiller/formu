@@ -1,5 +1,5 @@
 class FormInvitationMailer < ApplicationMailer
-  default from: "invitations@formu.herokuapp.com"
+  default from: "invitations@formu.derekshiller.com"
 
 
   def invitation_email(email, recipient, sender, custom_message, path)

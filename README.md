@@ -9,7 +9,7 @@
 
 [Link][link]
 
-[link]: https://formu.herokuapp.com
+[link]: https://formu.derekshiller.com
 
 ### Overview
 <!-- ![GUI](./docs/ForMuGUI.png) -->
