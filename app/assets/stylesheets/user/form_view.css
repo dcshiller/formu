@@ -87,6 +87,10 @@ div .formViewPane input[type="checkbox"] {
   float: left;
 }
 
+div .formViewPane input[type="textarea"], input[type="text"] {
+  cursor: pointer;
+}
+
 div .formViewPane input.radio {
   width: 80px;
   margin-top: 0px;
