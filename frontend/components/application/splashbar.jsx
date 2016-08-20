@@ -1,6 +1,5 @@
 const React = require('react');
-const Link = require('react-router').Link;
-const hashHistory = require('react-router').hashHistory
+import { hashHistory, Link } from 'react-router'
 const AuthActions = require('../../actions/auth_actions');
 const SessionStore = require ('../../stores/session_store')
 

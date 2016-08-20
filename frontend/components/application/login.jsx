@@ -1,6 +1,5 @@
 const React = require('react');
-const Link = require('react-router').Link;
-const hashHistory = require('react-router').hashHistory;
+import { hashHistory, Link } from 'react-router'
 const AuthActions = require('../../actions/auth_actions.js');
 const SessionStore = require('../../stores/session_store.js');
 const ErrorStore = require('../../stores/error_store.js');
@@ -15,7 +14,6 @@ const Login = React.createClass({
       }
     return {username: "", password: "", errors: {}}
   },
-
 
   componentDidMount () {
     $('body').css("background-image", "repeating-linear-gradient(  30deg, #3D3D3D 2px, #3D3D3D 2px, #1C1B1B 3px)");
@@ -57,28 +55,28 @@ const Login = React.createClass({
   inputHandler (e) {
     e.preventDefault();
     let newVals = {};
-    let fieldName =  e.target.id.split("_").pop()
+    let fieldName =  e.target.id.split("_").pop();
     this.removeFieldErrors(fieldName);
     newVals[fieldName] = e.target.value;
-    this.setState( newVals )
+    this.setState( newVals );
   },
 
   login (e) {
     e.preventDefault();
-    AuthActions.login(this.state)
+    AuthActions.login(this.state);
   },
 
   loginAsGuest (e) {
     e.preventDefault();
-    $("#username").val("Guest") //needs to be changed
-    $("#password").val("Password") //needs to be changed
+    $("#username").val("Guest");
+    $("#password").val("Password");
     setTimeout(AuthActions.login.bind(AuthActions, {username:"Guest", password:"Password"}), 600);
   },
 
   newErrors () {
     if ( !this.isUnMounted )
       {
-        this.setState( { errors: ErrorStore.retrieveErrors() } )
+        this.setState( { errors: ErrorStore.retrieveErrors() } );
       }
   },
 
@@ -103,8 +101,7 @@ const Login = React.createClass({
             <h2> Never fear.</h2>
             <hr/>
             <h1> Create one now. </h1>
-            <h2> It's FREE! </h2>
-         </Link>
+          </Link>
           <form className="login">
             <h2> Forμ Welcomes You! </h2>
             <span> Hey fellow form-builder,
