@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-import { reactRouter , IndexRoute, Router , Route , hashHistory } from 'react-router';
+import { reactRouter, IndexRoute, Router , Route , hashHistory } from 'react-router';
 import { App, Login, Signup, Splashbar } from './components/application/application_hub.js';
 import { User , UserIndex , Design } from './components/user/user_hub.js';
 const Respond = require('./components/respond/respond.jsx');
@@ -21,7 +21,7 @@ window.getIfDefined = function(...args){
 };
 
 window.doIfDefined = function(func, ...args){
-  let arg = getIfDefined(args)
+  let arg = getIfDefined(...args)
   if (arg !== undefined) {func.call(this, arg)}
 };
 
