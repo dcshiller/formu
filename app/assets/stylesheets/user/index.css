@@ -174,3 +174,30 @@ li.form_index_item span:last-of-type {
   margin-right: 20px;
   float: right;
 }
+
+.responsesButton {
+  text-align: left;
+  width: 120px;
+}
+
+ul.responseList {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  max-height: 100px;
+  overflow: auto;
+}
+
+ul.responseList::-webkit-scrollbar {
+  width: 9px;
+  height: 5px;
+}
+/*
+div.choices:hover::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}*/
+ul.responseList::-webkit-scrollbar-thumb {
+  border: 10px double rgb(145, 158, 212);
+  border-radius: 20px;*/
+}
