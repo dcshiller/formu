@@ -41,8 +41,6 @@ const Navbar = React.createClass({
               );
       }
     return ( <span className="container">
-
-
                 <Link to="login"
                     id="login"
                     onMouseEnter={this.textTo.bind(this,"GWRR...")}
@@ -52,14 +50,6 @@ const Navbar = React.createClass({
              </span>
             )
   },
-  //
-  // <Link to="login"
-  //       query={{user: "Guest"}}
-  //       id="loginGuest"
-  //       onMouseEnter={this.textTo.bind(this,"GWWRRRR...")}
-  //       onMouseLeave={this.textTo.bind(this,"GUEST LOGIN")}>
-  //     GUEST LOGIN
-  // </Link>
 
   userChange () {
     this.setState({currentUser: SessionStore.currentUser()});
@@ -70,8 +60,11 @@ const Navbar = React.createClass({
       <div>
         <navbar>
           <header>
-          <Link className="logoLink" to="/"> <img id="logo" src={window.logoURL}/> </Link>
-            {this.loginOrLogout()}
+          <Link className="logoLink"
+                to={ this.state.currentUser && !window.location.hash.includes("users")  ? "/users/" +(this.state.currentUser) : "/"}>
+                <img id="logo" src={window.logoURL}/>
+          </Link>
+          {this.loginOrLogout()}
           </header>
         </navbar>
       </div>
