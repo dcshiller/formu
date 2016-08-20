@@ -8,11 +8,8 @@ const ParagraphField = React.createClass({
                 id              =         { fieldVals.fieldId + "_input_" + fieldVals["fieldName"] }
                 name            =         { fieldVals.fieldId }
                 key             =         { fieldVals.fieldId + "_input_" + fieldVals["fieldName"] }
-                type            =         { (fieldVals.fieldType === "paragraph" && "textarea") ||
-                                            fieldVals.fieldType }
-                className       =         { (fieldVals.fieldType === "paragraph" &&
-                                                      "paragraph " + fieldVals.className) ||
-                                            fieldVals.className }
+                type            =         "textarea" 
+                className       =         { "paragraph " + fieldVals.className }
                 onChange        =         { fieldVals.handler }
                 onSelect        =         { fieldVals.onContainerClick }
                 value           =         { fieldVals.fieldValue }
@@ -21,6 +18,5 @@ const ParagraphField = React.createClass({
 
   }
 });
-// fieldName       =         { fieldVals.fieldName }
 
 module.exports = ParagraphField;

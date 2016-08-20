@@ -1,10 +1,5 @@
 const React = require('react');
-const TextField = require('./fields/text_field');
-const ParagraphField = require('./fields/paragraph_field');
-const ChoiceField = require('./fields/choice_field');
-const SectionTitle = require('./fields/section_title');
-const Rule = require('./fields/rule');
-
+import { TextField, ParagraphField, ChoiceField, SectionTitle, Rule } from './fields/field_hub.js';
 
 const Field = React.createClass({
 
