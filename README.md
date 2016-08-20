@@ -20,10 +20,10 @@ This website reproduces some of the essential functions of survey monkey's wufoo
 ### Main Features
 
 * User signup, login, and session authentication
-* Form-building GUI
+* Drag and drop form-building GUI
 * Indexing of created forms for each user
-* Online form completion
-* Designer access to results for each form completed
+* Online form completion with email invitations
+* User access to results for completed forms
 
 ### Implementation
 
@@ -42,3 +42,75 @@ The causal architecture of the website follows a Flux design philosophy. All inf
 The site has three main kinds of data: users, forms, and form responses. All three are saved to a collection of tables in a PostgreSQL database.
 
 Forms are split up across three tables: forms, form fields (entries), and form field choices (options for a given entry). Responses are split across two. These tables are accessed by the front end in the form of json objects. JBuilder is used to massage the form data from the database into the form that it will be most easy to use in generating sequences of fields in javascript. On the other end, forms and responses received from the front end are converted into something that active record can easily save into the associated tables in database.
+
+
+#### Field Components
+
+Given the heavy use that this site places on form fields, all field components on the site were constructed with a generic react Field component. This component takes an options hash, and uses that information to construct and assemble appropriate sub-components.
+
+```javascript
+wrapIfNecessary () {
+  switch (this.props.fieldVals.fieldType) {
+    case "text" :
+    case "number" :
+    case "password" :
+    case "paragraph" :
+    case "checkbox" :
+    case "radio" :
+      return (
+        this.wrapDiv(2, this.addLabelAndInstructions(),
+                        this.directToProperInputMaker())
+      );
+    case "rule" :
+    case "section_title" :
+      return this.directToProperStructuralElementMaker();
+    break;
+  }
+}
+```
+
+```javascript
+<div key = {`choice_div_${fieldVals.fieldId}`}>
+ { fieldVals.choices.map(function(choice, index) {
+  return (
+    <label  htmlFor    =       { fieldVals.fieldId + "_choice_" + index + "_"  + choice.id  }
+            id         =       { fieldVals.fieldId + "_label_" + index + "_" + choice.id }
+            key        =       { fieldVals.fieldId + "_label_" + index + "_" + choice.id }
+            className  =       { fieldVals.fieldType + "choice" }
+           >
+        { choice.choice_text }
+        <input
+            type        =       { fieldVals.fieldType }
+            id          =       { fieldVals.fieldId + "_choice_" + index + "_" + choice.id}
+            key         =       { fieldVals.fieldId + "_choice_"  +
+            name        =       { fieldVals.fieldId }
+            className   =       { fieldVals.className }
+            onChange    =       { fieldVals.handler }
+            onSelect    =       { fieldVals.onContainerClick }
+            value       =       { choice.id }
+            />
+      </label>
+```
+
+#### Conditionalizing Methods
+
+In order to streamline code and deal with complex properties, I wrote several  conditionalizing methods that only 'fire' if the appropriate object exists. This prevents javascript from throwing an error if no appropriate object tree exists.
+
+```javascript
+window.doIfDefined = function(func, context, ...args){
+  let funcName = func.name || func
+  let arg = getIfDefined(context, ...args)
+  if (arg !== undefined) {
+    if (func instanceof Function)
+      { func.call(this, arg)}
+    else if (arg[funcName] instanceof Function)
+      { arg[funcName].call(arg) }
+    else if (context[funcName] instanceof Function)
+      { context[funcName].call(context, arg) }
+  }
+};
+```
+
+```javascript
+if (getIfDefined(this.props, "location", "query", "user") === "Guest")
+```
