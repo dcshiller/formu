@@ -17,23 +17,6 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :mailgun
   # config.action_mailer.mailgun_settings = {domain: '.mailgun.org'}
   config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   :port           => ENV['MAILGUN_SMTP_PORT'],
-  #   :address        => ENV['MAILGUN_SMTP_SERVER'],
-  #   :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-  #   :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-  #   :domain         => 'formu.derekshiller.com', #eg: 'yourappname.herokuapp.com'
-  #   :authentication => :plain,
-  # }
-
-  #   ActionMailer::Base.smtp_settings = {
-  #   :port           => '587', #ENV['MAILGUN_SMTP_PORT'],
-  #   :address        =>  '209.61.151.224',  #ENV['MAILGUN_SMTP_SERVER'],
-  #   :user_name      => 'postmaster@formu.derekshiller.com', #ENV['MAILGUN_SMTP_LOGIN'],
-  #   :password       => 'ab433f8c8b08015746ea720069c39653', #ENV['MAILGUN_SMTP_PASSWORD'],
-  #   :domain         => 'formu.derekshiller.com',
-  #   :authentication => :plain,
-  # }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
@@ -43,23 +26,8 @@ Rails.application.configure do
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
-#   ActionMailer::Base.smtp_settings = {
-#   :port           => '587', #ENV['MAILGUN_SMTP_PORT'],
-#   :address        =>  '209.61.151.224',  #ENV['MAILGUN_SMTP_SERVER'],
-#   :user_name      => 'postmaster@formu.derekshiller.com', #ENV['MAILGUN_SMTP_LOGIN'],
-#   :password       => 'ab433f8c8b08015746ea720069c39653', #ENV['MAILGUN_SMTP_PASSWORD'],
-#   :domain         => 'formu.derekshiller.com',
-#   :authentication => :plain,
-# }
-ActionMailer::Base.delivery_method = :smtp
-  # Enable Rack::Cache to put a simple HTTP cache in front of your application
-  # Add `rack-cache` to your Gemfile before enabling this.
-  # For large-scale production use, consider using a caching reverse proxy like
-  # NGINX, varnish or squid.
-  # config.action_dispatch.rack_cache = true
 
-  # Disable serving static files from the `/public` folder by default since
-  # Apache or NGINX already handles this.
+ActionMailer::Base.delivery_method = :smtp
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
