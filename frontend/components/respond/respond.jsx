@@ -16,14 +16,14 @@ const Respond = React.createClass({
   },
 
   componentDidMount () {
-    this.formStoreReceipt = FormStore.addListener(this.retrieveForm);
     FormDatabaseActions.getForm(this.props.params.formId);
+    this.formStoreReceipt = FormStore.addListener(this.retrieveForm);
     this.errorStoreReceipt = ErrorStore.addListener(this.checkErrors);
   },
 
   componentWillUnmount () {
-    doIfDefined( "remove", this, "formStoreReceipt" );
-    doIfDefined( "remove", this, "errorStoreReceipt" );
+    this.formStoreReceipt.remove());
+    this.errorStoreReceipt.remove());
     doIfDefined( "remove", this, "responseStoreReceipt" );
   },
 
@@ -36,14 +36,14 @@ const Respond = React.createClass({
     return (
       <div className="respondFieldWrapper"
            key={`wrapper_${index}`}>
-      <Field fieldVals={ {
-        fieldName: fieldObj.label || " ",
-        instructions: fieldObj.instructions,
-        fieldType: (fieldObj.type),
-        fieldId: fieldObj.id,
-        className: fieldObj.className || fieldObj.type,
-        choices: fieldObj.choices,
-      } }/>
+        <Field fieldVals={ {
+          fieldName: fieldObj.label || " ",
+          instructions: fieldObj.instructions,
+          fieldType: (fieldObj.type),
+          fieldId: fieldObj.id,
+          className: fieldObj.className || fieldObj.type,
+          choices: fieldObj.choices,
+        } }/>
       </div>
     )
   },
@@ -85,11 +85,16 @@ const Respond = React.createClass({
     return (
       <main className="formContainer">
         { <h1> { this.state.form.properties.title } </h1> }
-        { <p className="instructions"> {this.state.form.properties.instructions }</p> }
+        { <p className="instructions">
+            {this.state.form.properties.instructions }
+          </p> }
         <form>
         { this.drawFields() }
         </form>
-        <button className="submitButton" onClick={this.submitResponses}> Submit Form </button>
+        <button className="submitButton"
+                onClick={this.submitResponses}>
+                Submit Form
+        </button>
       </main>
     );
   }
