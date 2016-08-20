@@ -5,7 +5,6 @@ const ErrorStore = require('../../stores/error_store.js');
 const ResponseStore = require('../../stores/response_store.js');
 const FormDatabaseActions = require('../../actions/form_database_actions.js');
 const ResponseDatabaseActions = require('../../actions/response_database_actions.js');
-// const Field = require('../field');
 
 
 const Response = React.createClass({

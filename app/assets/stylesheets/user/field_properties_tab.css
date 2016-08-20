@@ -35,15 +35,10 @@ div.choices::-webkit-scrollbar {
   width: 9px;
   height: 5px;
 }
-/*
-div.choices:hover::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
-}*/
 div.choices:hover::-webkit-scrollbar-thumb {
   background: #e1e1e1;
   border: 10px double #eeb00d;
-  border-radius: 20px;*/
+  border-radius: 20px;
 }
 
 div .tabForm div.choices .inputWrapper {
