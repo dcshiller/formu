@@ -55,7 +55,7 @@ const UserIndex = React.createClass({
                isOpen={this.state.invitationModal}
                onRequestClose={this.closeModal}
                >
-               <h2>Invitation for form {this.state.formModalChoice}</h2>
+               <h2>Invitation for form {this.state.formModalChoiceTitle}</h2>
                <form id="emailInputForm" className="container">
                    <label for="emailinput">Recipient's email: </label>
                    <input id="emailinput" name="email" type="text"></input>
@@ -66,7 +66,7 @@ const UserIndex = React.createClass({
                    <label for="custominput">Custom message: </label>
                    <input id="custominput" name="custom_message"></input>
                </form>
-               <button className="standardButton" onClick={this.sendInvitation.bind(null, this.state.formModalChoice)}>send</button>
+               <button className="standardButton" onClick={this.sendInvitation.bind(null, this.state.formModalChoiceId)}>send</button>
                <button className="standardButton" onClick={this.closeModal}>close</button>
              </Modal> )
   },
@@ -86,7 +86,7 @@ const UserIndex = React.createClass({
                   <span id={"form_" + index + "_title"}> {form.title} </span>
                   <span id={"form_" + index + "_created_at"}> {form.created_at} </span>
                   <span id={"form_" + index + "_edit"}>
-                  <button onClick={self.invitationModalHandler.bind(null, form.id)}> <img src={envelopeURL}/></button>
+                  <button onClick={self.invitationModalHandler.bind(null, form.id, form.title)}> <img src={envelopeURL}/></button>
                     <Link to={`${self.state.username}/form/${form.id}`}><img src={linkURL}/></Link>
                     <button onClick={self.editFormHandler.bind(null, form.id)}>
                       <img src={editURL}/>
@@ -126,8 +126,8 @@ const UserIndex = React.createClass({
     return {emailParams:  emailFormEntries}
   },
 
-  invitationModalHandler (formId) {
-    this.setState({invitationModal: true, formModalChoice: formId})
+  invitationModalHandler (formId, formTitle) {
+    this.setState({invitationModal: true, formModalChoiceId: formId, formModalChoiceTitle: formTitle })
   },
 
   // openModal (formChoice) {
