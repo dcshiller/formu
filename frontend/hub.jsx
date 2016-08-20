@@ -9,11 +9,6 @@ const SessionStore = require('./stores/session_store.js');
 const AuthActions = require('./actions/auth_actions.js');
 const FormActions = require('./actions/auth_actions.js');
 
-
-window.doIfDefined = function(func, arg){
-  if (arg !== undefined) {func.call(this, arg)}
-};
-
 window.getIfDefined = function(...args){
   let nestLevel = args[0];
   for (var i = 1; i < args.length - 1; i++) {
@@ -25,12 +20,18 @@ window.getIfDefined = function(...args){
   return nestLevel && nestLevel[args[i]];
 };
 
+window.doIfDefined = function(func, ...args){
+  let arg = getIfDefined(args)
+  if (arg !== undefined) {func.call(this, arg)}
+};
+
 const populateStores = function(username){
   AuthActions.loginUser({username: username});
 };
 
 const validate = function(nextState, replace){
-  if (!(window.currentUser || SessionStore.currentUser()))
+  let username = window.location.hash.split("/") [2].split("?")[0]
+  if (!(window.currentUser == username || SessionStore.currentUser() == username))
   {
     replace('/login')
   }
@@ -46,15 +47,15 @@ var routes = (
       <Route path={':username/form/:formId/:responseId'} component={Response}/>
     </Route>
     <Route path="login" component={Login}/>
-    <Route path={'users/:username'} component={User} onEnter={validate}>
-      <IndexRoute component={UserIndex}/>
+    <Route path={'users/:username'} component={User} >
+      <IndexRoute component={UserIndex} onEnter={validate}/>
       <Route path={'/:username/design'} component={Design}/>
     </Route>
   </Router>
 );
 
 document.addEventListener("DOMContentLoaded", function(){
-    doIfDefined(populateStores, window.currentUser)
+    doIfDefined(populateStores, window, "currentUser")
     ReactDOM.render(routes,
                     document.getElementById('main')
                    );
