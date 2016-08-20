@@ -1,6 +1,5 @@
 const React = require('react');
-const hashHistory = require('react-router').hashHistory;
-const Link = require('react-router').Link;
+import { hashHistory, Link } from 'react-router'
 const SessionStore = require('../../stores/session_store');
 const ErrorStore = require('../../stores/error_store');
 const FormsStore = require('../../stores/forms_store.js');
@@ -55,15 +54,15 @@ const UserIndex = React.createClass({
                isOpen={this.state.invitationModal}
                onRequestClose={this.closeModal}
                >
-               <h2>Invitation for form {this.state.formModalChoiceTitle}</h2>
+               <h2>Invitation for form: <span className = "red"> {this.state.formModalChoiceTitle} </span> </h2>
                <form id="emailInputForm" className="container">
-                   <label for="emailinput">Recipient's email: </label>
+                   <label htmlFor="emailinput">Recipient's email: </label>
                    <input id="emailinput" name="email" type="text"></input>
-                   <label for="recipientinput">Recipient's name: </label>
+                   <label htmlFor="recipientinput">Recipient's name: </label>
                    <input id="recipientinput" name="recipient"></input>
-                   <label for="senderinput">Your name: </label>
+                   <label htmlFor="senderinput">Your name: </label>
                    <input id="senderinput" name="sender"></input>
-                   <label for="custominput">Custom message: </label>
+                   <label htmlFor="custominput">Custom message: </label>
                    <input id="custominput" name="custom_message"></input>
                </form>
                <button className="standardButton" onClick={this.sendInvitation.bind(null, this.state.formModalChoiceId)}>send</button>
@@ -93,7 +92,7 @@ const UserIndex = React.createClass({
                     </button>
                   </span>
                   <span>
-                    <button onClick={self.toggleResponse.bind(self, index)}>responses</button> ({form.responses.length})
+                    <button onClick={self.toggleResponse.bind(self, index)} className="responsesButton">responses ({form.responses.length})</button> <br/>
                     { form.responses.length > 0 && self.state.forms[index].selected && (
                       <ul className="responseList">
                         { self.formResponseLis(form) }
@@ -115,6 +114,7 @@ const UserIndex = React.createClass({
       return (<li id={"response_item_" + index}
                   key={"response_item_" + index}>
                   {<Link to={`${self.state.username}/form/${form.id}/${response.id}}`}> {response.created_at}</Link>}
+                  <br/>
               </li>)
     })
   },
@@ -129,10 +129,6 @@ const UserIndex = React.createClass({
   invitationModalHandler (formId, formTitle) {
     this.setState({invitationModal: true, formModalChoiceId: formId, formModalChoiceTitle: formTitle })
   },
-
-  // openModal (formChoice) {
-  //   this.setState({modalIsOpen: true});
-  // },
 
   newFormHandler () {
     FormDatabaseActions.clearForm();
@@ -185,7 +181,6 @@ const UserIndex = React.createClass({
       </div>
     )
   }
-
 });
 
 
