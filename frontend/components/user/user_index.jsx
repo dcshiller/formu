@@ -151,6 +151,7 @@ const UserIndex = React.createClass({
 
   sendInvitation (formId) {
     EmailActions.sendInvitation(this.getEmailParams(formId));
+    this.closeModal()
   },
 
   toggleResponse (form_number) {
