@@ -64,7 +64,7 @@ const FieldPropertiesTab = React.createClass({
                                                choice.choice_text,
                                               {hideLabel: true})
                                             }
-                              <img className="choiceDeleteButton"
+                             <img className="choiceDeleteButton"
                                    onClick={self.deleteChoiceHandler.bind(null, choice.id)}
                                    src={window.trashURL}/>
                             </div>)

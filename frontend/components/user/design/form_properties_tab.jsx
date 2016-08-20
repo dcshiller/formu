@@ -27,7 +27,7 @@ const FormPropertiesTab = React.createClass({
         <form className="tabForm">
           { fieldBuilder("title",
                           "text",
-                          this.props.form.properties.title) }
+                          this.props.form.properties.title, { autoFocus: true }) }
           { fieldBuilder( "instructions",
                           "paragraph",
                           this.props.form.properties.instructions) }
