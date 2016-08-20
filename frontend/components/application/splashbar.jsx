@@ -1,9 +1,18 @@
 const React = require('react');
 const Link = require('react-router').Link;
 const hashHistory = require('react-router').hashHistory
-const AuthActions = require('../../actions/auth_actions.js');
+const AuthActions = require('../../actions/auth_actions');
+const SessionStore = require ('../../stores/session_store')
 
 const Splashbar = React.createClass({
+
+  componentDidMount () {
+    this.sessionStoreReceipt = SessionStore.addListener(this.userChange);
+  },
+
+  componentWillUnmount () {
+    this.sessionStoreReceipt.remove();
+  },
 
   loginAsGuest (e) {
     e.preventDefault();
@@ -13,10 +22,10 @@ const Splashbar = React.createClass({
 
   startClouds () {
     $('img[class^=cloud]').addClass('visible');
-    // setInterval(function(){
-    //   if ($('.mammothLids')) {
-    //     $('.mammothLids').addClass("visible")
-    // }}, 1000);
+  },
+
+  userChange () {
+    this.setState({currentUser: SessionStore.currentUser()});
   },
 
   render () {
@@ -30,12 +39,15 @@ const Splashbar = React.createClass({
           <img className="cloud4" src={window.cloud4URL}/>
           <img className="mammoth" src={window.mammothURL} alt="Muey the Mastodon"/>
           <h1> Create and share your forms. </h1>
-          <div className="buttonBar container">
+          { !!(SessionStore.currentUser()) || (
+            <div className="buttonBar container">
             <button id="skyscapeLogin" onClick={this.loginAsGuest}>
               GUEST LOGIN
             </button>
             <Link to='signup' id="skyscapeSignup">SIGN UP</Link>
-          </div>
+            </div>
+          )
+          }}
         </div>
         <span className="tagline">
           Building forms can be beastly.<br/><br/>
