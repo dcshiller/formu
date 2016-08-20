@@ -192,12 +192,8 @@ ul.responseList::-webkit-scrollbar {
   width: 9px;
   height: 5px;
 }
-/*
-div.choices:hover::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
-}*/
+
 ul.responseList::-webkit-scrollbar-thumb {
   border: 10px double rgb(145, 158, 212);
-  border-radius: 20px;*/
+  border-radius: 20px;
 }
