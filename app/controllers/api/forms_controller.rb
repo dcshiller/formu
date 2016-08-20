@@ -4,7 +4,6 @@ class Api::FormsController < ApplicationController
     new_form = translate_form_data
     @form = Form.create(new_form)
     if @form.save
-      # render json: {password: "incorrect"}, status: 401
       render :show
     else
       render json: {form: "Error"}, status: 422
@@ -88,14 +87,6 @@ class Api::FormsController < ApplicationController
       field.delete :fieldId
       choices = field[:choices] ? removeTemps(field[:choices].values) : []
       field[:choices_attributes] = choices
-      field[:choices_attributes]
-      # if field[:choices] &&
-      #   field[:choices_attributes].collect!.with_index do |choice, choice_index|
-      #     {choice_text: choice, choice_position: choice_index}
-      #   end
-      #   field[:choices_attributes] = field[:choices_attributes]
-      # end
-
       field.delete :choices
       field
     end
