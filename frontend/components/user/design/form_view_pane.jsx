@@ -25,17 +25,14 @@ const FormViewPane = React.createClass({
   },
 
   addTarget (e) {
-    // e.preventDefault();
     window.dragged = e.target;
   },
 
   removeTarget (e) {
-    // e.preventDefault();
     setTimeout(function(){window.dragged = null;}, 500);
   },
 
   deleteField (fieldId, e) {
-    // DesignActions.deleteField.bind(fieldId)
     FormDatabaseActions.deleteField(fieldId)
   },
 
@@ -46,13 +43,11 @@ const FormViewPane = React.createClass({
   },
 
   dragLeave (e) {
-    // e.preventDefault();
     if (e.target.className.indexOf("underDragged") != -1)
     {e.target.className = "dropTarget"}
   },
 
   dropField (e) {
-    // e.preventDefault();
     this.dragLeave(e)
     let draggedObj = window.dragged;
     let position = e.target.id.split("_")[1]
@@ -60,9 +55,6 @@ const FormViewPane = React.createClass({
       DesignActions.addField(draggedObj.replace(" ",""), position);
     }
     else {
-    //   let fieldId = getIfDefined(draggedObj.getElementsByTagName("input")[0] , "id");
-    //   fieldId = (fieldId || getIfDefined(draggedObj.getElementsByTagName("hr")[0], "id"));
-    //   fieldId = (fieldId || getIfDefined(draggedObj, "id"));
     let fieldId = draggedObj.id.split("_")[0];
     DesignActions.repositionField(fieldId, position);
      }
@@ -99,10 +91,6 @@ const FormViewPane = React.createClass({
             </div>
           )
   },
-
-  // // draggable: true,
-  // onDragStart: this.addTarget,
-  // onDragEnd:this.removeTarget,
 
   drawDropTarget (number) {
     return (
