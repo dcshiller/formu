@@ -1,8 +1,9 @@
 const React = require('react')
 
 const TextField = React.createClass({
-  componentDidMount: function () {
-    if (this.props.fieldVals.autoFocus){this.refs.autoFocus.focus();}
+  componentDidMount () {
+    if (this.props.fieldVals.autoFocus){
+      this.refs.autoFocus.focus();}
   },
   render () {
     let fieldVals = this.props.fieldVals;
