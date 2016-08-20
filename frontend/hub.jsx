@@ -20,9 +20,17 @@ window.getIfDefined = function(...args){
   return nestLevel && nestLevel[args[i]];
 };
 
-window.doIfDefined = function(func, ...args){
-  let arg = getIfDefined(...args)
-  if (arg !== undefined) {func.call(this, arg)}
+window.doIfDefined = function(func, context, ...args){
+  let funcName = func.name || func
+  let arg = getIfDefined(context, ...args)
+  if (arg !== undefined) {
+    if (func instanceof Function)
+      { func.call(this, arg)}
+    else if (arg[funcName] instanceof Function)
+      { arg[funcName].call(arg) }
+    else if (context[funcName] instanceof Function)
+      { context[funcName].call(context, arg) }
+  }
 };
 
 const populateStores = function(username){
