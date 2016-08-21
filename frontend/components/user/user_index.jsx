@@ -121,7 +121,7 @@ const UserIndex = React.createClass({
 
   getEmailParams (formId) {
     let emailFormEntries = $('#emailInputForm').serializeArray();
-    let formPath = `www.formu.derekshiller.com/#/${this.state.username}/forms/${formId}`
+    let formPath = `formu.derekshiller.com/#/${this.state.username}/form/${formId}`
     emailFormEntries.push({name: "path", value: formPath});
     return {emailParams:  emailFormEntries}
   },
