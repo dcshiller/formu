@@ -1,8 +1,7 @@
-# For*μ*
-*A form building website.*
-
-#### [Live Link][link]
+# [For*μ*][link]
 [link]: https://formu.derekshiller.com
+*A form building website.* <br/>
+formu.derekshiller.com
 
 ### Overview
 <!-- ![GUI](./docs/ForMuGUI.png) -->
