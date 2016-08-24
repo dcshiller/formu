@@ -63,7 +63,11 @@ form.signup button {
   font-size: 18px;
   border: 0px;
   height: 60px;
-  background: lightgreen;
+  background: rgb(0, 204, 0);
+}
+
+form.signup button:hover {
+  background: rgb(31, 225, 31);
 }
 
 form.signup div.fieldLabel {

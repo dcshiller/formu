@@ -24,6 +24,16 @@ const Signup = React.createClass({
     this.sessionStoreReceipt.remove();
   },
 
+  fieldErrors (fieldName) {
+    if (this.state.errors[fieldName]){
+        return (<span className="errorNote"> {this.state.errors[fieldName]} </span>);
+    }
+  },
+
+  hideFieldNotes () {
+   $('span.fieldNote').hide();
+  },
+
   inputHandler (e) {
     let newVals = {};
     this.removeFieldErrors(e.target.id);
@@ -52,20 +62,10 @@ const Signup = React.createClass({
     AuthActions.signup(this.state)
   },
 
-  hideFieldNotes () {
-   $('span.fieldNote').hide();
-  },
-
   selectField (e) {
     let fieldName = e.target.id
     let fieldNote = "#" + fieldName + "fieldNote"
     $(fieldNote).show();
-  },
-
-  fieldErrors (fieldName) {
-    if (this.state.errors[fieldName]){
-        return (<span className="errorNote"> {this.state.errors[fieldName]} </span>);
-    }
   },
 
   render () {
@@ -79,8 +79,9 @@ const Signup = React.createClass({
 
           <ul>
             <li>User accounts</li>
-            <li>Dynamic form design interface</li><li>Response view portal</li><li></li><li></li><li></li><li></li><li></li>
-            <li>Stay tuned for more features.</li>
+            <li>Dynamic form design interface</li>
+            <li>Response view portal</li>
+            <li>Email response invitations</li><li></li><li></li><li></li><li></li>
           </ul>
         </sidebar>
 
