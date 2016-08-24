@@ -17,7 +17,8 @@ const UserIndex = React.createClass({
     return {
       username: SessionStore.currentUser(),
       forms: FormsStore.getForms(currentUser),
-      invitationModal: false
+      invitationModal: false,
+      invitationResponseModal: false
     };
   },
 
@@ -39,7 +40,7 @@ const UserIndex = React.createClass({
   },
 
   closeModal () {
-    this.setState({invitationModal: false});
+    this.setState({invitationModal: false, invitationResponseModal: false});
   },
 
   deleteFormHandler (id, e) {
@@ -56,18 +57,56 @@ const UserIndex = React.createClass({
                >
                <h2>Invitation for form: <span className = "red"> {this.state.formModalChoiceTitle} </span> </h2>
                <form id="emailInputForm" className="container">
+                <div className = "container">
                    <label htmlFor="emailinput">Recipient's email: </label>
                    <input id="emailinput" name="email" type="text"></input>
+                </div>
+                <div  className = "container">
                    <label htmlFor="recipientinput">Recipient's name: </label>
                    <input id="recipientinput" name="recipient"></input>
+                </div>
+                <div  className = "container">
                    <label htmlFor="senderinput">Your name: </label>
                    <input id="senderinput" name="sender"></input>
+                </div>
+                <div  className = "container">
                    <label htmlFor="custominput">Custom message: </label>
-                   <input id="custominput" name="custom_message"></input>
+                   <textarea id="custominput" name="custom_message"></textarea>
+                </div>
                </form>
                <button className="standardButton" onClick={this.sendInvitation.bind(null, this.state.formModalChoiceId)}>send</button>
                <button className="standardButton" onClick={this.closeModal}>close</button>
              </Modal> )
+  },
+
+  drawResponseModal () {
+    const response = ErrorStore.retrieveErrors().email
+    return (
+      <Modal
+        className="emailModal response"
+        overlayClassName="emailModalOverlay"
+        isOpen={this.state.invitationResponseModal}
+        onRequestClose={this.closeModal}>
+        <div onClick={this.closeModal}>
+        { response == "delivered" &&
+          <p>
+            Your invitation has been sent to { ErrorStore.retrieveErrors().recipient }.
+          </p>
+        }
+        { response == "invalid" &&
+          <p>
+            The address you entered is invalid.
+          </p>
+        }
+        { response == "failure" &&
+          <p>
+            The invitation failed. Our engineers have been notified.
+          </p>
+        }
+
+        </div>
+      </Modal>
+    )
   },
 
   editFormHandler (formId) {
@@ -120,7 +159,7 @@ const UserIndex = React.createClass({
   },
 
   getEmailParams (formId) {
-    let emailFormEntries = $('#emailInputForm').serializeArray();
+    let emailFormEntries = $('#emailInputForm div *').serializeArray();
     let formPath = `formu.derekshiller.com/#/${this.state.username}/form/${formId}`
     emailFormEntries.push({name: "path", value: formPath});
     return {emailParams:  emailFormEntries}
@@ -136,8 +175,12 @@ const UserIndex = React.createClass({
   },
 
   processErrors () {
-    if (ErrorStore.retrieveErrors().email == "success")
-      {this.setState({invitationModal: false})}
+    let ResponseMessage = ErrorStore.retrieveErrors();
+    if (ResponseMessage.email)
+      {
+        this.closeModal();
+        this.setState({invitationResponseModal: true})
+      }
   },
 
   processNewForms () {
@@ -151,7 +194,6 @@ const UserIndex = React.createClass({
 
   sendInvitation (formId) {
     EmailActions.sendInvitation(this.getEmailParams(formId));
-    this.closeModal()
   },
 
   toggleResponse (form_number) {
@@ -177,6 +219,7 @@ const UserIndex = React.createClass({
             </ul>
           </div>
           { this.drawModal() }
+          { this.drawResponseModal() }
       </div>
     )
   }

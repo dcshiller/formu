@@ -118,7 +118,7 @@ li.form_index_item span:last-of-type {
 .emailModal {
   opacity: 1;
   z-index: 3;
-  width: 500px;
+  width: 540px;
   height: 440px;
   position: fixed;
   top: calc(50% - 230px);
@@ -130,6 +130,11 @@ li.form_index_item span:last-of-type {
   outline: none;
 }
 
+.emailModal.response {
+  text-align: center;
+  height: 400px;
+}
+
 .emailModalOverlay {
   background: rgba( 20, 20, 20, .75);
   position: fixed;
@@ -137,6 +142,12 @@ li.form_index_item span:last-of-type {
   bottom: 0px;
   right: 0px;
   left: 0px;
+}
+
+.emailModal.response div {
+  padding-top: 170px;
+  width: 100%;
+  height: 100%;
 }
 
 .emailModal h2 {
@@ -159,13 +170,15 @@ li.form_index_item span:last-of-type {
   margin-bottom: 28px;
 }
 
-#emailInputForm input {
+#emailInputForm input, textarea {
   width: 250px;
   float: right;
   margin-bottom: 25px;
 }
 
-#emailInputForm input:last-of-type {
+#emailInputForm textarea {
+  vertical-align: top;
+  word-wrap: normal;
   width: 100%;
   height: 80px;
 }
