@@ -38,7 +38,7 @@ const populateStores = function(username){
 };
 
 const validate = function(nextState, replace){
-  let username = window.location.hash.split("/") [2].split("?")[0]
+  let username = window.location.hash.split("/")[2].split("?")[0]
   if (!(window.currentUser == username || SessionStore.currentUser() == username))
   {
     replace('/login')
