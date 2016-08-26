@@ -49,20 +49,20 @@ Forms are split up across three tables: forms, form fields (entries), and form f
 
 | Column Name | Type |  Relation | Other |
 | :------------- | :------------- | --- | --- |
-| Id | Int | - | - |
-| Type | String | - | Not Null |
-| Form_Id | Int | Forms:Id | Not Null, Indexed |
-| Label | String | - | Not Null |
-| Instructions | Text | - | - |
-| Form_Position | Int | - | Not Null |
+| id | Int | - | - |
+| type | String | - | Not Null |
+| form_id | Int | Forms:Id | Not Null, Indexed |
+| label | String | - | Not Null |
+| instructions | Text | - | - |
+| form_position | Int | - | Not Null |
 
 **Form Field Options Table Schema**
 
 | Column Name | Type |  Relation | Other |
 | :------------- | :------------- | --- | --- |
-| Id | Int | - | - |
-| Form_Field_Id | Int | Form_Field:Id | Not Null, Indexed |
-| Option_text | String | - | Not Null |
+| id | Int | - | - |
+| form_field_id | Int | Form_Field:Id | Not Null, Indexed |
+| option_text | String | - | Not Null |
 
 
 
