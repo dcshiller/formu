@@ -36,6 +36,11 @@ div .formViewPane input, div .formViewPane textarea {
   width: 50%;
 }
 
+ /*div .formViewPane textarea {
+  height: 80px;
+  float: left;
+}*/
+
 div .formViewPane input.number {
   display: block;
   width: 50px;
@@ -67,6 +72,7 @@ div .formViewPane input, textarea {
 div .formViewPane textarea.paragraph {
   height: 50px;
   word-wrap: break-word;
+  float: left;
 }
 
 div .formViewPane label.checkbox, label.radio {

@@ -74,7 +74,7 @@ const Field = React.createClass({
         let fieldVals = this.props.fieldVals;
         let identifier =  fieldVals.fieldId + "_div_" + nestLevel + "_";
         return (<div className      =       { (nestLevel > 1 && " ") ||
-                                              (fieldVals.selected ? "inputWrapper selected" : "inputWrapper") }
+                                              (fieldVals.selected ? "inputWrapper selected" : "inputWrapper") + " container " }
                       onClick       =       { fieldVals.onContainerClick }
                       id            =       { identifier }
                       key           =       { identifier }>
