@@ -74,6 +74,7 @@ form.login span.errorNote {
 }
 
 form.login button, form.login a {
+  position: relative;
   display: block;
   min-width: 80px;
   vertical-align: middle;
